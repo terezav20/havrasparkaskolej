@@ -13,7 +13,7 @@
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   
-  /* Původní proměnné zachovány */
+  /* Tvé původní proměnné */
   --bg: #0f1723;
   --surface: rgba(26, 37, 51, 0.72);
   --border: #3f5670;
@@ -76,8 +76,10 @@
 .hp-subtext { font-size: 11px; color: #aebbc8; display: block; margin-top: 2px; } 
 
 .hp-hidden { display: none !important; } 
-.hp-clickable { cursor: pointer; transition: all 0.3s ease; } 
-.hp-clickable:hover { transform: scale(1.03); color: var(--text); } 
+
+/* Oprava: Samostatné zvětšení přes scale u univerzálních klikatelných prvků */
+.hp-clickable { cursor: pointer; transition: scale 0.3s ease, color 0.3s ease; } 
+.hp-clickable:hover { scale: 1.03; color: var(--text); } 
 area { cursor: pointer; }
 
 .fiot { color: var(--gold); text-decoration: none; font-weight: bold; transition: color 0.2s; }
@@ -116,12 +118,14 @@ area { cursor: pointer; }
 }
 .hp-action-box img { max-width: 100%; height: auto; border-radius: 4px; }
 
+/* Oprava dveří: Přechod pouze pro scale a jas, odděleno od animace posunu */
 .hp-wrap #hp-door-view img.hp-door { 
   width: 160px; border-radius: 50%; cursor: pointer; border: 4px double var(--accent); 
-  box-shadow: 0 5px 15px rgba(0,0,0,0.6); transition: transform 0.3s, filter 0.3s; 
+  box-shadow: 0 5px 15px rgba(0,0,0,0.6); 
+  transition: scale 0.3s ease, filter 0.3s ease; 
   margin: 15px auto; display: block; animation: hp-float 4s ease-in-out infinite;
 } 
-.hp-wrap img.hp-door:hover { transform: scale(1.05); filter: brightness(1.15); } 
+.hp-wrap img.hp-door:hover { scale: 1.05; filter: brightness(1.15); } 
 
 /* =========================================
    5. FORMULÁŘE (Inputy, Tlačítka, Taby)
@@ -141,8 +145,9 @@ area { cursor: pointer; }
   font-family: 'Montserrat', sans-serif; font-size: 14px; box-shadow: 0 3px 6px rgba(0,0,0,0.4); 
   transition: all 0.2s; 
 } 
+/* Oprava tlačítek: Odstraněno uskakování (transform), ponechán pouze vizuální stín */
 .hp-wrap button:hover { 
-  background: #2f4763; transform: translateY(-1px); 
+  background: #2f4763; 
   box-shadow: 0 8px 22px rgba(0,0,0,0.4), 0 0 16px rgba(122,162,214,0.15); 
 } 
 .hp-back-btn { background: var(--surface) !important; color: var(--text) !important; border-color: var(--border) !important; margin-top: 15px; }
@@ -158,15 +163,15 @@ area { cursor: pointer; }
 /* =========================================
    6. SEZNAMY, GRIDY, POLOŽKY A PROFILY
    ========================================= */
-/* Společné styly pro interaktivní bloky */
+/* Oprava hover bloků: Místo konfliktního transform používáme čistý scale */
 .hp-grid-item, .hp-potion-item, .hp-f-item, .hp-student-profile {
   background: var(--surface); border: 1px solid var(--border); 
   border-radius: 12px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.2s ease;
+  transition: scale 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.2s ease;
 }
 .hp-grid-item:hover, .hp-potion-item:hover, .hp-f-item:hover, .hp-student-profile:hover {
-  transform: scale(1.03); /* Místo transform: none u hoveru vrátíme tvůj původní scale */
+  scale: 1.03; 
   border-color: var(--accent);
   box-shadow: 0 8px 22px rgba(0,0,0,0.4), 0 0 16px rgba(122,162,214,0.15);
 }
@@ -199,8 +204,9 @@ area { cursor: pointer; }
 .hp-db-table th, .hp-db-table td { border: 1px solid var(--border); padding: 8px; text-align: left; } 
 .hp-db-table td code { color: var(--gold); background: rgba(255, 255, 255, 0.1); padding: 2px 4px; border-radius: 3px; }
 .hp-db-table th { background: var(--surface); color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 700; } 
-.hp-db-table img { width: 40px; height: 40px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); cursor: pointer; transition: transform 0.2s; } 
-.hp-db-table img:hover { transform: scale(1.1); border-color: var(--gold); }
+/* Oprava zväčšení u obrázků v tabulce */
+.hp-db-table img { width: 40px; height: 40px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); cursor: pointer; transition: scale 0.2s ease; } 
+.hp-db-table img:hover { scale: 1.1; border-color: var(--gold); }
 
 .hp-trezor-box { margin-top: 25px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 15px; box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08); animation: hp-glow 6s ease-in-out infinite; }
 .hp-trezor-header { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin-bottom: 15px; }
@@ -220,9 +226,10 @@ area { cursor: pointer; }
 /* =========================================
    8. ANIMACE
    ========================================= */
+/* Oprava plynulosti animací pomocí vlastnosti translate místo transform */
 @keyframes hp-stars {
-  from { opacity: .35; transform: translateY(0px); }
-  to { opacity: .8; transform: translateY(-4px); }
+  from { opacity: .35; translate: 0 0px; }
+  to { opacity: .8; translate: 0 -4px; }
 }
 
 @keyframes hp-glow {
@@ -231,8 +238,8 @@ area { cursor: pointer; }
 }
 
 @keyframes hp-float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  0%,100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
 }
 </style>
 
