@@ -79,7 +79,10 @@
 
 /* Oprava: Samostatné zvětšení přes scale u univerzálních klikatelných prvků */
 .hp-clickable { cursor: pointer; transition: scale 0.3s ease, color 0.3s ease; } 
-.hp-clickable:hover { scale: 1.03; color: var(--text); } 
+.hp-clickable:hover 
+{transform: scale(1.03); /* Použije se transform, který nehýbe s layoutem */
+  border-color: var(--accent);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.4);} 
 area { cursor: pointer; }
 
 .fiot { color: var(--gold); text-decoration: none; font-weight: bold; transition: color 0.2s; }
@@ -150,18 +153,47 @@ area { cursor: pointer; }
 } 
 .hp-wrap input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 8px rgba(142,154,175,0.4); } 
 
+/* ZÁKLADNÍ STAV */
 .hp-wrap button { 
-  padding: 12px 24px; background: #24364d; border: 1px solid var(--accent); 
-  cursor: pointer; font-weight: bold; border-radius: 12px; color: var(--text); 
-  font-family: 'Montserrat', sans-serif; font-size: 14px; box-shadow: 0 3px 6px rgba(0,0,0,0.4); 
-  transition: all 0.2s; 
+  padding: 12px 24px;
+  background: #24364d;
+  /* Výchozí nenápadný rámeček */
+  border: 1px solid var(--border); 
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 12px;
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  
+  /* Žádný vnější stín */
+  box-shadow: none !important; 
+  
+  transition: all 0.3s ease; /* Mírně prodloužený čas pro plynulejší efekt */
+  transform: none !important; 
 } 
-/* Oprava tlačítek: Odstraněno uskakování (transform), ponechán pouze vizuální stín */
+
+/* HOVER STAV - výraznější */
 .hp-wrap button:hover { 
   background: #2f4763; 
-  box-shadow: 0 8px 22px rgba(0,0,0,0.4), 0 0 16px rgba(122,162,214,0.15); 
+  /* Výraznější modrý rámeček */
+  border: 1px solid var(--accent); 
+  
+  /* Vnitřní stín (inset) zajistí, že tlačítko vypadá "vystouple" nebo "hlouběji" 
+     bez poskakování celého prvku */
+  box-shadow: inset 0 0 10px rgba(122,162,214,0.3) !important; 
+  
+  transform: none !important;
 } 
-.hp-back-btn { background: var(--surface) !important; color: var(--text) !important; border-color: var(--border) !important; margin-top: 15px; }
+
+/* TLAČÍTKO ZPĚT */
+.hp-back-btn { 
+  background: var(--surface) !important; 
+  color: var(--text) !important; 
+  border: 1px solid var(--border) !important; 
+  box-shadow: none !important;
+  margin-top: 15px; 
+}
 
 .hp-tabs { display: flex; gap: 5px; justify-content: center; margin-bottom: 15px; } 
 .hp-tab-b { 
@@ -172,21 +204,28 @@ area { cursor: pointer; }
 .hp-tab-b.active { background: var(--border); color: var(--text); border-color: var(--accent); } 
 
 /* =========================================
-   6. SEZNAMY, GRIDY, POLOŽKY A PROFILY
+   6. SEZNAMY, GRIDY, POLOŽKY A PROFILY (STATICKÉ)
    ========================================= */
-/* Oprava hover bloků: Místo konfliktního transform používáme čistý scale */
+
 .hp-grid-item, .hp-potion-item, .hp-f-item, .hp-student-profile {
-  background: var(--surface); border: 1px solid var(--border); 
+  background: var(--surface); 
+  border: 1px solid var(--border); 
   border-radius: 12px;
+  /* Stín zůstává v základu i v hoveru stejný, aby nic neposkočilo */
   box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08);
-  transition: scale 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.2s ease;
-}
-.hp-grid-item:hover, .hp-potion-item:hover, .hp-f-item:hover, .hp-student-profile:hover {
-  scale: 1.03; 
-  border-color: var(--accent);
-  box-shadow: 0 8px 22px rgba(0,0,0,0.4), 0 0 16px rgba(122,162,214,0.15);
+  /* Přechod pouze pro barvy, žádný transform/scale */
+  transition: border-color 0.25s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.hp-grid-item:hover, .hp-potion-item:hover, .hp-f-item:hover, .hp-student-profile:hover {
+  /* ZDE JSEM SMAZAL SCALE/TRANSFORM - KARTA SE UŽ NEBUDE ZVĚTŠOVAT */
+  border-color: var(--accent);
+  background-color: #22314d;
+  /* Stín je stejný jako v základu */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08);
+}
+
+/* Ostatní styly gridů a seznamů ponecháváme beze změny */
 .hp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-height: 350px; overflow-y: auto; padding: 5px; } 
 .hp-grid-item { padding: 8px; font-size: 11px; cursor: pointer; position: relative; } 
 .hp-grid-item img { height: 45px; object-fit: contain; margin-bottom: 4px; display: block; margin-left: auto; margin-right: auto; } 
@@ -195,7 +234,6 @@ area { cursor: pointer; }
 
 .hp-potion-section-title { font-size: 14px; color: var(--text); text-align: left; margin: 15px 0 8px 5px; font-weight: bold; border-left: 3px solid var(--accent); padding-left: 8px; } 
 .hp-potion-item { padding: 12px; margin-bottom: 8px; cursor: pointer; display: flex; align-items: center; gap: 15px; text-align: left; } 
-.hp-potion-item:hover { background: #22314d; }
 .hp-potion-img { width: 48px; height: 48px; object-fit: contain; } 
 
 .hp-artifact-img { width: 50px; height: 50px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); }
