@@ -10,8 +10,8 @@
 .hp-wrap {
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(1px);
   
   /* Tvé původní proměnné */
   --bg: #0f1723;
@@ -104,11 +104,22 @@ area { cursor: pointer; }
 .hp-stat img { width: 40px; height: 40px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); } 
 
 .hp-room-img { 
-  width: 400px; height: 600px; display: block; margin: 15px auto; 
-  border: 3px solid var(--accent); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); 
-  transition: box-shadow 0.3s ease;
-} 
-.hp-room-img:hover { box-shadow: 0 0 18px rgba(122,162,214,0.18); }
+  width: 400px; 
+  height: 600px; 
+  display: block; 
+  margin: 15px auto; 
+  
+  /* Zaoblení rohů */
+  border-radius: 16px; 
+  
+  /* 1. Lehký rámeček (decentní linka) */
+  border: 2px solid rgba(var(--accent-rgb), 0.2); 
+  
+  /* 2. Glow (barevná záře) + 3. Stín (hloubka) */
+  box-shadow: 
+    0 0 15px rgba(var(--accent-rgb), 0.15),
+    0 10px 25px rgba(0, 0, 0, 0.1);
+}
 
 .hp-action-box {
   margin: 15px auto 5px auto; padding: 12px; background: rgba(22, 34, 47, 0.8);
@@ -233,8 +244,8 @@ area { cursor: pointer; }
 }
 
 @keyframes hp-glow {
-  0%,100% { box-shadow: 0 6px 18px rgba(0,0,0,.35), 0 0 12px rgba(122,162,214,.08); }
-  50% { box-shadow: 0 6px 18px rgba(0,0,0,.35), 0 0 22px rgba(122,162,214,.18); }
+  0%,100% { box-shadow: 0 2px 3px rgba(0,0,0,.35), 0 0 12px rgba(122,162,214,.08); }
+  50% { box-shadow: 0 2px 3px rgba(0,0,0,.35), 0 0 3px rgba(122,162,214,.18); }
 }
 
 @keyframes hp-float {
