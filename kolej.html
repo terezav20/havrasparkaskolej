@@ -200,7 +200,7 @@ area { cursor: pointer; }
 
 .hp-artifact-img { width: 50px; height: 50px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); }
 
-.hp-f-list { text-align: left; max-height: 350px; overflow-y: auto; } 
+.hp-f-list { text-align: left; max-height: 650px; overflow-y: auto; } 
 .hp-f-item { padding: 10px; margin-bottom: 8px; display: flex; align-items: center; gap: 15px; } 
 
 .hp-student-profile { padding: 15px; margin-bottom: 15px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; }
@@ -371,7 +371,7 @@ area { cursor: pointer; }
       <button class="hp-tab-b" id="tab-p-btn" onclick="hp_switchTab('p')">Lektvary</button>
       <button class="hp-tab-b" id="tab-a-btn" onclick="hp_switchTab('a')">Borgin & Burkes</button>
     </div>
-    <div id="hp-tab-spells" class="hp-grid"></div>
+    <div id="hp-tab-spells" class="hp-grid" style="max-height:700px; overflow-y:auto;"></div>
     <div id="hp-tab-potions" class="hp-hidden" style="max-height:700px; overflow-y:auto;"></div>
     <div id="hp-tab-artifacts" class="hp-hidden" style="max-height:700px; overflow-y:auto; padding:5px;"></div>
     <button onclick="hp_hideViews()" style="background:var(--surface); color:var(--text); border-color:var(--border); margin-top:15px;">Zpět do místnosti</button>
@@ -494,8 +494,19 @@ area { cursor: pointer; }
     ]; 
 
     const hp_pList = [
-      {n: "Ukázkový recept (Pozitivní)", r: "https://bradavice.eu/obrazky/listiny/recept9abqw.png", d: "Kliknutím otevřeš recept na přípravu magického nápoje.", t: "pos"}, 
-      {n: "Ukázkový nápoj (Negativní)", r: "https://bradavice.eu/obrazky/listiny/recept9abqw.png", d: "Zkušební lektvar se škodlivými účinky. Kliknutím zobrazíš recept.", t: "neg"}
+{n: "Lektvar Esence temnoty", r: "lektvary/lektvar_esencetemnoty.webp", d: "Po vypití navyšuje magickou vůli o jednu", t: "pos"},
+  {n: "Andělský lektvar", r: "lektvary/lektvar_andelskylektvar.webp", d: "Po vypití způsobuje ochranu proti ztrátě energie na úplně nulovou hodnotu trvající do konce školního roku", t: "pos"},
+  {n: "Lektvar Ohnivá slza", r: "lektvary/lektvar_ohnivaslza.webp", d: "Velmi jedovatý lektvar, snižuje energii na hranici smrti", t: "neg"},
+  {n: "Lektvar Magické oko", r: "lektvary/lektvar_magickeoko.webp", d: "Po vypití navyšuje procentuální dovednost některého soubojového kouzla.", t: "pos"},
+  {n: "Lektvar Magická hlubina", r: "lektvary/lektvar_magickahlubina.png", d: "Jedovatý lektvar, snižuje energii na hranici velké slabosti", t: "neg"},
+  {n: "Lektvar Modrá slza", r: "lektvary/lektvar_modraslza.webp", d: "Léčivý lektvar, navyšuje dosti podstatně energii", t: "pos"},
+  {n: "Lektvar Mistrova slza", r: "lektvary/lektvar_mistrovaslza.webp", d: "Po vypití navyšuje na přechodnou dobu úspěšnost cvičení některého soubojového kouzla", t: "pos"},
+  {n: "Lektvar Sluneční svit", r: "lektvary/lektvar_slunecnisvit.webp", d: "Velmi posilující lektvar, zvyšuje velmi podstatně energii", t: "pos"},
+  {n: "Lektvar neviditelnosti", r: "lektvary/lektvar_neviditelnosti.webp", d: "Způsobuje neviditelnost osoby do jedné hodiny noční", t: "pos"},
+  {n: "Lektvar Fénixova slza", r: "lektvary/lektvar_fenixovaslza.webp", d: "Léčivý lektvar, obnovuje energii", t: "pos"},
+  {n: "Lektvar Černá slza", r: "lektvary/lektvar_cernaslza.webp", d: "Mírně jedovatý lektvar, snižuje energii", t: "neg"},
+  {n: "Lektvar Doušek síly", r: "lektvary/lektvar_douseksily.webp", d: "Nízkoenergetický lektvar, přidává menší množství energie", t: "pos"},
+  {n: "Lektvar Medvědí oko", r: "lektvary/lektvar_medvedioko.webp", d: "Posilující lektvar, zvyšuje energii a sílu", t: "pos"}
     ]; 
 
     const hp_aList = [
