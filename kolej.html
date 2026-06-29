@@ -1006,5 +1006,33 @@ area { cursor: pointer; }
         alert("Balíček se nepodařilo odeslat. Zkus to prosím za chvíli znovu."); 
       } 
     }
+    function updateRoomImage() {
+    const img = document.getElementById("hp-main-room-img");
+    const hour = new Date().getHours();
+
+    let image;
+
+    if (hour >= 7 && hour < 18) {
+        // Den
+        image = "kolejky_ruzne/kolejka.png";
+    } else if (hour >= 18 && hour < 19) {
+        // Západ slunce
+        image = "kolejky_ruzne/kolejka_zapadslunce.png";
+    } else if (hour >= 19 || hour < 5) {
+        // Noc
+        image = "kolejky_ruzne/kolejka_noc.png";
+    } else if (hour >= 5 && hour < 6) {
+        // Svítání
+        image = "kolejky_ruzne/kolejka_svitani.png";
+    } else {
+        // Východ slunce
+        image = "kolejky_ruzne/kolejka_vychodslunce.png";
+    }
+
+    img.src = image;
+}
+
+updateRoomImage();
+setInterval(updateRoomImage, 60000);
   </script>
 </div>
