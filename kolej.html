@@ -11,9 +11,8 @@
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(1px);
-  
-  /* Tvé původní proměnné */
+  -webkit-backdrop-filter: blur(5px);
+
   --bg: #0f1723;
   --surface: rgba(26, 37, 51, 0.72);
   --border: #3f5670;
@@ -23,16 +22,31 @@
   --shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   --shadow-inset: inset 0 0 12px rgba(0, 0, 0, 0.35);
 
-  background: linear-gradient(135deg, rgba(41, 58, 85, 0.9) 0%, rgba(36, 66, 108, 0.8) 50%, rgba(14, 41, 79, 0.9) 100%); 
-  color: var(--text); 
-  font-family: 'Montserrat', sans-serif; 
-  text-align: center; 
-  padding: 20px;
-  border-radius: 16px; 
-  max-width: 420px; 
-  margin: auto; 
-  border: 2px solid var(--accent); 
-  box-shadow: 0 10px 30px rgba(0,0,0,0.7), inset 0 0 20px rgba(142,154,175,0.2); 
+  background: linear-gradient(
+    135deg,
+    rgba(41, 58, 85, 0.9) 0%,
+    rgba(36, 66, 108, 0.8) 50%,
+    rgba(14, 41, 79, 0.9) 100%
+  );
+
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  padding: 15px;
+  max-width: 420px;
+  margin: auto;
+
+  border-radius: 16px;
+
+  /* Stejný rámeček */
+  border: 3px solid #7aa2d6;
+
+  /* Stejný glow jako ostatní prvky */
+  box-shadow:
+    0 0 12px rgba(122, 162, 214, 0.6),
+    0 0 24px rgba(122, 162, 214, 0.35),
+    0 12px 30px rgba(0, 0, 0, 0.2),
+    inset 0 0 18px rgba(122, 162, 214, 0.08);
 }
 
 /* Ochrana kontextu z-indexu */
@@ -86,7 +100,7 @@
     font-family: 'Great Vibes', cursive;
     font-size: 30px;
     font-weight: normal;
-    letter-spacing: 1px;
+    letter-spacing: 0px;
     color: var(--text);
     text-align: center;
     text-shadow:
@@ -117,13 +131,28 @@ area { cursor: pointer; }
   border-radius: 12px; box-shadow: var(--shadow);
 }
 
-.hp-top-bar { 
-  display: flex; justify-content: space-around; align-items: center; 
-  background: var(--surface); padding: 12px; border-radius: 12px; 
-  border: 1px solid var(--border); margin-bottom: 25px; 
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08);
-  animation: hp-glow 6s ease-in-out infinite; 
-} 
+.hp-top-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background: var(--surface);
+  padding: 12px;
+  margin-bottom: 25px;
+
+  border-radius: 16px;
+
+  /* Stejný rámeček jako u obrázku */
+  border: 3px solid #7aa2d6;
+
+  /* Stejný glow + hloubka */
+  box-shadow:
+    0 0 12px rgba(122, 162, 214, 0.6),
+    0 0 24px rgba(122, 162, 214, 0.35),
+    0 12px 30px rgba(0, 0, 0, 0.15);
+
+  transition: all 0.3s ease;
+}
 .hp-stat { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: var(--text); } 
 .hp-stat img { width: 40px; height: 40px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); } 
 
@@ -136,13 +165,14 @@ area { cursor: pointer; }
   /* Zaoblení rohů */
   border-radius: 16px; 
   
-  /* 1. Lehký rámeček (decentní linka) */
-  border: 2px solid rgba(var(--accent-rgb), 0.2); 
+  /* Výraznější modrý rámeček */
+  border: 3px solid #7aa2d6; 
   
-  /* 2. Glow (barevná záře) + 3. Stín (hloubka) */
+  /* Výraznější glow + hloubka */
   box-shadow: 
-    0 0 15px rgba(var(--accent-rgb), 0.15),
-    0 10px 25px rgba(0, 0, 0, 0.1);
+    0 0 12px rgba(122, 162, 214, 0.6),
+    0 0 24px rgba(122, 162, 214, 0.35),
+    0 12px 30px rgba(0, 0, 0, 0.15);
 }
 
 .hp-action-box {
