@@ -551,7 +551,7 @@ area { cursor: pointer; }
   <div id="hp-copy-toast">Kouzlo zkopírováno!</div>
 
   <script>
-    const hp_u = "https://script.google.com/macros/s/AKfycbzzjk8CcFonFb6y_G4Dt6ffVf9ACLqXbGyULmhW1RoAwzKlcPAWUXKv1M38bCngmZiM/exec";
+    const hp_u = "https://script.google.com/macros/s/AKfycbwLHcDIpNeGsE2_oT3Q3J41jnW-TmzjZVmyiYtxifOFDcaonxcFxAeAm2FauURnxBw/exec";
 
     const hp_r = [
       {q:"Když mě máš, nevidíš mě. Když mě vidíš, nemáš mě. Co jsem?", a:"život"}, 
@@ -638,22 +638,14 @@ area { cursor: pointer; }
       try { 
         const r = await fetch(hp_u); 
         const d = await r.json(); 
-        
-        // 1. Obrázek
-        const img = document.getElementById("hp-main-room-img");
-        if (img && d.roomImg) {
-          let nazev = d.roomImg.trim();
-          img.src = nazev.startsWith("http") ? nazev : "kolejky_ruzne/" + nazev;
-        }
+        // --- TOTO JE TO MÍSTO ---
+    // Obrázek se už z tabulky neřeší, jen zavoláme časovou automatiku
+    updateRoomImage();
 
-        // 2. Akční box (B2)
-        const box = document.getElementById("hp-action-container");
-        if (box && d.akce && d.akce.trim() !== "") {
-          box.innerHTML = d.akce;
-          box.className = "hp-action-box";
-        } else if (box) {
-          box.className = "hp-hidden";
-        }
+    // Akční kontejner (box) prostě skryjeme, protože v tabulce už není
+    const box = document.getElementById("hp-action-container");
+    if (box) box.className = "hp-hidden";
+    // ---
         
         document.getElementById("hp-live-t").innerText = hp_cleanDnesni(d.dnesni); 
         
@@ -1006,33 +998,32 @@ area { cursor: pointer; }
         alert("Balíček se nepodařilo odeslat. Zkus to prosím za chvíli znovu."); 
       } 
     }
-    function updateRoomImage() {
+  // Automatická funkce pro čas
+function updateRoomImage() {
     const img = document.getElementById("hp-main-room-img");
+    if (!img) return;
     const hour = new Date().getHours();
+    let image = "kolejky_ruzne/kolejka.png";
 
-    let image;
-
-    if (hour >= 7 && hour < 18) {
-        // Den
-        image = "kolejky_ruzne/kolejka.png";
-    } else if (hour >= 18 && hour < 19) {
-        // Západ slunce
-        image = "kolejky_ruzne/kolejka_zapadslunce.png";
-    } else if (hour >= 19 || hour < 5) {
-        // Noc
-        image = "kolejky_ruzne/kolejka_noc.png";
-    } else if (hour >= 5 && hour < 6) {
-        // Svítání
-        image = "kolejky_ruzne/kolejka_svitani.png";
-    } else {
-        // Východ slunce
-        image = "kolejky_ruzne/kolejka_vychodslunce.png";
+    if (hour >= 5 && hour < 7) image = "kolejky_ruzne/kolejka_vychodslunce.png";
+    else if (hour >= 17 && hour < 18) image = "kolejky_ruzne/kolejka_svitani.png";
+    else if (hour >= 18 && hour < 19) image = "kolejky_ruzne/kolejka_zapadslunce.png";
+    else if (hour >= 19 || hour < 5) image = "kolejky_ruzne/kolejka_noc.png";
+    
+    // Změníme zdroj jen pokud je jiný (prevence problikávání)
+    if (img.getAttribute('src') !== image) {
+        img.src = image;
     }
-
-    img.src = image;
 }
 
+// Spustit ihned po načtení
 updateRoomImage();
-setInterval(updateRoomImage, 60000);
+hp_fPkg();
+
+// Pravidelná aktualizace každých 5 minut (300 000 ms)
+setInterval(() => {
+    updateRoomImage();
+    hp_fPkg();
+}, 300000);
   </script>
 </div>
