@@ -1,0 +1,873 @@
+/* =========================================
+   1. PROMĚNNÉ A HLAVNÍ KONTEJNER
+   ========================================= */
+.hp-wrap {
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+
+  --bg: #0f1723;
+  --surface: rgba(26, 37, 51, 0.72);
+  --border: #3a577d;
+  --text: #d9e3ef;
+  --accent: #7aa2d6;
+  --gold: #d8b85d;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  --shadow-inset: inset 0 0 12px rgba(0, 0, 0, 0.35);
+
+  background: linear-gradient(
+    135deg,
+    rgb(15, 24, 38) 0%,
+    rgb(26, 53, 91) 50%,
+    rgb(11, 30, 56) 100%
+  );
+
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  padding: 15px;
+  max-width: 420px;
+  margin: auto;
+
+  border-radius: 16px;
+
+  /* Stejný rámeček */
+  border: 3px solid #7aa2d6;
+
+  /* Stejný glow jako ostatní prvky */
+  box-shadow:
+    0 0 12px rgba(122, 162, 214, 0.6),
+    0 0 24px rgba(122, 162, 214, 0.35),
+    0 12px 30px rgba(0, 0, 0, 0.2),
+    inset 0 0 18px rgba(122, 162, 214, 0.08);
+}
+
+/* Ochrana kontextu z-indexu */
+.hp-wrap > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================================
+   2. SCROLLOVÁNÍ A STRÁNKY
+   ========================================= */
+#hp-game-view, #hp-door-view, #hp-form-view, #hp-chest-view, 
+#hp-statue-view, #hp-quidditch-view, #hp-gallery-view, #hp-flag-view {
+  height: 700px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hp-f-list, .hp-grid, #hp-db-rows, #hp-gallery-list, 
+#hp-tab-potions, #hp-tab-artifacts {
+  overflow-y: auto !important;
+  flex-grow: 1;
+  padding-right: 5px;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: rgba(15, 23, 35, 0.3); border-radius: 3px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; border: 1px solid var(--bg); }
+::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+
+/* =========================================
+   3. TYPOGRAFIE A POMOCNÉ TŘÍDY
+   ========================================= */
+.hp-wrap h1 {
+    margin: 5px 0 5px;
+    padding: 0px 0 0;
+    font-family: 'Great Vibes', cursive;
+    font-size: 50px;
+    font-weight: normal;
+    line-height: 1.2;
+    letter-spacing: 0;
+    color: var(--text);
+    text-align: center;
+    text-shadow:
+        0 0 12px rgba(122, 162, 214, 0.35),
+        0 2px 6px rgba(0, 0, 0, 0.5);
+}
+.hp-wrap h2 {
+    margin: 0 0 5px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 30px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    color: var(--text);
+    text-align: center;
+    text-shadow:
+        0 0 10px rgba(122, 162, 214, 0.3),
+        0 2px 6px rgba(0, 0, 0, 0.5);
+} 
+.hp-wrap p { font-size: 15px; line-height: 1.6; color: var(--text); } 
+.hp-subtext { font-size: 11px; color: #aebbc8; display: block; margin-top: 2px; } 
+
+.hp-hidden { display: none !important; } 
+
+/* Oprava: Samostatné zvětšení přes scale u univerzálních klikatelných prvků */
+.hp-clickable { cursor: pointer; transition: scale 0.3s ease, color 0.3s ease; } 
+.hp-clickable:hover 
+{transform: scale(1.03); /* Použije se transform, který nehýbe s layoutem */
+  border-color: var(--accent);
+  box-shadow: 0 8px 22px rgba(0,0,0,0.4);} 
+area { cursor: pointer; }
+
+.fiot { color: var(--gold); text-decoration: none; font-weight: bold; transition: color 0.2s; }
+.fiot:hover { color: var(--text); text-decoration: underline; }
+
+/* =========================================
+   4. HLAVNÍ KOMPONENTY (Karty, Bary, Obrázky)
+   ========================================= */
+.hp-card {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 12px; box-shadow: var(--shadow);
+}
+
+.hp-top-bar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  background: var(--surface);
+  padding: 12px;
+  margin-bottom: 25px;
+
+  border-radius: 16px;
+
+  /* Stejný rámeček jako u obrázku */
+  border: 3px solid #7aa2d6;
+
+  /* Stejný glow + hloubka */
+  box-shadow:
+    0 0 12px rgba(122, 162, 214, 0.6),
+    0 0 24px rgba(122, 162, 214, 0.35),
+    0 12px 30px rgba(0, 0, 0, 0.15);
+
+  transition: all 0.3s ease;
+}
+.hp-stat { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: var(--text); } 
+.hp-stat img { width: 40px; height: 40px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); } 
+
+.hp-room-img { 
+  width: 400px; 
+  height: 600px; 
+  display: block; 
+  margin: 15px auto; 
+  
+  /* Zaoblení rohů */
+  border-radius: 16px; 
+  
+  /* Výraznější modrý rámeček */
+  border: 3px solid #7aa2d6; 
+  
+  /* Výraznější glow + hloubka */
+  box-shadow: 
+    0 0 12px rgba(122, 162, 214, 0.6),
+    0 0 24px rgba(122, 162, 214, 0.35),
+    0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.hp-action-box {
+  margin: 15px auto 5px auto; padding: 12px; background: rgba(22, 34, 47, 0.8);
+  border: 1px solid var(--border); border-radius: 8px; font-size: 13px; 
+  color: var(--text); box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08); 
+  text-align: center; border-left: 4px solid var(--accent); width: 390px; box-sizing: border-box;
+}
+.hp-action-box img { max-width: 100%; height: auto; border-radius: 4px; }
+
+/* Oprava dveří: Přechod pouze pro scale a jas, odděleno od animace posunu */
+.hp-wrap #hp-door-view img.hp-door { 
+  width: 160px; border-radius: 50%; cursor: pointer; border: 4px double var(--accent); 
+  box-shadow: 0 5px 15px rgba(0,0,0,0.6); 
+  transition: scale 0.3s ease, filter 0.3s ease; 
+  margin: 15px auto; display: block; animation: hp-float 4s ease-in-out infinite;
+} 
+.hp-wrap img.hp-door:hover { scale: 1.05; filter: brightness(1.15); } 
+
+/* =========================================
+   5. FORMULÁŘE (Inputy, Tlačítka, Taby)
+   ========================================= */
+.hp-form-box { display: flex; flex-direction: column; align-items: center; gap: 5px; margin-top: 15px; } 
+
+.hp-wrap input { 
+  padding: 12px; text-align: center; background: var(--bg); color: var(--text); 
+  border: 1px solid var(--border); border-radius: 12px; width: 80%; 
+  margin-bottom: 12px; font-family: 'Montserrat', sans-serif; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5); 
+} 
+.hp-wrap input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 8px rgba(142,154,175,0.4); } 
+
+/* ZÁKLADNÍ STAV */
+.hp-wrap button { 
+  padding: 12px 24px;
+  background: #24364d;
+  /* Výchozí nenápadný rámeček */
+  border: 1px solid var(--border); 
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 12px;
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  
+  /* Žádný vnější stín */
+  box-shadow: none !important; 
+  
+  transition: all 0.3s ease; /* Mírně prodloužený čas pro plynulejší efekt */
+  transform: none !important; 
+} 
+
+/* HOVER STAV - výraznější */
+.hp-wrap button:hover { 
+  background: #2f4763; 
+  /* Výraznější modrý rámeček */
+  border: 1px solid var(--accent); 
+  
+  /* Vnitřní stín (inset) zajistí, že tlačítko vypadá "vystouple" nebo "hlouběji" 
+     bez poskakování celého prvku */
+  box-shadow: inset 0 0 10px rgba(122,162,214,0.3) !important; 
+  
+  transform: none !important;
+} 
+
+/* TLAČÍTKO ZPĚT */
+.hp-back-btn { 
+  background: var(--surface) !important; 
+  color: var(--text) !important; 
+  border: 1px solid var(--border) !important; 
+  box-shadow: none !important;
+  margin-top: 15px; 
+}
+
+.hp-tabs { display: flex; gap: 5px; justify-content: center; margin-bottom: 15px; } 
+.hp-tab-b { 
+  background: var(--surface); border: 1px solid var(--border); color: #aebbc8; 
+  padding: 8px 12px; cursor: pointer; border-radius: 4px; font-family: 'Montserrat', sans-serif; 
+  font-weight: bold; font-size: 12px; 
+} 
+.hp-tab-b.active { background: var(--border); color: var(--text); border-color: var(--accent); } 
+
+/* =========================================
+   6. SEZNAMY, GRIDY, POLOŽKY A PROFILY (STATICKÉ)
+   ========================================= */
+
+.hp-grid-item, .hp-potion-item, .hp-f-item, .hp-student-profile {
+  background: var(--surface); 
+  border: 1px solid var(--border); 
+  border-radius: 12px;
+  /* Stín zůstává v základu i v hoveru stejný, aby nic neposkočilo */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08);
+  /* Přechod pouze pro barvy, žádný transform/scale */
+  transition: border-color 0.25s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hp-grid-item:hover, .hp-potion-item:hover, .hp-f-item:hover, .hp-student-profile:hover {
+  /* ZDE JSEM SMAZAL SCALE/TRANSFORM - KARTA SE UŽ NEBUDE ZVĚTŠOVAT */
+  border-color: var(--accent);
+  background-color: #22314d;
+  /* Stín je stejný jako v základu */
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08);
+}
+
+/* Ostatní styly gridů a seznamů ponecháváme beze změny */
+.hp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; max-height: 350px; overflow-y: auto; padding: 5px; } 
+.hp-grid-item { padding: 8px; font-size: 11px; cursor: pointer; position: relative; } 
+.hp-grid-item img { height: 45px; object-fit: contain; margin-bottom: 4px; display: block; margin-left: auto; margin-right: auto; } 
+
+.hp-spell-name { color: var(--gold); font-weight: bold; display: block; margin-top: 2px; font-family: monospace; } 
+
+.hp-potion-section-title { font-size: 14px; color: var(--text); text-align: left; margin: 15px 0 8px 5px; font-weight: bold; border-left: 3px solid var(--accent); padding-left: 8px; } 
+.hp-potion-item { padding: 12px; margin-bottom: 8px; cursor: pointer; display: flex; align-items: center; gap: 15px; text-align: left; } 
+.hp-potion-img { width: 48px; height: 48px; object-fit: contain; } 
+
+.hp-artifact-img { width: 50px; height: 50px; object-fit: cover; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); }
+
+.hp-f-list { text-align: left; max-height: 650px; overflow-y: auto; } 
+.hp-f-item { padding: 10px; margin-bottom: 8px; display: flex; align-items: center; gap: 15px; } 
+
+.hp-student-profile { padding: 15px; margin-bottom: 15px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; }
+.hp-student-portrait { width: 130px; height: 130px; object-fit: cover; border-radius: 50%; border: 3px solid var(--accent); background: var(--bg); box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
+.hp-student-name { color: var(--gold); font-size: 16px; font-weight: 700; margin: 0 0 5px 0; letter-spacing: 0.5px; }
+.hp-student-info { font-size: 12px; color: var(--text); line-height: 1.5; margin: 0; }
+
+/* =========================================
+   7. TABULKY A SPECIFICKÉ BOXY
+   ========================================= */
+.hp-db-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 12px; background: var(--bg); color: var(--text); } 
+.hp-db-table th, .hp-db-table td { border: 1px solid var(--border); padding: 8px; text-align: left; } 
+.hp-db-table td code { color: var(--gold); background: rgba(255, 255, 255, 0.1); padding: 2px 4px; border-radius: 3px; }
+.hp-db-table th { background: var(--surface); color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 700; } 
+/* Oprava zväčšení u obrázků v tabulce */
+.hp-db-table img { width: 40px; height: 40px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); cursor: pointer; transition: scale 0.2s ease; } 
+.hp-db-table img:hover { scale: 1.1; border-color: var(--gold); }
+
+.hp-trezor-box { margin-top: 25px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 15px; box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08); animation: hp-glow 6s ease-in-out infinite; }
+.hp-trezor-header { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin-bottom: 15px; }
+.hp-trezor-header img { width: 24px; height: 24px; object-fit: contain; }
+.hp-trezor-header h3 { margin: 0; font-family: 'Montserrat', sans-serif; font-size: 16px; color: var(--text); letter-spacing: 0.5px; }
+.hp-trezor-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+.hp-trezor-table th { color: #aebbc8; border-bottom: 2px solid var(--border); padding: 6px 4px; font-weight: bold; }
+.hp-trezor-table td { padding: 8px 4px; border-bottom: 1px solid #233143; color: var(--text); }
+
+#hp-copy-toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--surface); border: 1px solid var(--accent); color: var(--gold); padding: 10px 20px; border-radius: 16px; font-size: 12px; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 9999; display: none; }
+
+/* Filtry */
+.hp-tint-neg { filter: sepia(1) hue-rotate(-50deg) saturate(3) brightness(0.9); } 
+.hp-tint-pos { filter: sepia(1) hue-rotate(70deg) saturate(3) brightness(0.9); } 
+.hp-tint-neu { filter: sepia(1) hue-rotate(15deg) saturate(3) brightness(1); } 
+
+/* =========================================
+   8. ANIMACE
+   ========================================= */
+/* Oprava plynulosti animací pomocí vlastnosti translate místo transform */
+@keyframes hp-stars {
+  from { opacity: .35; translate: 0 0px; }
+  to { opacity: .8; translate: 0 -4px; }
+}
+
+@keyframes hp-glow {
+  0%,100% { box-shadow: 0 2px 3px rgba(0,0,0,.35), 0 0 12px rgba(122,162,214,.08); }
+  50% { box-shadow: 0 2px 3px rgba(0,0,0,.35), 0 0 3px rgba(122,162,214,.18); }
+}
+
+@keyframes hp-float {
+  0%,100% { translate: 0 0; }
+  50% { translate: 0 -6px; }
+}
+
+
+/* =========================================
+   9. ANIMOVANÁ HVĚZDNÁ OBLOHA (dekorativní pozadí)
+   - vrstva mlhovin, galaxie, vícevrstvé hvězdy, meteory a kosmický prach
+   - čistě vizuální vrstva, nezasahuje do žádné funkční logiky
+   ========================================= */
+
+.hp-sky {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Mlhoviny - velké, jemně rozmazané barevné skvrny na pozadí */
+.hp-nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+  mix-blend-mode: screen;
+  opacity: 0.35;
+  will-change: transform, opacity;
+}
+
+.hp-nebula-1 {
+  width: 320px;
+  height: 320px;
+  top: -60px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(122,162,214,0.55) 0%, rgba(72,90,160,0.25) 45%, rgba(72,90,160,0) 75%);
+  animation: hp-nebula-drift-1 26s ease-in-out infinite;
+}
+
+.hp-nebula-2 {
+  width: 380px;
+  height: 380px;
+  bottom: -100px;
+  right: -120px;
+  background: radial-gradient(circle, rgba(216,184,93,0.30) 0%, rgba(122,80,160,0.22) 45%, rgba(122,80,160,0) 75%);
+  animation: hp-nebula-drift-2 32s ease-in-out infinite;
+}
+
+@keyframes hp-nebula-drift-1 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  50% { transform: translate(25px, 20px) scale(1.15); opacity: 0.5; }
+}
+
+@keyframes hp-nebula-drift-2 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.28; }
+  50% { transform: translate(-20px, -15px) scale(1.1); opacity: 0.45; }
+}
+
+/* Vzdálená galaxie - jemně rotující vír */
+.hp-galaxy {
+  position: absolute;
+  top: 18%;
+  right: 8%;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  opacity: 0.22;
+  mix-blend-mode: screen;
+  filter: blur(1px);
+  background: conic-gradient(
+    from 0deg,
+    rgba(122,162,214,0.0) 0deg,
+    rgba(122,162,214,0.5) 60deg,
+    rgba(216,184,93,0.35) 140deg,
+    rgba(122,162,214,0.0) 220deg,
+    rgba(122,162,214,0.4) 300deg,
+    rgba(122,162,214,0.0) 360deg
+  );
+  animation: hp-galaxy-spin 70s linear infinite;
+}
+.hp-galaxy::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0) 60%);
+}
+
+@keyframes hp-galaxy-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Hvězdy - tři vrstvy v různých velikostech a rychlostech blikání */
+.hp-stars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  background: transparent;
+  border-radius: 50%;
+}
+
+.hp-stars-small {
+  box-shadow: 68px 1165px #fff,
+    410px 129px #fff,
+    130px 241px #fff,
+    253px 920px #fff,
+    241px 1334px #fff,
+    194px 429px #fff,
+    48px 999px #fff,
+    14px 798px #fff,
+    221px 1244px #fff,
+    390px 4px #fff,
+    356px 912px #fff,
+    136px 468px #fff,
+    302px 209px #fff,
+    162px 62px #fff,
+    11px 52px #fff,
+    332px 1108px #fff,
+    4px 780px #fff,
+    351px 443px #fff,
+    216px 59px #fff,
+    270px 454px #fff,
+    391px 896px #fff,
+    253px 1132px #fff,
+    119px 707px #fff,
+    118px 1386px #fff,
+    112px 941px #fff,
+    148px 44px #fff,
+    213px 1139px #fff,
+    328px 204px #fff,
+    95px 1288px #fff,
+    370px 607px #fff,
+    61px 681px #fff,
+    369px 1025px #fff,
+    216px 1039px #fff,
+    343px 388px #fff,
+    155px 581px #fff,
+    300px 1022px #fff,
+    258px 805px #fff,
+    301px 70px #fff,
+    245px 497px #fff,
+    380px 827px #fff,
+    212px 1361px #fff,
+    88px 751px #fff,
+    280px 1381px #fff,
+    377px 767px #fff,
+    44px 898px #fff,
+    339px 1041px #fff,
+    55px 335px #fff,
+    266px 805px #fff,
+    189px 1002px #fff,
+    375px 60px #fff,
+    240px 89px #fff,
+    157px 1259px #fff,
+    303px 1184px #fff,
+    201px 1325px #fff,
+    87px 345px #fff,
+    257px 464px #fff,
+    6px 408px #fff,
+    276px 1122px #fff,
+    118px 828px #fff,
+    263px 704px #fff,
+    295px 723px #fff,
+    235px 551px #fff,
+    337px 1122px #fff,
+    311px 11px #fff,
+    196px 1049px #fff,
+    414px 264px #fff,
+    265px 1149px #fff,
+    105px 872px #fff,
+    28px 985px #fff,
+    186px 1167px #fff,
+    283px 409px #fff,
+    258px 846px #fff,
+    248px 730px #fff,
+    212px 708px #fff,
+    0px 1102px #fff,
+    276px 1276px #fff,
+    402px 1254px #fff,
+    169px 938px #fff,
+    307px 57px #fff,
+    411px 470px #fff,
+    325px 362px #fff,
+    281px 1196px #fff,
+    92px 187px #fff,
+    408px 1128px #fff,
+    408px 522px #fff,
+    16px 1378px #fff,
+    36px 170px #fff,
+    8px 927px #fff,
+    7px 575px #fff,
+    127px 550px #fff,
+    56px 1279px #fff,
+    94px 705px #fff,
+    148px 142px #fff,
+    85px 326px #fff,
+    130px 1080px #fff,
+    86px 1344px #fff,
+    139px 1327px #fff,
+    364px 603px #fff,
+    232px 659px #fff,
+    254px 970px #fff,
+    58px 48px #fff,
+    159px 791px #fff,
+    175px 862px #fff,
+    407px 385px #fff,
+    132px 222px #fff,
+    129px 1044px #fff,
+    107px 1240px #fff,
+    221px 42px #fff,
+    115px 36px #fff,
+    203px 299px #fff,
+    18px 328px #fff,
+    228px 1036px #fff,
+    347px 873px #fff,
+    278px 451px #fff,
+    322px 1057px #fff,
+    230px 457px #fff,
+    268px 1328px #fff,
+    15px 808px #fff,
+    345px 1179px #fff,
+    411px 657px #fff;
+  animation: hp-twinkle 4s ease-in-out infinite;
+}
+
+.hp-stars-medium {
+  width: 2px;
+  height: 2px;
+  box-shadow: 28px 187px #fff,
+    43px 739px #fff,
+    86px 1371px #fff,
+    157px 515px #fff,
+    310px 434px #fff,
+    310px 73px #fff,
+    297px 1395px #fff,
+    81px 882px #fff,
+    326px 805px #fff,
+    411px 1042px #fff,
+    190px 1114px #fff,
+    227px 1028px #fff,
+    137px 73px #fff,
+    14px 745px #fff,
+    238px 652px #fff,
+    194px 867px #fff,
+    269px 336px #fff,
+    286px 363px #fff,
+    120px 472px #fff,
+    12px 361px #fff,
+    166px 355px #fff,
+    69px 1044px #fff,
+    261px 736px #fff,
+    263px 1381px #fff,
+    286px 372px #fff,
+    228px 849px #fff,
+    376px 1075px #fff,
+    390px 745px #fff,
+    404px 1215px #fff,
+    181px 741px #fff,
+    228px 330px #fff,
+    386px 818px #fff,
+    366px 944px #fff,
+    335px 1086px #fff,
+    127px 1003px #fff,
+    142px 1020px #fff,
+    256px 1055px #fff,
+    407px 724px #fff,
+    338px 931px #fff,
+    236px 718px #fff,
+    290px 1141px #fff,
+    370px 935px #fff,
+    249px 1349px #fff,
+    113px 664px #fff,
+    417px 340px #fff,
+    315px 549px #fff,
+    395px 982px #fff,
+    158px 621px #fff,
+    409px 1032px #fff,
+    287px 1060px #fff,
+    259px 1334px #fff,
+    315px 1204px #fff,
+    208px 638px #fff,
+    374px 425px #fff,
+    250px 1048px #fff,
+    187px 1276px #fff,
+    38px 699px #fff,
+    371px 17px #fff,
+    417px 391px #fff,
+    381px 217px #fff;
+  animation: hp-twinkle 5.5s ease-in-out infinite;
+  animation-delay: 1.2s;
+}
+
+.hp-stars-large {
+  width: 3px;
+  height: 3px;
+  box-shadow: 121px 1213px #fff,
+    278px 267px #fff,
+    189px 1236px #fff,
+    242px 1281px #fff,
+    297px 134px #fff,
+    310px 26px #fff,
+    240px 531px #fff,
+    282px 479px #fff,
+    98px 963px #fff,
+    276px 1125px #fff,
+    243px 813px #fff,
+    327px 308px #fff,
+    118px 1300px #fff,
+    77px 1071px #fff,
+    199px 31px #fff,
+    343px 131px #fff,
+    81px 1210px #fff,
+    21px 616px #fff,
+    399px 63px #fff,
+    137px 968px #fff,
+    304px 793px #fff,
+    365px 874px #fff,
+    202px 1181px #fff,
+    227px 274px #fff;
+  animation: hp-twinkle-glow 6.5s ease-in-out infinite;
+  animation-delay: 0.6s;
+}
+
+@keyframes hp-twinkle {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 1; }
+}
+
+@keyframes hp-twinkle-glow {
+  0%, 100% { opacity: 0.4; filter: drop-shadow(0 0 0px rgba(255,255,255,0)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 3px rgba(255,255,255,0.9)); }
+}
+
+/* Meteory - krátké, jasné šmouhy létající přes oblohu po diagonále */
+.hp-meteor {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0;
+  box-shadow: 0 0 6px 1px rgba(255,255,255,0.6);
+}
+
+.hp-meteor::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 90px;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0));
+  transform: translateY(-50%);
+}
+
+.hp-meteor-1 { top: 8%; left: -10%; animation: hp-meteor-fly 7s linear infinite; animation-delay: 0.5s; }
+.hp-meteor-2 { top: 35%; left: -10%; animation: hp-meteor-fly 9s linear infinite; animation-delay: 4s; }
+.hp-meteor-3 { top: 58%; left: -10%; animation: hp-meteor-fly 8s linear infinite; animation-delay: 7.5s; }
+
+@keyframes hp-meteor-fly {
+  0% { transform: translate(0, 0) rotate(35deg); opacity: 0; }
+  3% { opacity: 1; }
+  18% { opacity: 1; }
+  26% { opacity: 0; }
+  100% { transform: translate(480px, 340px) rotate(35deg); opacity: 0; }
+}
+
+/* Kosmický prach - jemná pomalu plující textura */
+.hp-dust {
+  position: absolute;
+  inset: -20%;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.25) 0, transparent 60%),
+    radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.18) 0, transparent 60%),
+    radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.22) 0, transparent 60%),
+    radial-gradient(1px 1px at 85% 15%, rgba(255,255,255,0.2) 0, transparent 60%),
+    radial-gradient(1px 1px at 25% 45%, rgba(255,255,255,0.15) 0, transparent 60%);
+  background-size: 300px 300px;
+  opacity: 0.5;
+  animation: hp-dust-drift 50s linear infinite;
+}
+
+@keyframes hp-dust-drift {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-60px, -90px); }
+}
+
+/* Vrstva oblohy a její potomci musí zůstat pod ostatním obsahem,
+   přepisuje pravidlo ".hp-wrap > *" díky vyšší specificitě třídy */
+.hp-wrap > .hp-sky {
+  z-index: 0;
+}
+.hp-wrap > .hp-sky * {
+  position: absolute;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hp-nebula, .hp-galaxy, .hp-stars, .hp-meteor, .hp-dust {
+    animation: none !important;
+  }
+}
+
+/* =========================================
+   10. SOCHA ROWENY — nové styly (záložky Rowena / O Havraspáru)
+   ========================================= */
+
+#hp-tab-rowena, #hp-tab-funk, #hp-tab-ohp {
+  overflow-y: auto !important;
+  flex-grow: 1;
+  padding-right: 5px;
+}
+
+.hp-rowena-gif {
+  display: block;
+  max-width: 290px;
+  height: auto;
+  margin: 15px auto;
+  border-radius: 16px;
+  border: 3px solid #7aa2d6;
+  box-shadow:
+    0 0 12px rgba(122, 162, 214, 0.6),
+    0 0 24px rgba(122, 162, 214, 0.35),
+    0 12px 30px rgba(0, 0, 0, 0.15);
+  object-fit: contain;
+  background: transparent;
+}
+
+.hp-rowena-daily-box {
+  margin-top: 15px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08);
+  animation: hp-glow 6s ease-in-out infinite;
+}
+
+.hp-rowena-daily-title {
+  margin: 0 0 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 14px;
+  color: var(--gold);
+  letter-spacing: 0.5px;
+}
+
+.hp-rowena-daily-text {
+  font-size: 13px;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.5;
+}
+
+.hp-ohp-card {
+  text-align: left;
+  padding: 14px;
+  margin-bottom: 15px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08);
+}
+
+.hp-ohp-title {
+  margin: 0 0 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 15px;
+  color: var(--gold);
+  letter-spacing: 0.5px;
+  border-left: 3px solid var(--accent);
+  padding-left: 8px;
+}
+
+.hp-ohp-text {
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0 0 8px;
+}
+.hp-ohp-text:last-child { margin-bottom: 0; }
+
+.hp-ohp-values {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.hp-ohp-values li {
+  background: rgba(122, 162, 214, 0.1);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-size: 12px;
+  color: var(--text);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.hp-ohp-value-icon { font-size: 14px; }
+
+.hp-ohp-symbols .hp-ohp-symbol-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  padding: 6px 0;
+  border-bottom: 1px solid #233143;
+}
+.hp-ohp-symbols .hp-ohp-symbol-row:last-child { border-bottom: none; }
+
+.hp-ohp-symbol-label { color: #aebbc8; font-weight: bold; }
+.hp-ohp-symbol-value { color: var(--text); text-align: right; }
+
+.hp-ohp-motto {
+  text-align: center;
+  padding: 18px 14px;
+  margin-bottom: 5px;
+  border: 1px solid var(--gold);
+  box-shadow: 0 0 12px rgba(216,184,93,0.25), 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.hp-ohp-motto-en {
+  font-family: 'Great Vibes', cursive;
+  font-size: 24px;
+  color: var(--gold);
+  margin: 0 0 8px;
+  line-height: 1.3;
+}
+
+.hp-ohp-motto-cz {
+  font-size: 12px;
+  color: #aebbc8;
+  font-style: italic;
+  margin: 0;
+}
