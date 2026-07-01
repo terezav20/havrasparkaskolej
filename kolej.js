@@ -193,8 +193,6 @@
       tbody.innerHTML = html;
     }
 
-    // Nejdřív zkusíme okamžitě zobrazit data z mezipaměti (žádné blikání/"Načítám..." při refreshi),
-    // poté se v klidu na pozadí stáhnou a doplní čerstvá data.
     hp_loadCache();
     hp_fPkg();
 
@@ -648,7 +646,7 @@ function updateRoomImage() {
     else if (hour >= 18 && hour < 19) image = "kolejky_ruzne/kolejka_zapadslunce.png";
     else if (hour >= 19 || hour < 5) image = "kolejky_ruzne/kolejka_noc.png";
     
-    // Změníme zdroj jen pokud je jiný (prevence problikávání)
+    // Změníme zdroj jen pokud je jiný
     if (img.getAttribute('src') !== image) {
         img.src = image;
     }
