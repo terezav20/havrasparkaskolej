@@ -3,7 +3,7 @@
  * Veškerá funkční logika je beze změny převzata z původního inline <script>.
  */
 
-    const hp_u = "https://script.google.com/macros/s/AKfycbwLHcDIpNeGsE2_oT3Q3J41jnW-TmzjZVmyiYtxifOFDcaonxcFxAeAm2FauURnxBw/exec";
+    const hp_u = "https://script.google.com/macros/s/AKfycbzDn0lPGlL1PpFQl87aYxsh2k1Ne8_h7BVGp4UfGv5K09JTTPfVzrPpuuJhb6caLu4/exec";
 
     const hp_sList = [
       {n:"Bubák", s:"Riddikulus", i:"ikony/duch.png"}, 
