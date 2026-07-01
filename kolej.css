@@ -72,10 +72,7 @@
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; border: 1px solid var(--bg); }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
-<<<<<<< HEAD
 
-=======
->>>>>>> c934a93f6921bf9ae77884d7b801738dae91d093
 /* =========================================
    3. TYPOGRAFIE A POMOCNÉ TŘÍDY
    ========================================= */
@@ -741,7 +738,6 @@ area { cursor: pointer; }
     animation: none !important;
   }
 }
-<<<<<<< HEAD
 
 /* =========================================
    10. SOCHA ROWENY — nové styly (záložky Rowena / O Havraspáru)
@@ -875,5 +871,3 @@ area { cursor: pointer; }
   font-style: italic;
   margin: 0;
 }
-=======
->>>>>>> c934a93f6921bf9ae77884d7b801738dae91d093
