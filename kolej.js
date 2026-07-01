@@ -5,29 +5,6 @@
 
     const hp_u = "https://script.google.com/macros/s/AKfycbwLHcDIpNeGsE2_oT3Q3J41jnW-TmzjZVmyiYtxifOFDcaonxcFxAeAm2FauURnxBw/exec";
 
-    const hp_r = [
-   {"q": "Když mě máš, nevidíš mě. Když mě vidíš, nemáš mě. Co jsem?", "a": "život"},
-    {"q": "Mluvím jen tehdy, když mluvíš ty. Co jsem?", "a": "ozvěna"},
-    {"q": "Mám hlavu i patu, ale žádné tělo. Co jsem?", "a": "mince"},
-    {"q": "Padám z nebe, nezraním se, létám bez křídel. Co jsem?", "a": "sníh"},
-    {"q": "Jdu jen dopředu a nikdy zpět. Co jsem?", "a": "čas"},
-    {"q": "Jsem vždy před tebou, ale nedohoníš mě. Co jsem?", "a": "budoucnost"},
-    {"q": "Na boku jsem všechno, napůl nejsem nic. Co jsem?", "a": "osmička"},
-    {"q": "Bez zámku a klíče skrývám zlatý poklad. Co jsem?", "a": "vejce"},
-    {"q": "Rodím se velká, umírám malá. Co jsem?", "a": "svíčka"},
-    {"q": "Čím víc mě čistíš, tím jsem špinavější. Co jsem?", "a": "voda"},
-    {"q": "Čím víc si ze mě bereš, tím jsem větší. Co jsem?", "a": "díra"},
-    {"q": "Mám mnoho zubů, ale nikdy nekoušu. Co jsem?", "a": "hřeben"},
-    {"q": "Když mě potřebuješ, vyhodíš mě. Když mě nepotřebuješ, vrátíš mě zpět. Co jsem?", "a": "kotva"},
-    {"q": "Vždy běžím, ale nikdy se nehýbu z místa. Co jsem?", "a": "řeka"},
-    {"q": "Patřím tobě, ale ostatní mě používají častěji než ty. Co jsem?", "a": "tvé jméno"},
-    {"q": "Co má tisíce očí, ale nevidí? Co jsem?", "a": "síto"},
-    {"q": "Čím víc mě je, tím méně vidíš. Co jsem?", "a": "tma"},
-    {"q": "Mám hrdlo, ale nemám hlavu. Mám tělo, ale nemám ruce. Co jsem?", "a": "láhev"},
-    {"q": "Létám bez křídel a pláču bez očí. Co jsem?", "a": "mrak"},
-    {"q": "Můžeš mě zlomit, aniž by ses mě dotkl. Co jsem?", "a": "slib"}
-    ]; 
-
     const hp_sList = [
       {n:"Bubák", s:"Riddikulus", i:"ikony/duch.png"}, 
       {n:"Drak", s:"Konjunktivitus", i:"ikony/drak.png"}, 
@@ -101,8 +78,6 @@
     const HP_CACHE_TIME_KEY = "hp_cache_time_v1";
 
     function hp_applyData(d) {
-      // --- TOTO JE TO MÍSTO ---
-      // Obrázek se už z tabulky neřeší, jen zavoláme časovou automatiku
       updateRoomImage();
 
       // Akční kontejner (box) prostě skryjeme, protože v tabulce už není
@@ -310,6 +285,29 @@
       hp_bAll(); 
       document.getElementById("hp-game-view").classList.remove("hp-hidden"); 
     } 
+
+        const hp_r = [
+   {"q": "Když mě máš, nevidíš mě. Když mě vidíš, nemáš mě. Co jsem?", "a": "život"},
+    {"q": "Mluvím jen tehdy, když mluvíš ty. Co jsem?", "a": "ozvěna"},
+    {"q": "Mám hlavu i patu, ale žádné tělo. Co jsem?", "a": "mince"},
+    {"q": "Padám z nebe, nezraním se, létám bez křídel. Co jsem?", "a": "sníh"},
+    {"q": "Jdu jen dopředu a nikdy zpět. Co jsem?", "a": "čas"},
+    {"q": "Jsem vždy před tebou, ale nedohoníš mě. Co jsem?", "a": "budoucnost"},
+    {"q": "Na boku jsem všechno, napůl nejsem nic. Co jsem?", "a": "osmička"},
+    {"q": "Bez zámku a klíče skrývám zlatý poklad. Co jsem?", "a": "vejce"},
+    {"q": "Rodím se velká, umírám malá. Co jsem?", "a": "svíčka"},
+    {"q": "Čím víc mě čistíš, tím jsem špinavější. Co jsem?", "a": "voda"},
+    {"q": "Čím víc si ze mě bereš, tím jsem větší. Co jsem?", "a": "díra"},
+    {"q": "Mám mnoho zubů, ale nikdy nekoušu. Co jsem?", "a": "hřeben"},
+    {"q": "Když mě potřebuješ, vyhodíš mě. Když mě nepotřebuješ, vrátíš mě zpět. Co jsem?", "a": "kotva"},
+    {"q": "Vždy běžím, ale nikdy se nehýbu z místa. Co jsem?", "a": "řeka"},
+    {"q": "Patřím tobě, ale ostatní mě používají častěji než ty. Co jsem?", "a": "tvé jméno"},
+    {"q": "Co má tisíce očí, ale nevidí? Co jsem?", "a": "síto"},
+    {"q": "Čím víc mě je, tím méně vidíš. Co jsem?", "a": "tma"},
+    {"q": "Mám hrdlo, ale nemám hlavu. Mám tělo, ale nemám ruce. Co jsem?", "a": "láhev"},
+    {"q": "Létám bez křídel a pláču bez očí. Co jsem?", "a": "mrak"},
+    {"q": "Můžeš mě zlomit, aniž by ses mě dotkl. Co jsem?", "a": "slib"}
+    ]; 
 
     function hp_switchTab(t) { 
       document.getElementById("tab-s-btn").classList.remove("active"); 
@@ -646,7 +644,7 @@ function updateRoomImage() {
     else if (hour >= 18 && hour < 19) image = "kolejky_ruzne/kolejka_zapadslunce.png";
     else if (hour >= 19 || hour < 5) image = "kolejky_ruzne/kolejka_noc.png";
     
-    // Změníme zdroj jen pokud je jiný
+    // Změní zdroj jen pokud je jiný
     if (img.getAttribute('src') !== image) {
         img.src = image;
     }
