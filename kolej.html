@@ -101,7 +101,7 @@
   </div>
 
   <div id="hp-form-view" class="hp-hidden">
-    <h2>Přidat nový balík</h2>
+    <h2>Přidat nový balíček</h2>
     <div class="hp-form-box">
       <div id="hp-duplicita-info" style="display:none; background:#5c1d24; border:1px solid #ff4a5a; padding:10px; border-radius:6px; font-size:12px; width:80%; margin-bottom:10px; text-align:left; color:var(--text);"></div>
       
@@ -110,7 +110,8 @@
       <input type="text" id="hp-f-jmeno" placeholder="Tvoje jméno">
       <button onclick="hp_sendForm()">Odeslat balík</button>
     </div>
-    <button onclick="hp_hideViews()" style="background:var(--surface); color:var(--text); border-color:var(--border); margin-top:15px; margin-bottom:15px;">Zpět do místnosti</button>
+    <button onclick="hp_hideViews()" style="background:var(--surface); color:var(--text); border-color:var(--border); margin-top:15px; margin-bottom:5px;">Zpět do místnosti</button>
+    <p style="font-size:10px; margin-bottom:0px;">Máš problém s odesláním balíčku? Dej vědět Mii Rose!</p>
     <hr style="border-color:var(--border); margin:15px 0;">
     <h2>Dosud nalezené balíčky</h2>
     <span style="font-size:11px; color:#aebbc8; display:block; margin-bottom:10px;">💡 Kliknutím na obrázek balíčku ho rovnou nastavíš jako <strong>Dnešní balíček</strong>!</span>
@@ -256,8 +257,9 @@
 
   <div id="hp-gallery-view" class="hp-hidden">
     <h2>Přehled studujících</h2>
-    <p style="font-size:13px; margin-bottom:15px;">Moudří havrani, kteří momentálně obývají naši kolejní věž:</p>
+    <p style="font-size:13px; margin-bottom:2px;">Moudří havrani, kteří momentálně obývají naši kolejní věž:</p>
     <div style="max-height: 700px; overflow-y: auto; padding: 5px;" id="hp-gallery-list"></div>
+    <p style="font-size:10px; margin-bottom:0px;">Tuto galerii má na starosti Mia Rose. Pošli jí sovičku jestli chceš být také součástí!</p>
     <button onclick="hp_hideViews()" style="background:var(--surface); color:var(--text); border-color:var(--border); margin-top:15px;">Zpět do místnosti</button>
   </div>
 
