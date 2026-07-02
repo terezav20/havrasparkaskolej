@@ -772,8 +772,8 @@ area { cursor: pointer; }
 }
 
 .hp-ohp-text {
-  font-size: 12px;
-  line-height: 1.6;
+  font-size: 5px;
+  line-height: 1.4;
   color: var(--text);
   margin: 0 0 8px;
 }
@@ -793,7 +793,7 @@ area { cursor: pointer; }
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 8px 10px;
-  font-size: 12px;
+  font-size: 10px;
   color: var(--text);
   font-weight: 500;
   display: flex;
@@ -807,7 +807,7 @@ area { cursor: pointer; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 12px;
+  font-size: 10px;
   padding: 6px 0;
   border-bottom: 1px solid #233143;
 }
