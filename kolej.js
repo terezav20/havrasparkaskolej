@@ -274,7 +274,7 @@
           <img src="${fotoUrl}" class="hp-student-portrait" onerror="this.src='ikony/eagle.png'">
           <div>
             <h4 class="hp-student-name">${student.jmeno}</h4>
-            <p class="hp-student-info">${infoText}</p>
+            <span style="font-size:10px; color:#aebbc8;"><p class="hp-student-info">${infoText}</p></span>
           </div>
         `;
         div.appendChild(i);

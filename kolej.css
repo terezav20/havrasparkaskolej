@@ -164,10 +164,10 @@ area { cursor: pointer; }
 .hp-action-box img { max-width: 100%; height: auto; border-radius: 4px; }
 
 .hp-wrap #hp-door-view img.hp-door { 
-  width: 200px; border-radius: 50%; cursor: pointer; border: 4px double var(--accent); 
+  width: 250px; border-radius: 50%; cursor: pointer; border: 4px double var(--accent); 
   box-shadow: 0 5px 15px rgba(0,0,0,0.6); 
   transition: scale 0.3s ease, filter 0.3s ease; 
-  margin: 15px auto; display: block; animation: hp-float 4s ease-in-out infinite;
+  margin: 20px auto; display: block; animation: hp-float 4s ease-in-out infinite;
 } 
 .hp-wrap img.hp-door:hover { scale: 1.05; filter: brightness(1.15); } 
 
