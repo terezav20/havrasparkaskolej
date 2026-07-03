@@ -98,7 +98,7 @@
         0 2px 6px rgba(0, 0, 0, 0.5);
 } 
 .hp-wrap p { font-size: 12px; line-height: 1.6; color: var(--text); } 
-.hp-subtext { font-size: 11px; color: #aebbc8; display: block; margin-top: 2px; } 
+.hp-subtext { font-size: 10px; color: #aebbc8; display: block; margin-top: 2px; } 
 
 .hp-hidden { display: none !important; } 
 .hp-clickable { cursor: pointer; transition: scale 0.3s ease, color 0.3s ease; } 
@@ -163,9 +163,8 @@ area { cursor: pointer; }
 }
 .hp-action-box img { max-width: 100%; height: auto; border-radius: 4px; }
 
-/* Oprava dveří: Přechod pouze pro scale a jas, odděleno od animace posunu */
 .hp-wrap #hp-door-view img.hp-door { 
-  width: 160px; border-radius: 50%; cursor: pointer; border: 4px double var(--accent); 
+  width: 200px; border-radius: 50%; cursor: pointer; border: 4px double var(--accent); 
   box-shadow: 0 5px 15px rgba(0,0,0,0.6); 
   transition: scale 0.3s ease, filter 0.3s ease; 
   margin: 15px auto; display: block; animation: hp-float 4s ease-in-out infinite;
@@ -260,7 +259,7 @@ area { cursor: pointer; }
 .hp-student-profile { padding: 15px; margin-bottom: 15px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; }
 .hp-student-portrait { width: 100px; height: 100px; object-fit: cover; border-radius: 50%; border: 3px solid var(--accent); background: var(--bg); box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
 .hp-student-name { color: var(--gold); font-size: 14px; font-weight: 700; margin: 0 0 5px 0; letter-spacing: 0.5px; }
-.hp-student-info { color: var(--gold); font-size: 14px; margin: 0 0 5px 0; letter-spacing: 0.5px; }
+.hp-student-info { font-size: 10px; margin: 0 0 5px 0; letter-spacing: 0.5px; }
 
 /* =========================================
    7. TABULKY A SPECIFICKÉ BOXY
@@ -772,7 +771,7 @@ area { cursor: pointer; }
 }
 
 .hp-ohp-text {
-  font-size: 5px;
+  font-size: 10px;
   line-height: 1.4;
   color: var(--text);
   margin: 0 0 8px;
