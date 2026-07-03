@@ -115,7 +115,7 @@
     <hr style="border-color:var(--border); margin:15px 0;">
     <h2>Dosud nalezené balíčky</h2>
     <span style="font-size:11px; color:#aebbc8; display:block; margin-bottom:10px;">💡 Kliknutím na obrázek balíčku ho rovnou nastavíš jako <strong>Dnešní balíček</strong>!</span>
-    <div style="max-height:250px; overflow-y:auto; border: 1px solid var(--border); border-radius: 12px;">
+    <div style="max-height:250px; overflow-y:auto; border: 1px solid var(--border); border-radius: 12px; padding: 6px; box-sizing: border-box;">
       <table class="hp-db-table">
         <thead>
           <tr>
@@ -271,13 +271,13 @@
       
       <div style="text-align: center; margin-top: 15px;">
         <a href=" target="_blank" style="text-decoration: none;">
-          <button style="width: 100%; background: linear-gradient(180deg, #b58900 0%, #856404 100%); border-color: var(--gold);">
+          <button style="width: 75%; background: linear-gradient(180deg, #b58900 0%, #856404 100%); border-color: var(--gold);">
              Výsledky motivaček za měsíce
           </button>
         </a>
       </div>
     </div>
-    <button onclick="hp_hideViews()" style="background:var(--surface); color:var(--text); border-color:var(--border); margin-top:15px;">Zpět do místnosti</button>
+    <button class="hp-back-btn" onclick="hp_hideViews()">Zpět do místnosti</button>
   </div>
 
   <div id="hp-copy-toast">Kouzlo zkopírováno!</div>
