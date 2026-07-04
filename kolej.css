@@ -50,7 +50,7 @@
    ========================================= */
 #hp-door-view, #hp-form-view, #hp-chest-view, 
 #hp-statue-view, #hp-quidditch-view, #hp-gallery-view, #hp-flag-view {
-  height: 622px;
+  height: 626px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -234,11 +234,11 @@ area { cursor: pointer; }
   margin-top: 15px; 
 }
 
-.hp-tabs { display: flex; gap: 5px; justify-content: center; margin-bottom: 15px; } 
+.hp-tabs { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; margin-bottom: 12px; } 
 .hp-tab-b { 
   background: var(--surface); border: 1px solid var(--border); color: #aebbc8; 
-  padding: 8px 10px; cursor: pointer; border-radius: 4px; font-family: 'Montserrat', sans-serif; 
-  font-weight: bold; font-size: 12px; 
+  padding: 6px 8px; cursor: pointer; border-radius: 4px; font-family: 'Montserrat', sans-serif; 
+  font-weight: bold; font-size: 11px; 
 } 
 .hp-tab-b.active { background: var(--border); color: var(--text); border-color: var(--accent); } 
 
@@ -286,20 +286,20 @@ area { cursor: pointer; }
 /* =========================================
    7. TABULKY A SPECIFICKÉ BOXY
    ========================================= */
-.hp-db-table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 12px; background: var(--bg); color: var(--text); } 
-.hp-db-table th, .hp-db-table td { border: 1px solid var(--border); padding: 8px; text-align: left; } 
+.hp-db-table { width: 100%; table-layout: fixed; border-collapse: collapse; margin-top: 12px; font-size: 11px; background: var(--bg); color: var(--text); } 
+.hp-db-table th, .hp-db-table td { border: 1px solid var(--border); padding: 5px; text-align: left; word-break: break-word; overflow-wrap: break-word; } 
 .hp-db-table td code { color: var(--gold); background: rgba(255, 255, 255, 0.1); padding: 2px 4px; border-radius: 3px; }
 .hp-db-table th { background: var(--surface); color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 700; } 
-.hp-db-table img { width: 40px; height: 40px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); cursor: pointer; transition: scale 0.2s ease; } 
+.hp-db-table img { width: 32px; height: 32px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); cursor: pointer; transition: scale 0.2s ease; } 
 .hp-db-table img:hover { scale: 1.1; border-color: var(--gold); }
 
 .hp-trezor-box { margin-top: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08); animation: hp-glow 6s ease-in-out infinite; box-sizing: border-box; }
 .hp-trezor-header { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin-bottom: 15px; }
 .hp-trezor-header img { width: 24px; height: 24px; object-fit: contain; }
 .hp-trezor-header h3 { margin: 0; font-family: 'Montserrat', sans-serif; font-size: 16px; color: var(--text); letter-spacing: 0.5px; }
-.hp-trezor-table { width: 100%; border-collapse: collapse; font-size: 12px; }
-.hp-trezor-table th { color: #aebbc8; border-bottom: 2px solid var(--border); padding: 6px 4px; font-weight: bold; }
-.hp-trezor-table td { padding: 8px 4px; border-bottom: 1px solid #233143; color: var(--text); }
+.hp-trezor-table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 11px; }
+.hp-trezor-table th { color: #aebbc8; border-bottom: 2px solid var(--border); padding: 5px 3px; font-weight: bold; word-break: break-word; }
+.hp-trezor-table td { padding: 6px 3px; border-bottom: 1px solid #233143; color: var(--text); word-break: break-word; }
 
 #hp-copy-toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--surface); border: 1px solid var(--accent); color: var(--gold); padding: 10px 20px; border-radius: 16px; font-size: 12px; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 9999; display: none; }
 
