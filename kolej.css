@@ -50,7 +50,7 @@
    ========================================= */
 #hp-door-view, #hp-form-view, #hp-chest-view, 
 #hp-statue-view, #hp-quidditch-view, #hp-gallery-view, #hp-flag-view {
-  height: 700px;
+  height: 622px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -65,7 +65,7 @@
 /* Větší odsazení od okraje pro veškerý obsah kromě hlavního obrázku místnosti (ten zůstává v #hp-game-view) */
 #hp-door-view, #hp-form-view, #hp-chest-view, 
 #hp-statue-view, #hp-quidditch-view, #hp-gallery-view, #hp-flag-view {
-  padding: 0 12px 14px;
+  padding: 0 4px 6px;
   box-sizing: border-box;
 }
 
@@ -87,7 +87,7 @@
    ========================================= */
 
 .hp-wrap h1 {
-    margin: 5px 0 5px;
+    margin: 3px 0 3px;
     padding: 0px 0 0;
     font-family: 'Great Vibes', cursive;
     font-size: 40px;
@@ -101,7 +101,7 @@
         0 2px 6px rgba(0, 0, 0, 0.5);
 }
 .hp-wrap h2 {
-    margin: 2px 0 5px;
+    margin: 2px 0 3px;
     font-family: 'Great Vibes', cursive;
     font-size: 30px;
     font-weight: normal;
@@ -112,7 +112,7 @@
         0 0 10px rgba(122, 162, 214, 0.3),
         0 2px 6px rgba(0, 0, 0, 0.5);
 } 
-.hp-wrap p { font-size: 12px; line-height: 1.6; color: var(--text); } 
+.hp-wrap p { font-size: 12px; line-height: 1.5; color: var(--text); margin: 4px 0; } 
 .hp-subtext { font-size: 10px; color: #aebbc8; display: block; margin-top: 2px; } 
 
 .hp-hidden { display: none !important; } 
@@ -211,7 +211,7 @@ area { cursor: pointer; }
   border-radius: 12px;
   color: var(--text);
   font-family: 'Montserrat', sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   box-shadow: none !important; 
   
   transition: all 0.3s ease;
@@ -259,26 +259,26 @@ area { cursor: pointer; }
   background-color: #22314d;
   box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08);
 }
-.hp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; max-height: 350px; overflow-y: auto; overflow-x: hidden; padding: 8px; box-sizing: border-box; } 
+.hp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; max-height: 350px; overflow-y: auto; overflow-x: hidden; padding: 6px; box-sizing: border-box; } 
 .hp-grid-item { padding: 8px 4px; font-size: 10px; cursor: pointer; position: relative; box-sizing: border-box; min-width: 0; overflow-wrap: break-word; word-break: break-word; } 
 
 /* Sjednocené větší odsazení od okraje pro všechny záložky truhly (kouzla, lektvary, artefakty) */
-#hp-tab-spells, #hp-tab-potions, #hp-tab-artifacts { padding: 8px !important; box-sizing: border-box; overflow-x: hidden !important; }
+#hp-tab-spells, #hp-tab-potions, #hp-tab-artifacts { padding: 6px !important; box-sizing: border-box; overflow-x: hidden !important; }
 .hp-grid-item img { height: 28px; object-fit: contain; margin-bottom: 4px; display: block; margin-left: auto; margin-right: auto; max-width: 100%; } 
 
 .hp-spell-name { color: var(--gold); font-weight: bold; display: block; margin-top: 2px; font-family: monospace; font-size: 10px; } 
 
 .hp-potion-section-title { font-size: 14px; color: var(--text); text-align: left; margin: 15px 0 8px 5px; font-weight: bold; border-left: 3px solid var(--accent); padding-left: 8px; } 
-.hp-potion-item { padding: 8px 10px; margin-bottom: 6px; cursor: pointer; display: flex; align-items: center; gap: 8px; text-align: left; box-sizing: border-box; } 
+.hp-potion-item { padding: 6px 8px; margin-bottom: 5px; cursor: pointer; display: flex; align-items: center; gap: 6px; text-align: left; box-sizing: border-box; } 
 .hp-potion-img { width: 32px; height: 32px; object-fit: contain; flex-shrink: 0; } 
 
 .hp-artifact-img { width: 34px; height: 34px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); flex-shrink: 0; }
 
 .hp-f-list { text-align: left; max-height: 650px; overflow-y: auto; } 
-.hp-f-item { padding: 14px; margin-bottom: 8px; display: flex; align-items: center; gap: 12px; box-sizing: border-box; } 
+.hp-f-item { padding: 8px; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; box-sizing: border-box; } 
 .hp-f-item img { width: 64px !important; height: 64px !important; object-fit: cover; border-radius: 50%; flex-shrink: 0; }
 
-.hp-student-profile { padding: 16px; margin-bottom: 15px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; box-sizing: border-box; }
+.hp-student-profile { padding: 10px; margin-bottom: 8px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; box-sizing: border-box; }
 .hp-student-portrait { width: 80px; height: 80px; object-fit: cover; border-radius: 50%; border: 3px solid var(--accent); background: var(--bg); box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
 .hp-student-name { color: var(--gold); font-size: 14px; font-weight: 700; margin: 0 0 5px 0; letter-spacing: 0.5px; }
 .hp-student-info { font-size: 10px; margin: 0 0 5px 0; letter-spacing: 0.5px; }
@@ -293,7 +293,7 @@ area { cursor: pointer; }
 .hp-db-table img { width: 40px; height: 40px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); cursor: pointer; transition: scale 0.2s ease; } 
 .hp-db-table img:hover { scale: 1.1; border-color: var(--gold); }
 
-.hp-trezor-box { margin-top: 25px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08); animation: hp-glow 6s ease-in-out infinite; box-sizing: border-box; }
+.hp-trezor-box { margin-top: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08); animation: hp-glow 6s ease-in-out infinite; box-sizing: border-box; }
 .hp-trezor-header { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin-bottom: 15px; }
 .hp-trezor-header img { width: 24px; height: 24px; object-fit: contain; }
 .hp-trezor-header h3 { margin: 0; font-family: 'Montserrat', sans-serif; font-size: 16px; color: var(--text); letter-spacing: 0.5px; }
@@ -784,8 +784,8 @@ area { cursor: pointer; }
 
 .hp-ohp-card {
   text-align: left;
-  padding: 18px;
-  margin-bottom: 15px;
+  padding: 8px;
+  margin-bottom: 8px;
   box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08);
   box-sizing: border-box;
 }
