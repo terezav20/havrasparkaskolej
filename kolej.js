@@ -1,7 +1,10 @@
-/*
- * Havraspár — kolejní logika (interaktivní místnost, hádanka, balíčky, truhla, atd.)
- * Veškerá funkční logika je beze změny převzata z původního inline <script>.
- */
+/* =========================================
+   Havraspár — kolejní logika
+   ========================================= */
+
+/* -----------------------------------------
+   1. DATA (kouzla, lektvary, artefakty, tým)
+   ----------------------------------------- */
 
     const hp_u = "https://script.google.com/macros/s/AKfycbzDn0lPGlL1PpFQl87aYxsh2k1Ne8_h7BVGp4UfGv5K09JTTPfVzrPpuuJhb6caLu4/exec";
 
@@ -68,6 +71,10 @@
 
     let hp_x, hp_dbData = [], hp_studentiData = [];
 
+    /* -----------------------------------------
+       2. NAČÍTÁNÍ A CACHOVÁNÍ DAT (Google Apps Script)
+       ----------------------------------------- */
+
     function hp_cleanDnesni(txt) { 
       if (!txt || txt === "Nebyl ještě nalezen") return "Nebyl ještě nalezen"; 
       const idx = txt.lastIndexOf(" (od:"); 
@@ -80,10 +87,8 @@
     function hp_applyData(d) {
       updateRoomImage();
 
-      // Akční kontejner (box) prostě skryjeme, protože v tabulce už není
       const box = document.getElementById("hp-action-container");
       if (box) box.className = "hp-hidden";
-      // ---
 
       document.getElementById("hp-live-t").innerText = hp_cleanDnesni(d.dnesni); 
 
@@ -102,14 +107,14 @@
         document.getElementById("hp-main-room-img").src = cestaKObrazku;
       }
 
-      // --- DYNAMICKÉ OVLÁDÁNÍ AKČNÍHO KONTEJNERU ---
+      // Akční kontejner: zobrazí HTML z tabulky, pokud nějaké je, jinak ho skryje
       const actionBox = document.getElementById("hp-action-container");
       if (d.akce && d.akce.trim() !== "") {
-        actionBox.innerHTML = d.akce; // Vloží text nebo HTML kód přímo z tabulky
-        actionBox.className = "hp-action-box"; // Přidá styly a zviditelní kontejner
+        actionBox.innerHTML = d.akce;
+        actionBox.className = "hp-action-box";
       } else {
         actionBox.innerHTML = "";
-        actionBox.className = "hp-hidden"; // Skryje prvek (nezabírá žádné místo)
+        actionBox.className = "hp-hidden";
       }
     }
 
@@ -170,6 +175,10 @@
 
     hp_loadCache();
     hp_fPkg();
+
+    /* -----------------------------------------
+       3. PŘEPÍNÁNÍ POHLEDŮ A HÁDANKA KLEPADLA
+       ----------------------------------------- */
 
     function hp_showDoor() {
       hp_bAll();
@@ -309,6 +318,10 @@
     {"q": "Můžeš mě zlomit, aniž by ses mě dotkl. Co jsem?", "a": "slib"}
     ]; 
 
+    /* -----------------------------------------
+       4. TRUHLA — přepínání záložek (kouzla/lektvary/artefakty)
+       ----------------------------------------- */
+
     function hp_switchTab(t) { 
       document.getElementById("tab-s-btn").classList.remove("active"); 
       document.getElementById("tab-p-btn").classList.remove("active"); 
@@ -328,9 +341,9 @@
       } 
     } 
 
-    /* =========================================
-       SOCHA ROWENY — samostatná logika (záložky, výroky, denní moudrost)
-       ========================================= */
+    /* -----------------------------------------
+       5. SOCHA ROWENY (záložky, výroky, denní moudrost)
+       ----------------------------------------- */
 
     const hp_rowenaQuotes = [
       "Moudrost začíná tam, kde končí domněnky.",
@@ -468,6 +481,10 @@
 
     hp_dailyWisdom();
 
+    /* -----------------------------------------
+       6. VYKRESLENÍ OBSAHU TRUHLY (kouzla, lektvary, artefakty)
+       ----------------------------------------- */
+
     function hp_cp(txt) { 
       navigator.clipboard.writeText(txt).then(() => { 
         const t = document.getElementById("hp-copy-toast"); 
@@ -527,6 +544,10 @@
         div.appendChild(i); 
       }); 
     } 
+
+    /* -----------------------------------------
+       7. DATABÁZE BALÍČKŮ (formulář, seznam, odeslání)
+       ----------------------------------------- */
 
     function hp_renderDb() { 
       const tbody = document.getElementById("hp-db-rows"); 
@@ -632,8 +653,11 @@
         alert("Balíček se nepodařilo odeslat. Zkus to prosím za chvíli znovu."); 
       } 
     }
-  // Automatická funkce pro čas
-function updateRoomImage() {
+    /* -----------------------------------------
+       8. OBRÁZEK MÍSTNOSTI PODLE DENNÍ DOBY
+       ----------------------------------------- */
+
+    function updateRoomImage() {
     const img = document.getElementById("hp-main-room-img");
     if (!img) return;
     const hour = new Date().getHours();
@@ -643,18 +667,16 @@ function updateRoomImage() {
     else if (hour >= 17 && hour < 18) image = "kolejky_ruzne/kolejka_svitani.png";
     else if (hour >= 18 && hour < 19) image = "kolejky_ruzne/kolejka_zapadslunce.png";
     else if (hour >= 19 || hour < 5) image = "kolejky_ruzne/kolejka_noc.png";
-    
-    // Změní zdroj jen pokud je jiný
+
     if (img.getAttribute('src') !== image) {
         img.src = image;
     }
 }
 
-// Spustit ihned po načtení
 updateRoomImage();
 hp_fPkg();
 
-// Pravidelná aktualizace každých 5 minut (300 000 ms)
+// Aktualizace každých 5 minut
 setInterval(() => {
     updateRoomImage();
     hp_fPkg();

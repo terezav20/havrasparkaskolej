@@ -17,10 +17,10 @@
   --shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   --shadow-inset: inset 0 0 12px rgba(0, 0, 0, 0.35);
 
-  /* Sjednocená typografická škála pro veškerý funkční text (mimo dekorativní nadpisy v Great Vibes) */
-  --fs-tiny: 11px;   /* drobné popisky, tagy, buňky tabulek */
-  --fs-base: 12px;   /* běžný text, tlačítka */
-  --fs-heading: 14px; /* názvy karet a sekcí */
+  /* Typografická škála pro funkční text (mimo dekorativní nadpisy) */
+  --fs-tiny: 11px;
+  --fs-base: 12px;
+  --fs-heading: 14px;
 
   background: linear-gradient(
     135deg,
@@ -68,7 +68,7 @@
   overflow: hidden;
 }
 
-/* Větší odsazení od okraje pro veškerý obsah kromě hlavního obrázku místnosti (ten zůstává v #hp-game-view) */
+/* Odsazení pro všechny pohledy kromě hlavní místnosti */
 #hp-door-view, #hp-form-view, #hp-chest-view, 
 #hp-statue-view, #hp-quidditch-view, #hp-gallery-view, #hp-flag-view {
   padding: 0 4px 6px;
@@ -268,7 +268,7 @@ area { cursor: pointer; }
 .hp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; max-height: 350px; overflow-y: auto; overflow-x: hidden; padding: 6px; box-sizing: border-box; } 
 .hp-grid-item { padding: 8px 4px; font-size: 10px; cursor: pointer; position: relative; box-sizing: border-box; min-width: 0; overflow-wrap: break-word; word-break: break-word; } 
 
-/* Sjednocené větší odsazení od okraje pro všechny záložky truhly (kouzla, lektvary, artefakty) */
+/* Odsazení záložek truhly (kouzla, lektvary, artefakty) */
 #hp-tab-spells, #hp-tab-potions, #hp-tab-artifacts { padding: 6px !important; box-sizing: border-box; overflow-x: hidden !important; }
 .hp-grid-item img { height: 30px; object-fit: contain; margin-bottom: 4px; display: block; margin-left: auto; margin-right: auto; max-width: 100%; } 
 
@@ -718,8 +718,7 @@ area { cursor: pointer; }
   100% { transform: translate(-60px, -90px); }
 }
 
-/* Vrstva oblohy a její potomci musí zůstat pod ostatním obsahem,
-   přepisuje pravidlo ".hp-wrap > *" díky vyšší specificitě třídy */
+/* Obloha musí zůstat pod ostatním obsahem */
 .hp-wrap > .hp-sky {
   z-index: 0;
 }
@@ -734,7 +733,7 @@ area { cursor: pointer; }
 }
 
 /* =========================================
-   10. SOCHA ROWENY — nové styly (záložky Rowena / O Havraspáru)
+   10. SOCHA ROWENY (záložky Rowena / O Havraspáru)
    ========================================= */
 
 #hp-tab-rowena, #hp-tab-funk, #hp-tab-ohp {
@@ -743,8 +742,7 @@ area { cursor: pointer; }
   padding-right: 5px;
 }
 
-/* U klepadla a motivačních soutěží (na rozdíl od ostatních pohledů) není žádný prvek, který by se roztahoval
-   a tlačil tlačítko dolů, takže ho přitáhneme k patě pohledu ručně. */
+/* Tlačítko Zpět přitažené k patě pohledu (klepadlo, motivační soutěže) */
 #hp-door-view .hp-back-btn,
 #hp-flag-view .hp-back-btn {
   margin-top: auto;
@@ -752,7 +750,7 @@ area { cursor: pointer; }
 
 .hp-rowena-gif {
   display: block;
-  max-width: 240px;
+  max-width: 200px;
   height: auto;
   margin: 15px auto;
   border-radius: 16px;
