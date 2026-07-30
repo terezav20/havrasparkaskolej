@@ -58,8 +58,8 @@
   <div id="hp-door-view" class="hp-hidden">
     <h2>Klepadlo</h2>
     <div id="hp-klepadlo-hadanka-box">
-      <span style="font-size:12px; color:#aebbc8;"><i>*Chceš si přečíst knihu, ale najednou si všimneš, že pod vlajkou na knihovně něco světélkuje. Protože jsi zvědavý havran, tak ti to nedá a odkryješ vlajku. Před tebou se objeví obrovské klepadlo ve tvaru orla, který na tebe promluví*</i>   <br>
-        Jsi dostatečně moudrý, aby jsi odpověděl na mou otázku a nalezl safírový poklad?</span>
+      <span style="font-size:12px; color:#aebbc8;"><i>*Chceš si přečíst knihu, ale najednou si všimneš, že pod vlajkou na knihovně něco světélkuje. Protože jsi zvědavý havran, tak ti to nedá a odkryješ vlajku. Před tebou se objeví obrovské klepadlo ve tvaru orla, který na tebe promluví*</i></span>
+       <span style="font-size:12px; color:#aebbc8;">Jsi dostatečně moudrý, aby jsi odpověděl na mou otázku a nalezl safírový poklad?</span>
       <img class="hp-door" id="hp-door-img" src="ikony/klepadlo.png" onclick="hp_h()">
       
       <p id="hp-q" style="display:none; font-weight:500; margin:15px 0;"></p>
@@ -70,15 +70,15 @@
     </div>
 
     <div id="hp-trezor-obsah" class="hp-hidden">
-      <i><p style="color: #4affa4; font-weight: bold; margin-bottom: 15px;">*Orel uznale pokývne hlavou a dveře se s hlasitým cvaknutím otevřou. Vstoupíš do trezoru.*</p></i>
+      <i><p style="color: #4affa4; font-weight: bold; margin-bottom: 12px;">*Orel uznale pokývne hlavou a dveře se s hlasitým cvaknutím otevřou. Vstoupíš do trezoru.*</p></i>
       <div class="hp-trezor-box">
         <div class="hp-trezor-header">
           <img src="ikony/safir.png" alt="Safír"><h3>Safírový trezor</h3>
-          <p style="font-size:12px; color:#aebbc8;">Zde vidíš přehled všech safírů, které se ti podařilo získat.</p> 
-              <p style="font-size:12px; color:#aebbc8;">Co teď? Pošli některému z Péček sovu, aby ti je vyměnili za předměty z Příčné ulice či Prasinek! </p>
-             <p style="font-size:12px; color:#aebbc8;">Hodnota jednoho safíru jsou <b>2 galeony</b>.</p> 
+          <p style="font-size:12px; color:#aebbc8;">Zde vidíš přehled všech safírů, které se ti podařilo získat.
+           Co teď? Pošli některému z Péček sovu, aby ti je vyměnili za předměty z Příčné ulice či Prasinek!
+             Hodnota jednoho safíru jsou <b>2 galeony</b>.</p> 
         </div>
-        <div style="max-height: 400px; overflow-y: auto;">
+        <div style="max-height: 280px; overflow-y: auto;">
           <table class="hp-trezor-table">
             <thead>
               <tr>
@@ -104,18 +104,17 @@
     <h2>Přidat nový balíček</h2>
     <div class="hp-form-box">
       <div id="hp-duplicita-info" style="display:none; background:#5c1d24; border:1px solid #ff4a5a; padding:10px; border-radius:6px; font-size:12px; width:80%; margin-bottom:10px; text-align:left; color:var(--text);"></div>
-      
       <input type="text" id="hp-f-url" placeholder="URL obrázku nebo jen zkrácené ID" oninput="hp_checkAutocompleteAndDuplicate()">
       <input type="text" id="hp-f-obsah" placeholder="Obsah balíku">
       <input type="text" id="hp-f-jmeno" placeholder="Tvoje jméno">
       <button onclick="hp_sendForm()">Odeslat balík</button>
     </div>
-    <button onclick="hp_hideViews()" style="background:var(--surface); color:var(--text); border-color:var(--border); margin-top:15px; margin-bottom:5px;">Zpět do místnosti</button>
-    <p style="font-size:10px; margin-bottom:0px;">Máš problém s odesláním balíčku? Dej vědět Mii Rose!</p>
-    <hr style="border-color:var(--border); margin:15px 0;">
+    <button onclick="hp_hideViews()" style="background:var(--surface); color:var(--text); border-color:var(--border); margin-top:8px; margin-bottom:4px;">Zpět do místnosti</button>
+   <span style="font-size:11px; color:#aebbc8; display:block; margin-bottom:6px;">⚠️ Máš problém s odesláním balíčku? Dej vědět Mii Rose!</span>
+    <hr style="border-color:var(--border); margin:10px 0;">
     <h2>Dosud nalezené balíčky</h2>
-    <span style="font-size:11px; color:#aebbc8; display:block; margin-bottom:10px;">💡 Kliknutím na obrázek balíčku ho rovnou nastavíš jako <strong>Dnešní balíček</strong>!</span>
-    <div style="max-height:250px; overflow-y:auto; border: 1px solid var(--border); border-radius: 12px; padding: 6px; box-sizing: border-box;">
+    <span style="font-size:11px; color:#aebbc8; display:block; margin-bottom:6px;">💡 Kliknutím na obrázek balíčku ho rovnou nastavíš jako <strong>Dnešní balíček</strong>!</span>
+    <div id="hp-db-list" style="overflow-y:auto; border: 1px solid var(--border); border-radius: 12px; padding: 6px; box-sizing: border-box; flex-grow:1;">
       <table class="hp-db-table">
         <thead>
           <tr>
@@ -146,7 +145,7 @@
     <h2>Socha Roweny</h2>
     <div class="hp-tabs">
       <button class="hp-tab-b active" id="tab-rowena-btn" onclick="hp_switchStatueTab('rowena')">Rowena</button>
-      <button class="hp-tab-b" id="tab-funk-btn" onclick="hp_switchStatueTab('funk')">Funkcionáři</button>
+      <button class="hp-tab-b" id="tab-funk-btn" onclick="hp_switchStatueTab('funk')">Kolejní Funkcionáři</button>
       <button class="hp-tab-b" id="tab-ohp-btn" onclick="hp_switchStatueTab('ohp')">O Havraspáru</button>
     </div>
 
@@ -161,7 +160,6 @@
     </div>
 
     <div id="hp-tab-funk" class="hp-hidden">
-      <h2>Kolejní funkcionáři</h2>
       <p style="font-size:13px; margin-bottom:15px;">Zde odpočívají a na pořádek dohlížejí funkcionáři naší koleje pro tento rok:</p>
       <div class="hp-f-list">
         <div class="hp-f-item">
@@ -178,7 +176,7 @@
         <div class="hp-f-item">
           <img src="ikony/primus.png" width="100px" height="100px" alt="Primus">
           <div>
-            <strong style="color:var(--text);">Kolejní Primus:</strong> 
+            <strong style="color:var(--text);">Primus:</strong> 
             <a class="fiot" href="https://bradavice.eu//posta.php?zobraz=psat&komu=CHYBI_ID_PRIMUSE" target="_blank">Jméno Primuse</a><br>
             <span style="font-size:12px; color:#aebbc8; display:block; margin-top:4px;">
               <strong>Stará se o:</strong> Koordinaci prefektů, pomoc studentům se školními záležitostmi a organizaci velkých akcí.<br>
@@ -189,7 +187,7 @@
         <div class="hp-f-item">
           <img src="ikony/prefekt.png" width="100px" height="100px" alt="Prefekt">
           <div>
-            <strong style="color:var(--text);">Kolejní Prefekt:</strong> 
+            <strong style="color:var(--text);">Prefekt:</strong> 
             <a class="fiot" href="https://bradavice.eu//posta.php?zobraz=psat&komu=CHYBI_ID_PREFEKTA_1" target="_blank">Jméno Prefekta 1</a><br>
             <span style="font-size:12px; color:#aebbc8; display:block; margin-top:4px;">
               <strong>Stará se o:</strong> Kontrolu plnění povinností, pomoc s kolejními úkoly a noční hlídky na chodbách.<br>
@@ -200,7 +198,7 @@
         <div class="hp-f-item">
           <img src="ikony/prefekt.png" width="100px" height="100px"  alt="Prefekt">
           <div>
-            <strong style="color:var(--text);">Kolejní Prefekt:</strong> 
+            <strong style="color:var(--text);">Prefekt:</strong> 
             <a class="fiot" href="https://bradavice.eu//posta.php?zobraz=psat&komu=CHYBI_ID_PREFEKTA_2" target="_blank">Jméno Prefekta 2</a><br>
             <span style="font-size:12px; color:#aebbc8; display:block; margin-top:4px;">
               <strong>Stará se o:</strong> Integraci nováčků v Havraspáru, správu kolejní nástěnky a podporu nováčků.<br>
@@ -259,22 +257,84 @@
     <h2>Přehled studujících</h2>
     <p style="font-size:13px; margin-bottom:2px;">Moudří havrani, kteří momentálně obývají naši kolejní věž:</p>
     <div style="max-height: 700px; overflow-y: auto; padding: 5px;" id="hp-gallery-list"></div>
-    <p style="font-size:10px; margin-bottom:0px;">Tuto galerii má na starosti Mia Rose. Pošli jí sovičku jestli chceš být také součástí!</p>
+
     <button onclick="hp_hideViews()" style="background:var(--surface); color:var(--text); border-color:var(--border); margin-top:15px;">Zpět do místnosti</button>
   </div>
 
   <div id="hp-flag-view" class="hp-hidden">
     <h2>Motivační soutěže</h2>
-    <div style="background:var(--surface); border: 1px solid var(--border); padding:15px; border-radius:8px; text-align:left; margin-bottom:10px;">
-      <strong style="color:var(--gold); font-size:14px;">Aktuální kolejní výzva:</strong>
-      <p style="font-size:12px; margin-top:5px; line-height:1.4;">Sbírejte body, hledejte tajné balíčky a pomozte Havraspáru vyhrát školní pohár! Každá snaha se počítá a přispívá k triumfu naší kolejní věže.</p>
-      
-      <div style="text-align: center; margin-top: 15px;">
-        <a href=" target="_blank" style="text-decoration: none;">
-          <button style="width: 75%; background: linear-gradient(180deg, #b58900 0%, #856404 100%); border-color: var(--gold);">
-             Výsledky motivaček za měsíce
-          </button>
-        </a>
+    <div id="hp-flag-list" class="hp-flag-list">
+      <div style="background:var(--surface); border: 1px solid var(--border); padding:15px; border-radius:8px; text-align:left; margin-bottom:10px;">
+        <strong style="color:var(--gold); font-size:14px;">Aktuální kolejní výzva:</strong>
+        <p style="font-size:12px; margin-top:5px; line-height:1.4;">Sbírejte body, hledejte tajné balíčky a pomozte Havraspáru vyhrát školní pohár! Každá snaha se počítá a přispívá k triumfu naší kolejní věže.</p>
+
+        <div style="text-align: center; margin-top: 15px;">
+          <a href=" target="_blank" style="text-decoration: none;">
+            <button style="width: 75%; background: linear-gradient(180deg, #b58900 0%, #856404 100%); border-color: var(--gold);">
+               Výsledky motivaček za měsíce
+            </button>
+          </a>
+        </div>
+      </div>
+      <div style="background:var(--surface); border: 1px solid var(--border); padding:15px; border-radius:8px; text-align:left; margin-bottom:10px;">
+        <strong style="color:var(--gold); font-size:14px;">Aktuální kolejní výzva:</strong>
+        <p style="font-size:12px; margin-top:5px; line-height:1.4;">Sbírejte body, hledejte tajné balíčky a pomozte Havraspáru vyhrát školní pohár! Každá snaha se počítá a přispívá k triumfu naší kolejní věže.</p>
+
+        <div style="text-align: center; margin-top: 15px;">
+          <a href=" target="_blank" style="text-decoration: none;">
+            <button style="width: 75%; background: linear-gradient(180deg, #b58900 0%, #856404 100%); border-color: var(--gold);">
+               Výsledky motivaček za měsíce
+            </button>
+          </a>
+        </div>
+      </div>
+      <div style="background:var(--surface); border: 1px solid var(--border); padding:15px; border-radius:8px; text-align:left; margin-bottom:10px;">
+        <strong style="color:var(--gold); font-size:14px;">Aktuální kolejní výzva:</strong>
+        <p style="font-size:12px; margin-top:5px; line-height:1.4;">Sbírejte body, hledejte tajné balíčky a pomozte Havraspáru vyhrát školní pohár! Každá snaha se počítá a přispívá k triumfu naší kolejní věže.</p>
+
+        <div style="text-align: center; margin-top: 15px;">
+          <a href=" target="_blank" style="text-decoration: none;">
+            <button style="width: 75%; background: linear-gradient(180deg, #b58900 0%, #856404 100%); border-color: var(--gold);">
+               Výsledky motivaček za měsíce
+            </button>
+          </a>
+        </div>
+      </div>
+      <div style="background:var(--surface); border: 1px solid var(--border); padding:15px; border-radius:8px; text-align:left; margin-bottom:10px;">
+        <strong style="color:var(--gold); font-size:14px;">Aktuální kolejní výzva:</strong>
+        <p style="font-size:12px; margin-top:5px; line-height:1.4;">Sbírejte body, hledejte tajné balíčky a pomozte Havraspáru vyhrát školní pohár! Každá snaha se počítá a přispívá k triumfu naší kolejní věže.</p>
+
+        <div style="text-align: center; margin-top: 15px;">
+          <a href=" target="_blank" style="text-decoration: none;">
+            <button style="width: 75%; background: linear-gradient(180deg, #b58900 0%, #856404 100%); border-color: var(--gold);">
+               Výsledky motivaček za měsíce
+            </button>
+          </a>
+        </div>
+      </div>
+      <div style="background:var(--surface); border: 1px solid var(--border); padding:15px; border-radius:8px; text-align:left; margin-bottom:10px;">
+        <strong style="color:var(--gold); font-size:14px;">Aktuální kolejní výzva:</strong>
+        <p style="font-size:12px; margin-top:5px; line-height:1.4;">Sbírejte body, hledejte tajné balíčky a pomozte Havraspáru vyhrát školní pohár! Každá snaha se počítá a přispívá k triumfu naší kolejní věže.</p>
+
+        <div style="text-align: center; margin-top: 15px;">
+          <a href=" target="_blank" style="text-decoration: none;">
+            <button style="width: 75%; background: linear-gradient(180deg, #b58900 0%, #856404 100%); border-color: var(--gold);">
+               Výsledky motivaček za měsíce
+            </button>
+          </a>
+        </div>
+      </div>
+      <div style="background:var(--surface); border: 1px solid var(--border); padding:15px; border-radius:8px; text-align:left; margin-bottom:10px;">
+        <strong style="color:var(--gold); font-size:14px;">Aktuální kolejní výzva:</strong>
+        <p style="font-size:12px; margin-top:5px; line-height:1.4;">Sbírejte body, hledejte tajné balíčky a pomozte Havraspáru vyhrát školní pohár! Každá snaha se počítá a přispívá k triumfu naší kolejní věže.</p>
+
+        <div style="text-align: center; margin-top: 15px;">
+          <a href=" target="_blank" style="text-decoration: none;">
+            <button style="width: 75%; background: linear-gradient(180deg, #b58900 0%, #856404 100%); border-color: var(--gold);">
+               Výsledky motivaček za měsíce
+            </button>
+          </a>
+        </div>
       </div>
     </div>
     <button class="hp-back-btn" onclick="hp_hideViews()">Zpět do místnosti</button>
