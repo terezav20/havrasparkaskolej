@@ -292,10 +292,10 @@ area { cursor: pointer; }
    7. TABULKY A SPECIFICKÉ BOXY
    ========================================= */
 .hp-db-table { width: 100%; table-layout: fixed; border-collapse: collapse; margin-top: 10.8px; font-size: 9.9px; background: var(--bg); color: var(--text); } 
-.hp-db-table th, .hp-db-table td { border: 0.9px solid var(--border); padding: 3.6px 4.5px; text-align: left; word-break: break-word; overflow-wrap: break-word; } 
+.hp-db-table th, .hp-db-table td { border: 0.9px solid var(--border); padding: 3.6px 4.5px; text-align: center; vertical-align: middle; word-break: break-word; overflow-wrap: break-word; } 
 .hp-db-table td code { color: var(--gold); background: rgba(255, 255, 255, 0.1); padding: 1.8px 3.6px; border-radius: 2.7px; }
 .hp-db-table th { background: var(--surface); color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 700; } 
-.hp-db-table img { width: 28.8px; height: 28.8px; object-fit: cover; border-radius: 3.6px; border: 0.9px solid var(--border); cursor: pointer; transition: scale 0.2s ease; } 
+.hp-db-table img { width: 28.8px; height: 28.8px; object-fit: cover; border-radius: 3.6px; border: 0.9px solid var(--border); cursor: pointer; transition: scale 0.2s ease; display: inline-block; } 
 .hp-db-table img:hover { scale: 1.1; border-color: var(--gold); }
 
 .hp-trezor-box { margin-top: 12.6px; background: var(--surface); border: 0.9px solid var(--border); border-radius: 10.8px; padding: 9px; box-shadow: 0 5.4px 16.2px rgba(0,0,0,0.35), 0 0 10.8px rgba(122,162,214,0.08); animation: hp-glow 6s ease-in-out infinite; box-sizing: border-box; }
