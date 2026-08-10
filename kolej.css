@@ -785,7 +785,7 @@ area { cursor: pointer; }
   line-height: 1.5;
 }
 
-/* Karty v Motivačních soutěžích - jednotná výška podle první karty s obrázkem */
+/* Karty v Motivačních soutěžích - výška podle obsahu karty */
 .hp-flag-card {
   background: var(--surface);
   border: 0.9px solid var(--border);
@@ -794,15 +794,15 @@ area { cursor: pointer; }
   text-align: left;
   margin-bottom: 9px;
   box-sizing: border-box;
-  height: 288px;
+  height: auto;
   display: flex;
   flex-direction: column;
 }
 
 .hp-flag-card-img {
-  width: 60%;
-  max-width: 162px;
-  height: 81px;
+  width: 85%;
+  max-width: 260px;
+  height: 145px;
   object-fit: contain;
   border-radius: 5.4px;
   margin: 0 auto;
@@ -822,10 +822,6 @@ area { cursor: pointer; }
   font-size: 10.8px;
   margin-top: 7.2px;
   line-height: 1.4;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
 }
 
 .hp-flag-card-note {
