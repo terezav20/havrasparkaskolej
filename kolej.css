@@ -4,8 +4,8 @@
 .hp-wrap {
   position: relative;
   overflow: hidden;
-  backdrop-filter: blur(5px);
-  -webkit-backdrop-filter: blur(5px);
+  backdrop-filter: blur(4.5px);
+  -webkit-backdrop-filter: blur(4.5px);
   box-sizing: border-box;
 
   --bg: #0f1723;
@@ -14,13 +14,13 @@
   --text: #d9e3ef;
   --accent: #7aa2d6;
   --gold: #d8b85d;
-  --shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-  --shadow-inset: inset 0 0 12px rgba(0, 0, 0, 0.35);
+  --shadow: 0 5.4px 16.2px rgba(0, 0, 0, 0.35);
+  --shadow-inset: inset 0 0 10.8px rgba(0, 0, 0, 0.35);
 
   /* Typografická škála pro funkční text (mimo dekorativní nadpisy) */
-  --fs-tiny: 11px;
-  --fs-base: 12px;
-  --fs-heading: 14px;
+  --fs-tiny: 9.9px;
+  --fs-base: 10.8px;
+  --fs-heading: 12.6px;
 
   background: linear-gradient(
     135deg,
@@ -32,18 +32,17 @@
   color: var(--text);
   font-family: 'Montserrat', sans-serif;
   text-align: center;
-  padding: 12px !important;
-  width: 430px !important;
-  max-width: 430px !important;
+  padding: 10.8px !important;
+  width: 387px !important;
+  max-width: 387px !important;
   margin: auto !important;
-  zoom: 90% !important;
-  border-radius: 16px;
-  border: 3px solid #7aa2d6;
+  border-radius: 14.4px;
+  border: 2.7px solid #7aa2d6;
   box-shadow:
-    0 0 12px rgba(122, 162, 214, 0.6),
-    0 0 24px rgba(122, 162, 214, 0.35),
-    0 12px 30px rgba(0, 0, 0, 0.2),
-    inset 0 0 18px rgba(122, 162, 214, 0.08);
+    0 0 10.8px rgba(122, 162, 214, 0.6),
+    0 0 21.6px rgba(122, 162, 214, 0.35),
+    0 10.8px 27px rgba(0, 0, 0, 0.2),
+    inset 0 0 16.2px rgba(122, 162, 214, 0.08);
 }
 
 .hp-wrap > * {
@@ -56,7 +55,7 @@
    ========================================= */
 #hp-door-view, #hp-form-view, #hp-chest-view, 
 #hp-statue-view, #hp-quidditch-view, #hp-gallery-view, #hp-flag-view {
-  height: 571px;
+  height: 513.9px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -71,7 +70,7 @@
 /* Odsazení pro všechny pohledy kromě hlavní místnosti */
 #hp-door-view, #hp-form-view, #hp-chest-view, 
 #hp-statue-view, #hp-quidditch-view, #hp-gallery-view, #hp-flag-view {
-  padding: 0 4px 6px;
+  padding: 0 3.6px 5.4px;
   box-sizing: border-box;
 }
 
@@ -79,12 +78,12 @@
 #hp-tab-potions, #hp-tab-artifacts, .hp-flag-list, #hp-db-list, .hp-door-scroll {
   overflow-y: auto !important;
   flex-grow: 1;
-  padding-right: 5px;
+  padding-right: 4.5px;
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: rgba(15, 23, 35, 0.3); border-radius: 3px; }
-::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; border: 1px solid var(--bg); }
+::-webkit-scrollbar { width: 5.4px; }
+::-webkit-scrollbar-track { background: rgba(15, 23, 35, 0.3); border-radius: 2.7px; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2.7px; border: 0.9px solid var(--bg); }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
 
 
@@ -93,40 +92,40 @@
    ========================================= */
 
 .hp-wrap h1 {
-    margin: 3px 0 3px;
+    margin: 2.7px 0 2.7px;
     padding: 0px 0 0;
     font-family: 'Great Vibes', cursive;
-    font-size: 45px;
+    font-size: 40.5px;
     font-weight: normal;
     line-height: 1.2;
     letter-spacing: 0;
     color: var(--text);
     text-align: center;
     text-shadow:
-        0 0 12px rgba(122, 162, 214, 0.35),
-        0 2px 6px rgba(0, 0, 0, 0.5);
+        0 0 10.8px rgba(122, 162, 214, 0.35),
+        0 1.8px 5.4px rgba(0, 0, 0, 0.5);
 }
 .hp-wrap h2 {
-    margin: 2px 0 3px;
+    margin: 1.8px 0 2.7px;
     font-family: 'Great Vibes', cursive;
-    font-size: 30px;
+    font-size: 27px;
     font-weight: normal;
     letter-spacing: 0px;
     color: var(--text);
     text-align: center;
     text-shadow:
-        0 0 10px rgba(122, 162, 214, 0.3),
-        0 2px 6px rgba(0, 0, 0, 0.5);
+        0 0 9px rgba(122, 162, 214, 0.3),
+        0 1.8px 5.4px rgba(0, 0, 0, 0.5);
 } 
-.hp-wrap p { font-size: 12px; line-height: 1.5; color: var(--text); margin: 2px 0; } 
-.hp-subtext { font-size: 10px; color: #aebbc8; display: block; margin-top: 2px; } 
+.hp-wrap p { font-size: 10.8px; line-height: 1.5; color: var(--text); margin: 1.8px 0; } 
+.hp-subtext { font-size: 9px; color: #aebbc8; display: block; margin-top: 1.8px; } 
 
 .hp-hidden { display: none !important; } 
 .hp-clickable { cursor: pointer; transition: scale 0.3s ease, color 0.3s ease; } 
 .hp-clickable:hover 
 {transform: scale(1.03);
   border-color: var(--accent);
-  box-shadow: 0 8px 22px rgba(0,0,0,0.4);} 
+  box-shadow: 0 7.2px 19.8px rgba(0,0,0,0.4);} 
 area { cursor: pointer; }
 
 .fiot { color: var(--gold); text-decoration: none; font-weight: bold; transition: color 0.2s; }
@@ -136,8 +135,8 @@ area { cursor: pointer; }
    4. HLAVNÍ KOMPONENTY (Karty, Bary, Obrázky)
    ========================================= */
 .hp-card {
-  background: var(--surface); border: 1px solid var(--border);
-  border-radius: 12px; box-shadow: var(--shadow);
+  background: var(--surface); border: 0.9px solid var(--border);
+  border-radius: 10.8px; box-shadow: var(--shadow);
 }
 
 .hp-top-bar {
@@ -146,78 +145,78 @@ area { cursor: pointer; }
   align-items: center;
 
   background: var(--surface);
-  padding: 12px;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  margin-left: 10px;
-  margin-right: 10px;
+  padding: 10.8px;
+  margin-bottom: 9px;
+  margin-top: 9px;
+  margin-left: 9px;
+  margin-right: 9px;
 
-  border-radius: 16px;
+  border-radius: 14.4px;
 
-  border: 3px solid #7aa2d6;
+  border: 2.7px solid #7aa2d6;
 
   box-shadow:
-    0 0 10px rgba(122, 162, 214, 0.6),
-    0 0 15px rgba(122, 162, 214, 0.35),
-    0 12px 15px rgba(0, 0, 0, 0.15);
+    0 0 9px rgba(122, 162, 214, 0.6),
+    0 0 13.5px rgba(122, 162, 214, 0.35),
+    0 10.8px 13.5px rgba(0, 0, 0, 0.15);
 
   transition: all 0.3s ease;
 }
-.hp-stat { display: flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 500; color: var(--text); } 
-.hp-stat img { width: 35px; height: 35px; object-fit: contain; filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5)); } 
+.hp-stat { display: flex; align-items: center; gap: 7.2px; font-size: 9px; font-weight: 500; color: var(--text); } 
+.hp-stat img { width: 31.5px; height: 31.5px; object-fit: contain; filter: drop-shadow(0 1.8px 3.6px rgba(0,0,0,0.5)); } 
 
 .hp-room-img { 
-  width: 365px !important; 
-  height: 555px !important; 
+  width: 328.5px !important; 
+  height: 499.5px !important; 
   display: block; 
-  margin: 5px auto; 
-  border-radius: 16px; 
-  border: 3px solid #7aa2d6; 
+  margin: 4.5px auto; 
+  border-radius: 14.4px; 
+  border: 2.7px solid #7aa2d6; 
   box-shadow: 
-    0 0 5px rgba(122, 162, 214, 0.6),
-    0 0 9px rgba(122, 162, 214, 0.35),
-    0 9px 30px rgba(0, 0, 0, 0.15);
+    0 0 4.5px rgba(122, 162, 214, 0.6),
+    0 0 8.1px rgba(122, 162, 214, 0.35),
+    0 8.1px 27px rgba(0, 0, 0, 0.15);
 }
 
 .hp-action-box {
-  margin: 15px auto 5px auto; padding: 12px; background: rgba(22, 34, 47, 0.8);
-  border: 1px solid var(--border); border-radius: 8px; font-size: 13px; 
-  color: var(--text); box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08); 
-  text-align: center; border-left: 4px solid var(--accent); width: 350px; box-sizing: border-box;
+  margin: 13.5px auto 4.5px auto; padding: 10.8px; background: rgba(22, 34, 47, 0.8);
+  border: 0.9px solid var(--border); border-radius: 7.2px; font-size: 11.7px; 
+  color: var(--text); box-shadow: 0 5.4px 16.2px rgba(0,0,0,0.35), 0 0 10.8px rgba(122,162,214,0.08); 
+  text-align: center; border-left: 3.6px solid var(--accent); width: 315px; box-sizing: border-box;
 }
-.hp-action-box img { max-width: 100%; height: auto; border-radius: 4px; }
+.hp-action-box img { max-width: 100%; height: auto; border-radius: 3.6px; }
 
 .hp-wrap #hp-door-view img.hp-door { 
-  width: 250px; border-radius: 50%; cursor: pointer; border: 4px double var(--accent); 
-  box-shadow: 0 5px 15px rgba(0,0,0,0.6); 
+  width: 225px; border-radius: 50%; cursor: pointer; border: 3.6px double var(--accent); 
+  box-shadow: 0 4.5px 13.5px rgba(0,0,0,0.6); 
   transition: scale 0.3s ease, filter 0.3s ease; 
-  margin: 20px auto; display: block; animation: hp-float 4s ease-in-out infinite;
+  margin: 18px auto; display: block; animation: hp-float 4s ease-in-out infinite;
 } 
 .hp-wrap img.hp-door:hover { scale: 1.05; filter: brightness(1.15); } 
 
 /* =========================================
    5. FORMULÁŘE (Inputy, Tlačítka, Taby)
    ========================================= */
-.hp-form-box { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 8px; } 
+.hp-form-box { display: flex; flex-direction: column; align-items: center; gap: 3.6px; margin-top: 7.2px; } 
 
 .hp-wrap input { 
-  padding: 9px 12px; text-align: center; background: var(--bg); color: var(--text); 
-  border: 1px solid var(--border); border-radius: 12px; width: 70%; 
-  margin-bottom: 5px; font-family: 'Montserrat', sans-serif; box-shadow: inset 0 2px 5px rgba(0,0,0,0.5); 
+  padding: 8.1px 10.8px; text-align: center; background: var(--bg); color: var(--text); 
+  border: 0.9px solid var(--border); border-radius: 10.8px; width: 70%; 
+  margin-bottom: 4.5px; font-family: 'Montserrat', sans-serif; box-shadow: inset 0 1.8px 4.5px rgba(0,0,0,0.5); 
 } 
-.hp-wrap input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 8px rgba(142,154,175,0.4); } 
+.hp-wrap input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 7.2px rgba(142,154,175,0.4); } 
 
 /* ZÁKLADNÍ STAV */
 .hp-wrap button { 
-  padding: 10px 16px;
+  padding: 9px 14.4px;
   background: #24364d;
-  border: 1px solid var(--border); 
+  border: 0.9px solid var(--border); 
   cursor: pointer;
   font-weight: bold;
-  border-radius: 12px;
+  border-radius: 10.8px;
   color: var(--text);
   font-family: 'Montserrat', sans-serif;
-  font-size: 10px;
+  font-size: 9px;
   box-shadow: none !important; 
   
   transition: all 0.3s ease;
@@ -225,8 +224,8 @@ area { cursor: pointer; }
 } 
 .hp-wrap button:hover { 
   background: #2f4763; 
-  border: 1px solid var(--accent); 
-  box-shadow: inset 0 0 10px rgba(122,162,214,0.3) !important; 
+  border: 0.9px solid var(--accent); 
+  box-shadow: inset 0 0 9px rgba(122,162,214,0.3) !important; 
   
   transform: none !important;
 } 
@@ -235,16 +234,16 @@ area { cursor: pointer; }
 .hp-back-btn { 
   background: var(--surface) !important; 
   color: var(--text) !important; 
-  border: 1px solid var(--border) !important; 
+  border: 0.9px solid var(--border) !important; 
   box-shadow: none !important;
-  margin-top: 15px; 
+  margin-top: 13.5px; 
 }
 
-.hp-tabs { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; margin-bottom: 12px; } 
+.hp-tabs { display: flex; flex-wrap: wrap; gap: 4.5px; justify-content: center; margin-bottom: 10.8px; } 
 .hp-tab-b { 
-  background: var(--surface); border: 1px solid var(--border); color: #aebbc8; 
-  padding: 6px 8px; cursor: pointer; border-radius: 4px; font-family: 'Montserrat', sans-serif; 
-  font-weight: bold; font-size: 12px; 
+  background: var(--surface); border: 0.9px solid var(--border); color: #aebbc8; 
+  padding: 5.4px 7.2px; cursor: pointer; border-radius: 3.6px; font-family: 'Montserrat', sans-serif; 
+  font-weight: bold; font-size: 10.8px; 
 } 
 .hp-tab-b.active { background: var(--border); color: var(--text); border-color: var(--accent); } 
 
@@ -254,60 +253,60 @@ area { cursor: pointer; }
 
 .hp-grid-item, .hp-potion-item, .hp-f-item, .hp-student-profile {
   background: var(--surface); 
-  border: 1px solid var(--border); 
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08);
+  border: 0.9px solid var(--border); 
+  border-radius: 10.8px;
+  box-shadow: 0 5.4px 16.2px rgba(0,0,0,0.35), 0 0 10.8px rgba(122,162,214,0.08);
   transition: border-color 0.25s ease, background-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .hp-grid-item:hover, .hp-potion-item:hover, .hp-f-item:hover, .hp-student-profile:hover {
   border-color: var(--accent);
   background-color: #22314d;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08);
+  box-shadow: 0 5.4px 16.2px rgba(0,0,0,0.35), 0 0 10.8px rgba(122,162,214,0.08);
 }
-.hp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; max-height: 350px; overflow-y: auto; overflow-x: hidden; padding: 6px; box-sizing: border-box; } 
-.hp-grid-item { padding: 8px 4px; font-size: 10px; cursor: pointer; position: relative; box-sizing: border-box; min-width: 0; overflow-wrap: break-word; word-break: break-word; } 
+.hp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4.5px; max-height: 315px; overflow-y: auto; overflow-x: hidden; padding: 5.4px; box-sizing: border-box; } 
+.hp-grid-item { padding: 7.2px 3.6px; font-size: 9px; cursor: pointer; position: relative; box-sizing: border-box; min-width: 0; overflow-wrap: break-word; word-break: break-word; } 
 
 /* Odsazení záložek truhly (kouzla, lektvary, artefakty) */
-#hp-tab-spells, #hp-tab-potions, #hp-tab-artifacts { padding: 6px !important; box-sizing: border-box; overflow-x: hidden !important; }
-.hp-grid-item img { height: 30px; object-fit: contain; margin-bottom: 4px; display: block; margin-left: auto; margin-right: auto; max-width: 100%; } 
+#hp-tab-spells, #hp-tab-potions, #hp-tab-artifacts { padding: 5.4px !important; box-sizing: border-box; overflow-x: hidden !important; }
+.hp-grid-item img { height: 27px; object-fit: contain; margin-bottom: 3.6px; display: block; margin-left: auto; margin-right: auto; max-width: 100%; } 
 
-.hp-spell-name { color: var(--gold); font-weight: bold; display: block; margin-top: 2px; font-family: monospace; font-size: 10px; } 
+.hp-spell-name { color: var(--gold); font-weight: bold; display: block; margin-top: 1.8px; font-family: monospace; font-size: 9px; } 
 
-.hp-potion-section-title { font-size: 12px; color: var(--text); text-align: left; margin: 15px 0 8px 5px; font-weight: bold; border-left: 3px solid var(--accent); padding-left: 8px; } 
-.hp-potion-item { padding: 6px 8px; margin-bottom: 5px; cursor: pointer; display: flex; align-items: center; gap: 6px; text-align: left; box-sizing: border-box; } 
-.hp-potion-img { width: 50px; height: 50px; object-fit: contain; flex-shrink: 0; } 
+.hp-potion-section-title { font-size: 10.8px; color: var(--text); text-align: left; margin: 13.5px 0 7.2px 4.5px; font-weight: bold; border-left: 2.7px solid var(--accent); padding-left: 7.2px; } 
+.hp-potion-item { padding: 5.4px 7.2px; margin-bottom: 4.5px; cursor: pointer; display: flex; align-items: center; gap: 5.4px; text-align: left; box-sizing: border-box; } 
+.hp-potion-img { width: 45px; height: 45px; object-fit: contain; flex-shrink: 0; } 
 
-.hp-artifact-img { width: 50px; height: 50px; object-fit: cover; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); flex-shrink: 0; }
+.hp-artifact-img { width: 45px; height: 45px; object-fit: cover; border-radius: 7.2px; border: 0.9px solid var(--border); background: var(--bg); flex-shrink: 0; }
 
-.hp-f-list { text-align: left; max-height: 650px; overflow-y: auto; } 
-.hp-f-item { padding: 8px; margin-bottom: 5px; display: flex; align-items: center; gap: 8px; box-sizing: border-box; } 
-.hp-f-item img { width: 80px !important; height: 80px !important; object-fit: cover; border-radius: 50%; flex-shrink: 0; }
+.hp-f-list { text-align: left; max-height: 585px; overflow-y: auto; } 
+.hp-f-item { padding: 7.2px; margin-bottom: 4.5px; display: flex; align-items: center; gap: 7.2px; box-sizing: border-box; } 
+.hp-f-item img { width: 72px !important; height: 72px !important; object-fit: cover; border-radius: 50%; flex-shrink: 0; }
 
-.hp-student-profile { padding: 10px; margin-bottom: 8px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 6px; box-sizing: border-box; }
-.hp-student-portrait { width: 80px; height: 80px; object-fit: cover; border-radius: 50%; border: 3px solid var(--accent); background: var(--bg); box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-.hp-student-name { color: var(--gold); font-size: 14px; font-weight: 700; margin: 0 0 5px 0; letter-spacing: 0.5px; }
-.hp-student-info { font-size: 10px; margin: 0 0 5px 0; letter-spacing: 0.5px; }
+.hp-student-profile { padding: 9px; margin-bottom: 7.2px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 5.4px; box-sizing: border-box; }
+.hp-student-portrait { width: 72px; height: 72px; object-fit: cover; border-radius: 50%; border: 2.7px solid var(--accent); background: var(--bg); box-shadow: 0 3.6px 9px rgba(0,0,0,0.5); }
+.hp-student-name { color: var(--gold); font-size: 12.6px; font-weight: 700; margin: 0 0 4.5px 0; letter-spacing: 0.45px; }
+.hp-student-info { font-size: 9px; margin: 0 0 4.5px 0; letter-spacing: 0.45px; }
 
 /* =========================================
    7. TABULKY A SPECIFICKÉ BOXY
    ========================================= */
-.hp-db-table { width: 100%; table-layout: fixed; border-collapse: collapse; margin-top: 12px; font-size: 11px; background: var(--bg); color: var(--text); } 
-.hp-db-table th, .hp-db-table td { border: 1px solid var(--border); padding: 4px 5px; text-align: left; word-break: break-word; overflow-wrap: break-word; } 
-.hp-db-table td code { color: var(--gold); background: rgba(255, 255, 255, 0.1); padding: 2px 4px; border-radius: 3px; }
+.hp-db-table { width: 100%; table-layout: fixed; border-collapse: collapse; margin-top: 10.8px; font-size: 9.9px; background: var(--bg); color: var(--text); } 
+.hp-db-table th, .hp-db-table td { border: 0.9px solid var(--border); padding: 3.6px 4.5px; text-align: left; word-break: break-word; overflow-wrap: break-word; } 
+.hp-db-table td code { color: var(--gold); background: rgba(255, 255, 255, 0.1); padding: 1.8px 3.6px; border-radius: 2.7px; }
 .hp-db-table th { background: var(--surface); color: var(--text); font-family: 'Montserrat', sans-serif; font-weight: 700; } 
-.hp-db-table img { width: 32px; height: 32px; object-fit: cover; border-radius: 4px; border: 1px solid var(--border); cursor: pointer; transition: scale 0.2s ease; } 
+.hp-db-table img { width: 28.8px; height: 28.8px; object-fit: cover; border-radius: 3.6px; border: 0.9px solid var(--border); cursor: pointer; transition: scale 0.2s ease; } 
 .hp-db-table img:hover { scale: 1.1; border-color: var(--gold); }
 
-.hp-trezor-box { margin-top: 14px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 10px; box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08); animation: hp-glow 6s ease-in-out infinite; box-sizing: border-box; }
-.hp-trezor-header { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; margin-bottom: 15px; }
-.hp-trezor-header img { width: 80px; height: 80px; object-fit: contain; }
-.hp-trezor-header h3 { margin: 0; font-family: 'Montserrat', sans-serif; font-size: 16px; color: var(--text); letter-spacing: 0.5px; }
-.hp-trezor-table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 11px; }
-.hp-trezor-table th { color: #aebbc8; border-bottom: 2px solid var(--border); padding: 5px 3px; font-weight: bold; word-break: break-word; }
-.hp-trezor-table td { padding: 6px 3px; border-bottom: 1px solid #233143; color: var(--text); word-break: break-word; }
+.hp-trezor-box { margin-top: 12.6px; background: var(--surface); border: 0.9px solid var(--border); border-radius: 10.8px; padding: 9px; box-shadow: 0 5.4px 16.2px rgba(0,0,0,0.35), 0 0 10.8px rgba(122,162,214,0.08); animation: hp-glow 6s ease-in-out infinite; box-sizing: border-box; }
+.hp-trezor-header { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7.2px; margin-bottom: 13.5px; }
+.hp-trezor-header img { width: 72px; height: 72px; object-fit: contain; }
+.hp-trezor-header h3 { margin: 0; font-family: 'Montserrat', sans-serif; font-size: 14.4px; color: var(--text); letter-spacing: 0.45px; }
+.hp-trezor-table { width: 100%; table-layout: fixed; border-collapse: collapse; font-size: 9.9px; }
+.hp-trezor-table th { color: #aebbc8; border-bottom: 1.8px solid var(--border); padding: 4.5px 2.7px; font-weight: bold; word-break: break-word; }
+.hp-trezor-table td { padding: 5.4px 2.7px; border-bottom: 0.9px solid #233143; color: var(--text); word-break: break-word; }
 
-#hp-copy-toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: var(--surface); border: 1px solid var(--accent); color: var(--gold); padding: 10px 20px; border-radius: 16px; font-size: 12px; font-weight: bold; box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 9999; display: none; }
+#hp-copy-toast { position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%); background: var(--surface); border: 0.9px solid var(--accent); color: var(--gold); padding: 9px 18px; border-radius: 14.4px; font-size: 10.8px; font-weight: bold; box-shadow: 0 4.5px 13.5px rgba(0,0,0,0.5); z-index: 9999; display: none; }
 
 /* Filtry */
 .hp-tint-neg { filter: sepia(1) hue-rotate(-50deg) saturate(3) brightness(0.9); } 
@@ -319,17 +318,17 @@ area { cursor: pointer; }
    ========================================= */
 @keyframes hp-stars {
   from { opacity: .35; translate: 0 0px; }
-  to { opacity: .8; translate: 0 -4px; }
+  to { opacity: .8; translate: 0 -3.6px; }
 }
 
 @keyframes hp-glow {
-  0%,100% { box-shadow: 0 2px 3px rgba(0,0,0,.35), 0 0 12px rgba(122,162,214,.08); }
-  50% { box-shadow: 0 2px 3px rgba(0,0,0,.35), 0 0 3px rgba(122,162,214,.18); }
+  0%,100% { box-shadow: 0 1.8px 2.7px rgba(0,0,0,.35), 0 0 10.8px rgba(122,162,214,.08); }
+  50% { box-shadow: 0 1.8px 2.7px rgba(0,0,0,.35), 0 0 2.7px rgba(122,162,214,.18); }
 }
 
 @keyframes hp-float {
   0%,100% { translate: 0 0; }
-  50% { translate: 0 -6px; }
+  50% { translate: 0 -5.4px; }
 }
 
 
@@ -352,38 +351,38 @@ area { cursor: pointer; }
 .hp-nebula {
   position: absolute;
   border-radius: 50%;
-  filter: blur(40px);
+  filter: blur(36px);
   mix-blend-mode: screen;
   opacity: 0.35;
   will-change: transform, opacity;
 }
 
 .hp-nebula-1 {
-  width: 320px;
-  height: 320px;
-  top: -60px;
-  left: -80px;
+  width: 288px;
+  height: 288px;
+  top: -54px;
+  left: -72px;
   background: radial-gradient(circle, rgba(122,162,214,0.55) 0%, rgba(72,90,160,0.25) 45%, rgba(72,90,160,0) 75%);
   animation: hp-nebula-drift-1 26s ease-in-out infinite;
 }
 
 .hp-nebula-2 {
-  width: 380px;
-  height: 380px;
-  bottom: -100px;
-  right: -120px;
+  width: 342px;
+  height: 342px;
+  bottom: -90px;
+  right: -108px;
   background: radial-gradient(circle, rgba(216,184,93,0.30) 0%, rgba(122,80,160,0.22) 45%, rgba(122,80,160,0) 75%);
   animation: hp-nebula-drift-2 32s ease-in-out infinite;
 }
 
 @keyframes hp-nebula-drift-1 {
   0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.3; }
-  50% { transform: translate(25px, 20px) scale(1.15); opacity: 0.5; }
+  50% { transform: translate(22.5px, 18px) scale(1.15); opacity: 0.5; }
 }
 
 @keyframes hp-nebula-drift-2 {
   0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.28; }
-  50% { transform: translate(-20px, -15px) scale(1.1); opacity: 0.45; }
+  50% { transform: translate(-18px, -13.5px) scale(1.1); opacity: 0.45; }
 }
 
 /* Vzdálená galaxie - jemně rotující vír */
@@ -391,12 +390,12 @@ area { cursor: pointer; }
   position: absolute;
   top: 18%;
   right: 8%;
-  width: 130px;
-  height: 130px;
+  width: 117px;
+  height: 117px;
   border-radius: 50%;
   opacity: 0.22;
   mix-blend-mode: screen;
-  filter: blur(1px);
+  filter: blur(0.9px);
   background: conic-gradient(
     from 0deg,
     rgba(122,162,214,0.0) 0deg,
@@ -426,230 +425,230 @@ area { cursor: pointer; }
   position: absolute;
   top: 0;
   left: 0;
-  width: 1px;
-  height: 1px;
+  width: 0.9px;
+  height: 0.9px;
   background: transparent;
   border-radius: 50%;
 }
 
 .hp-stars-small {
-  box-shadow: 68px 1165px #fff,
-    410px 129px #fff,
-    130px 241px #fff,
-    253px 920px #fff,
-    241px 1334px #fff,
-    194px 429px #fff,
-    48px 999px #fff,
-    14px 798px #fff,
-    221px 1244px #fff,
-    390px 4px #fff,
-    356px 912px #fff,
-    136px 468px #fff,
-    302px 209px #fff,
-    162px 62px #fff,
-    11px 52px #fff,
-    332px 1108px #fff,
-    4px 780px #fff,
-    351px 443px #fff,
-    216px 59px #fff,
-    270px 454px #fff,
-    391px 896px #fff,
-    253px 1132px #fff,
-    119px 707px #fff,
-    118px 1386px #fff,
-    112px 941px #fff,
-    148px 44px #fff,
-    213px 1139px #fff,
-    328px 204px #fff,
-    95px 1288px #fff,
-    370px 607px #fff,
-    61px 681px #fff,
-    369px 1025px #fff,
-    216px 1039px #fff,
-    343px 388px #fff,
-    155px 581px #fff,
-    300px 1022px #fff,
-    258px 805px #fff,
-    301px 70px #fff,
-    245px 497px #fff,
-    380px 827px #fff,
-    212px 1361px #fff,
-    88px 751px #fff,
-    280px 1381px #fff,
-    377px 767px #fff,
-    44px 898px #fff,
-    339px 1041px #fff,
-    55px 335px #fff,
-    266px 805px #fff,
-    189px 1002px #fff,
-    375px 60px #fff,
-    240px 89px #fff,
-    157px 1259px #fff,
-    303px 1184px #fff,
-    201px 1325px #fff,
-    87px 345px #fff,
-    257px 464px #fff,
-    6px 408px #fff,
-    276px 1122px #fff,
-    118px 828px #fff,
-    263px 704px #fff,
-    295px 723px #fff,
-    235px 551px #fff,
-    337px 1122px #fff,
-    311px 11px #fff,
-    196px 1049px #fff,
-    414px 264px #fff,
-    265px 1149px #fff,
-    105px 872px #fff,
-    28px 985px #fff,
-    186px 1167px #fff,
-    283px 409px #fff,
-    258px 846px #fff,
-    248px 730px #fff,
-    212px 708px #fff,
-    0px 1102px #fff,
-    276px 1276px #fff,
-    402px 1254px #fff,
-    169px 938px #fff,
-    307px 57px #fff,
-    411px 470px #fff,
-    325px 362px #fff,
-    281px 1196px #fff,
-    92px 187px #fff,
-    408px 1128px #fff,
-    408px 522px #fff,
-    16px 1378px #fff,
-    36px 170px #fff,
-    8px 927px #fff,
-    7px 575px #fff,
-    127px 550px #fff,
-    56px 1279px #fff,
-    94px 705px #fff,
-    148px 142px #fff,
-    85px 326px #fff,
-    130px 1080px #fff,
-    86px 1344px #fff,
-    139px 1327px #fff,
-    364px 603px #fff,
-    232px 659px #fff,
-    254px 970px #fff,
-    58px 48px #fff,
-    159px 791px #fff,
-    175px 862px #fff,
-    407px 385px #fff,
-    132px 222px #fff,
-    129px 1044px #fff,
-    107px 1240px #fff,
-    221px 42px #fff,
-    115px 36px #fff,
-    203px 299px #fff,
-    18px 328px #fff,
-    228px 1036px #fff,
-    347px 873px #fff,
-    278px 451px #fff,
-    322px 1057px #fff,
-    230px 457px #fff,
-    268px 1328px #fff,
-    15px 808px #fff,
-    345px 1179px #fff,
-    411px 657px #fff;
+  box-shadow: 61.2px 1048.5px #fff,
+    369px 116.1px #fff,
+    117px 216.9px #fff,
+    227.7px 828px #fff,
+    216.9px 1200.6px #fff,
+    174.6px 386.1px #fff,
+    43.2px 899.1px #fff,
+    12.6px 718.2px #fff,
+    198.9px 1119.6px #fff,
+    351px 3.6px #fff,
+    320.4px 820.8px #fff,
+    122.4px 421.2px #fff,
+    271.8px 188.1px #fff,
+    145.8px 55.8px #fff,
+    9.9px 46.8px #fff,
+    298.8px 997.2px #fff,
+    3.6px 702px #fff,
+    315.9px 398.7px #fff,
+    194.4px 53.1px #fff,
+    243px 408.6px #fff,
+    351.9px 806.4px #fff,
+    227.7px 1018.8px #fff,
+    107.1px 636.3px #fff,
+    106.2px 1247.4px #fff,
+    100.8px 846.9px #fff,
+    133.2px 39.6px #fff,
+    191.7px 1025.1px #fff,
+    295.2px 183.6px #fff,
+    85.5px 1159.2px #fff,
+    333px 546.3px #fff,
+    54.9px 612.9px #fff,
+    332.1px 922.5px #fff,
+    194.4px 935.1px #fff,
+    308.7px 349.2px #fff,
+    139.5px 522.9px #fff,
+    270px 919.8px #fff,
+    232.2px 724.5px #fff,
+    270.9px 63px #fff,
+    220.5px 447.3px #fff,
+    342px 744.3px #fff,
+    190.8px 1224.9px #fff,
+    79.2px 675.9px #fff,
+    252px 1242.9px #fff,
+    339.3px 690.3px #fff,
+    39.6px 808.2px #fff,
+    305.1px 936.9px #fff,
+    49.5px 301.5px #fff,
+    239.4px 724.5px #fff,
+    170.1px 901.8px #fff,
+    337.5px 54px #fff,
+    216px 80.1px #fff,
+    141.3px 1133.1px #fff,
+    272.7px 1065.6px #fff,
+    180.9px 1192.5px #fff,
+    78.3px 310.5px #fff,
+    231.3px 417.6px #fff,
+    5.4px 367.2px #fff,
+    248.4px 1009.8px #fff,
+    106.2px 745.2px #fff,
+    236.7px 633.6px #fff,
+    265.5px 650.7px #fff,
+    211.5px 495.9px #fff,
+    303.3px 1009.8px #fff,
+    279.9px 9.9px #fff,
+    176.4px 944.1px #fff,
+    372.6px 237.6px #fff,
+    238.5px 1034.1px #fff,
+    94.5px 784.8px #fff,
+    25.2px 886.5px #fff,
+    167.4px 1050.3px #fff,
+    254.7px 368.1px #fff,
+    232.2px 761.4px #fff,
+    223.2px 657px #fff,
+    190.8px 637.2px #fff,
+    0px 991.8px #fff,
+    248.4px 1148.4px #fff,
+    361.8px 1128.6px #fff,
+    152.1px 844.2px #fff,
+    276.3px 51.3px #fff,
+    369.9px 423px #fff,
+    292.5px 325.8px #fff,
+    252.9px 1076.4px #fff,
+    82.8px 168.3px #fff,
+    367.2px 1015.2px #fff,
+    367.2px 469.8px #fff,
+    14.4px 1240.2px #fff,
+    32.4px 153px #fff,
+    7.2px 834.3px #fff,
+    6.3px 517.5px #fff,
+    114.3px 495px #fff,
+    50.4px 1151.1px #fff,
+    84.6px 634.5px #fff,
+    133.2px 127.8px #fff,
+    76.5px 293.4px #fff,
+    117px 972px #fff,
+    77.4px 1209.6px #fff,
+    125.1px 1194.3px #fff,
+    327.6px 542.7px #fff,
+    208.8px 593.1px #fff,
+    228.6px 873px #fff,
+    52.2px 43.2px #fff,
+    143.1px 711.9px #fff,
+    157.5px 775.8px #fff,
+    366.3px 346.5px #fff,
+    118.8px 199.8px #fff,
+    116.1px 939.6px #fff,
+    96.3px 1116px #fff,
+    198.9px 37.8px #fff,
+    103.5px 32.4px #fff,
+    182.7px 269.1px #fff,
+    16.2px 295.2px #fff,
+    205.2px 932.4px #fff,
+    312.3px 785.7px #fff,
+    250.2px 405.9px #fff,
+    289.8px 951.3px #fff,
+    207px 411.3px #fff,
+    241.2px 1195.2px #fff,
+    13.5px 727.2px #fff,
+    310.5px 1061.1px #fff,
+    369.9px 591.3px #fff;
   animation: hp-twinkle 4s ease-in-out infinite;
 }
 
 .hp-stars-medium {
-  width: 2px;
-  height: 2px;
-  box-shadow: 28px 187px #fff,
-    43px 739px #fff,
-    86px 1371px #fff,
-    157px 515px #fff,
-    310px 434px #fff,
-    310px 73px #fff,
-    297px 1395px #fff,
-    81px 882px #fff,
-    326px 805px #fff,
-    411px 1042px #fff,
-    190px 1114px #fff,
-    227px 1028px #fff,
-    137px 73px #fff,
-    14px 745px #fff,
-    238px 652px #fff,
-    194px 867px #fff,
-    269px 336px #fff,
-    286px 363px #fff,
-    120px 472px #fff,
-    12px 361px #fff,
-    166px 355px #fff,
-    69px 1044px #fff,
-    261px 736px #fff,
-    263px 1381px #fff,
-    286px 372px #fff,
-    228px 849px #fff,
-    376px 1075px #fff,
-    390px 745px #fff,
-    404px 1215px #fff,
-    181px 741px #fff,
-    228px 330px #fff,
-    386px 818px #fff,
-    366px 944px #fff,
-    335px 1086px #fff,
-    127px 1003px #fff,
-    142px 1020px #fff,
-    256px 1055px #fff,
-    407px 724px #fff,
-    338px 931px #fff,
-    236px 718px #fff,
-    290px 1141px #fff,
-    370px 935px #fff,
-    249px 1349px #fff,
-    113px 664px #fff,
-    417px 340px #fff,
-    315px 549px #fff,
-    395px 982px #fff,
-    158px 621px #fff,
-    409px 1032px #fff,
-    287px 1060px #fff,
-    259px 1334px #fff,
-    315px 1204px #fff,
-    208px 638px #fff,
-    374px 425px #fff,
-    250px 1048px #fff,
-    187px 1276px #fff,
-    38px 699px #fff,
-    371px 17px #fff,
-    417px 391px #fff,
-    381px 217px #fff;
+  width: 1.8px;
+  height: 1.8px;
+  box-shadow: 25.2px 168.3px #fff,
+    38.7px 665.1px #fff,
+    77.4px 1233.9px #fff,
+    141.3px 463.5px #fff,
+    279px 390.6px #fff,
+    279px 65.7px #fff,
+    267.3px 1255.5px #fff,
+    72.9px 793.8px #fff,
+    293.4px 724.5px #fff,
+    369.9px 937.8px #fff,
+    171px 1002.6px #fff,
+    204.3px 925.2px #fff,
+    123.3px 65.7px #fff,
+    12.6px 670.5px #fff,
+    214.2px 586.8px #fff,
+    174.6px 780.3px #fff,
+    242.1px 302.4px #fff,
+    257.4px 326.7px #fff,
+    108px 424.8px #fff,
+    10.8px 324.9px #fff,
+    149.4px 319.5px #fff,
+    62.1px 939.6px #fff,
+    234.9px 662.4px #fff,
+    236.7px 1242.9px #fff,
+    257.4px 334.8px #fff,
+    205.2px 764.1px #fff,
+    338.4px 967.5px #fff,
+    351px 670.5px #fff,
+    363.6px 1093.5px #fff,
+    162.9px 666.9px #fff,
+    205.2px 297px #fff,
+    347.4px 736.2px #fff,
+    329.4px 849.6px #fff,
+    301.5px 977.4px #fff,
+    114.3px 902.7px #fff,
+    127.8px 918px #fff,
+    230.4px 949.5px #fff,
+    366.3px 651.6px #fff,
+    304.2px 837.9px #fff,
+    212.4px 646.2px #fff,
+    261px 1026.9px #fff,
+    333px 841.5px #fff,
+    224.1px 1214.1px #fff,
+    101.7px 597.6px #fff,
+    375.3px 306px #fff,
+    283.5px 494.1px #fff,
+    355.5px 883.8px #fff,
+    142.2px 558.9px #fff,
+    368.1px 928.8px #fff,
+    258.3px 954px #fff,
+    233.1px 1200.6px #fff,
+    283.5px 1083.6px #fff,
+    187.2px 574.2px #fff,
+    336.6px 382.5px #fff,
+    225px 943.2px #fff,
+    168.3px 1148.4px #fff,
+    34.2px 629.1px #fff,
+    333.9px 15.3px #fff,
+    375.3px 351.9px #fff,
+    342.9px 195.3px #fff;
   animation: hp-twinkle 5.5s ease-in-out infinite;
   animation-delay: 1.2s;
 }
 
 .hp-stars-large {
-  width: 3px;
-  height: 3px;
-  box-shadow: 121px 1213px #fff,
-    278px 267px #fff,
-    189px 1236px #fff,
-    242px 1281px #fff,
-    297px 134px #fff,
-    310px 26px #fff,
-    240px 531px #fff,
-    282px 479px #fff,
-    98px 963px #fff,
-    276px 1125px #fff,
-    243px 813px #fff,
-    327px 308px #fff,
-    118px 1300px #fff,
-    77px 1071px #fff,
-    199px 31px #fff,
-    343px 131px #fff,
-    81px 1210px #fff,
-    21px 616px #fff,
-    399px 63px #fff,
-    137px 968px #fff,
-    304px 793px #fff,
-    365px 874px #fff,
-    202px 1181px #fff,
-    227px 274px #fff;
+  width: 2.7px;
+  height: 2.7px;
+  box-shadow: 108.9px 1091.7px #fff,
+    250.2px 240.3px #fff,
+    170.1px 1112.4px #fff,
+    217.8px 1152.9px #fff,
+    267.3px 120.6px #fff,
+    279px 23.4px #fff,
+    216px 477.9px #fff,
+    253.8px 431.1px #fff,
+    88.2px 866.7px #fff,
+    248.4px 1012.5px #fff,
+    218.7px 731.7px #fff,
+    294.3px 277.2px #fff,
+    106.2px 1170px #fff,
+    69.3px 963.9px #fff,
+    179.1px 27.9px #fff,
+    308.7px 117.9px #fff,
+    72.9px 1089px #fff,
+    18.9px 554.4px #fff,
+    359.1px 56.7px #fff,
+    123.3px 871.2px #fff,
+    273.6px 713.7px #fff,
+    328.5px 786.6px #fff,
+    181.8px 1062.9px #fff,
+    204.3px 246.6px #fff;
   animation: hp-twinkle-glow 6.5s ease-in-out infinite;
   animation-delay: 0.6s;
 }
@@ -661,18 +660,18 @@ area { cursor: pointer; }
 
 @keyframes hp-twinkle-glow {
   0%, 100% { opacity: 0.4; filter: drop-shadow(0 0 0px rgba(255,255,255,0)); }
-  50% { opacity: 1; filter: drop-shadow(0 0 3px rgba(255,255,255,0.9)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 2.7px rgba(255,255,255,0.9)); }
 }
 
 /* Meteory - krátké, jasné šmouhy létající přes oblohu po diagonále */
 .hp-meteor {
   position: absolute;
-  width: 2px;
-  height: 2px;
+  width: 1.8px;
+  height: 1.8px;
   background: #fff;
   border-radius: 50%;
   opacity: 0;
-  box-shadow: 0 0 6px 1px rgba(255,255,255,0.6);
+  box-shadow: 0 0 5.4px 0.9px rgba(255,255,255,0.6);
 }
 
 .hp-meteor::before {
@@ -680,8 +679,8 @@ area { cursor: pointer; }
   position: absolute;
   top: 50%;
   right: 0;
-  width: 90px;
-  height: 1px;
+  width: 81px;
+  height: 0.9px;
   background: linear-gradient(90deg, rgba(255,255,255,0.9), rgba(255,255,255,0));
   transform: translateY(-50%);
 }
@@ -695,7 +694,7 @@ area { cursor: pointer; }
   3% { opacity: 1; }
   18% { opacity: 1; }
   26% { opacity: 0; }
-  100% { transform: translate(480px, 340px) rotate(35deg); opacity: 0; }
+  100% { transform: translate(432px, 306px) rotate(35deg); opacity: 0; }
 }
 
 /* Kosmický prach - jemná pomalu plující textura */
@@ -703,19 +702,19 @@ area { cursor: pointer; }
   position: absolute;
   inset: -20%;
   background-image:
-    radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.25) 0, transparent 60%),
-    radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.18) 0, transparent 60%),
-    radial-gradient(1px 1px at 40% 80%, rgba(255,255,255,0.22) 0, transparent 60%),
-    radial-gradient(1px 1px at 85% 15%, rgba(255,255,255,0.2) 0, transparent 60%),
-    radial-gradient(1px 1px at 25% 45%, rgba(255,255,255,0.15) 0, transparent 60%);
-  background-size: 300px 300px;
+    radial-gradient(0.9px 0.9px at 10% 20%, rgba(255,255,255,0.25) 0, transparent 60%),
+    radial-gradient(0.9px 0.9px at 70% 60%, rgba(255,255,255,0.18) 0, transparent 60%),
+    radial-gradient(0.9px 0.9px at 40% 80%, rgba(255,255,255,0.22) 0, transparent 60%),
+    radial-gradient(0.9px 0.9px at 85% 15%, rgba(255,255,255,0.2) 0, transparent 60%),
+    radial-gradient(0.9px 0.9px at 25% 45%, rgba(255,255,255,0.15) 0, transparent 60%);
+  background-size: 270px 270px;
   opacity: 0.5;
   animation: hp-dust-drift 50s linear infinite;
 }
 
 @keyframes hp-dust-drift {
   0% { transform: translate(0, 0); }
-  100% { transform: translate(-60px, -90px); }
+  100% { transform: translate(-54px, -81px); }
 }
 
 /* Obloha musí zůstat pod ostatním obsahem */
@@ -739,7 +738,7 @@ area { cursor: pointer; }
 #hp-tab-rowena, #hp-tab-funk, #hp-tab-ohp {
   overflow-y: auto !important;
   flex-grow: 1;
-  padding-right: 5px;
+  padding-right: 4.5px;
 }
 
 /* Tlačítko Zpět přitažené k patě pohledu (klepadlo, motivační soutěže) */
@@ -750,37 +749,37 @@ area { cursor: pointer; }
 
 .hp-rowena-gif {
   display: block;
-  max-width: 200px;
+  max-width: 180px;
   height: auto;
-  margin: 15px auto;
-  border-radius: 16px;
-  border: 3px solid #7aa2d6;
+  margin: 13.5px auto;
+  border-radius: 14.4px;
+  border: 2.7px solid #7aa2d6;
   box-shadow:
-    0 0 12px rgba(122, 162, 214, 0.6),
-    0 0 24px rgba(122, 162, 214, 0.35),
-    0 12px 30px rgba(0, 0, 0, 0.15);
+    0 0 10.8px rgba(122, 162, 214, 0.6),
+    0 0 21.6px rgba(122, 162, 214, 0.35),
+    0 10.8px 27px rgba(0, 0, 0, 0.15);
   object-fit: contain;
   background: transparent;
 }
 
 .hp-rowena-daily-box {
-  margin-top: 15px;
-  padding: 15px;
+  margin-top: 13.5px;
+  padding: 13.5px;
   text-align: center;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08);
+  box-shadow: 0 5.4px 16.2px rgba(0,0,0,0.35), 0 0 10.8px rgba(122,162,214,0.08);
   animation: hp-glow 6s ease-in-out infinite;
 }
 
 .hp-rowena-daily-title {
-  margin: 0 0 8px;
+  margin: 0 0 7.2px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
+  font-size: 10.8px;
   color: var(--gold);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.45px;
 }
 
 .hp-rowena-daily-text {
-  font-size: 13px;
+  font-size: 11.7px;
   color: var(--text);
   margin: 0;
   line-height: 1.5;
@@ -789,23 +788,23 @@ area { cursor: pointer; }
 /* Karty v Motivačních soutěžích - jednotná výška podle první karty s obrázkem */
 .hp-flag-card {
   background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 15px;
-  border-radius: 8px;
+  border: 0.9px solid var(--border);
+  padding: 13.5px;
+  border-radius: 7.2px;
   text-align: left;
-  margin-bottom: 10px;
+  margin-bottom: 9px;
   box-sizing: border-box;
-  height: 320px;
+  height: 288px;
   display: flex;
   flex-direction: column;
 }
 
 .hp-flag-card-img {
   width: 60%;
-  max-width: 180px;
-  height: 90px;
+  max-width: 162px;
+  height: 81px;
   object-fit: contain;
-  border-radius: 6px;
+  border-radius: 5.4px;
   margin: 0 auto;
   display: block;
   flex-shrink: 0;
@@ -813,15 +812,15 @@ area { cursor: pointer; }
 
 .hp-flag-card-title {
   color: var(--gold);
-  font-size: 14px;
+  font-size: 12.6px;
   display: block;
-  margin-top: 10px;
+  margin-top: 9px;
   flex-shrink: 0;
 }
 
 .hp-flag-card-text {
-  font-size: 12px;
-  margin-top: 8px;
+  font-size: 10.8px;
+  margin-top: 7.2px;
   line-height: 1.4;
   display: -webkit-box;
   -webkit-line-clamp: 4;
@@ -830,8 +829,8 @@ area { cursor: pointer; }
 }
 
 .hp-flag-card-note {
-  font-size: 11px;
-  margin-top: 8px;
+  font-size: 9.9px;
+  margin-top: 7.2px;
   color: #aebbc8;
   font-style: italic;
   flex-shrink: 0;
@@ -840,7 +839,7 @@ area { cursor: pointer; }
 .hp-flag-card-footer {
   text-align: center;
   margin-top: auto;
-  padding-top: 12px;
+  padding-top: 10.8px;
   flex-shrink: 0;
 }
 
@@ -852,27 +851,27 @@ area { cursor: pointer; }
 
 .hp-ohp-card {
   text-align: left;
-  padding: 8px;
-  margin-bottom: 8px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.35), 0 0 12px rgba(122,162,214,0.08);
+  padding: 7.2px;
+  margin-bottom: 7.2px;
+  box-shadow: 0 5.4px 16.2px rgba(0,0,0,0.35), 0 0 10.8px rgba(122,162,214,0.08);
   box-sizing: border-box;
 }
 
 .hp-ohp-title {
-  margin: 0 0 8px;
+  margin: 0 0 7.2px;
   font-family: 'Montserrat', sans-serif;
-  font-size: 12px;
+  font-size: 10.8px;
   color: var(--gold);
-  letter-spacing: 0.5px;
-  border-left: 3px solid var(--accent);
-  padding-left: 8px;
+  letter-spacing: 0.45px;
+  border-left: 2.7px solid var(--accent);
+  padding-left: 7.2px;
 }
 
 .hp-ohp-text {
-  font-size: 10px;
+  font-size: 9px;
   line-height: 1.4;
   color: var(--text);
-  margin: 0 0 8px;
+  margin: 0 0 7.2px;
 }
 .hp-ohp-text:last-child { margin-bottom: 0; }
 
@@ -882,31 +881,31 @@ area { cursor: pointer; }
   padding: 0;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 7.2px;
 }
 
 .hp-ohp-values li {
   background: rgba(122, 162, 214, 0.1);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 10px;
-  font-size: 10px;
+  border: 0.9px solid var(--border);
+  border-radius: 7.2px;
+  padding: 7.2px 9px;
+  font-size: 9px;
   color: var(--text);
   font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5.4px;
 }
 
-.hp-ohp-value-icon { font-size: 14px; }
+.hp-ohp-value-icon { font-size: 12.6px; }
 
 .hp-ohp-symbols .hp-ohp-symbol-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 10px;
-  padding: 6px 0;
-  border-bottom: 1px solid #233143;
+  font-size: 9px;
+  padding: 5.4px 0;
+  border-bottom: 0.9px solid #233143;
 }
 .hp-ohp-symbols .hp-ohp-symbol-row:last-child { border-bottom: none; }
 
@@ -915,22 +914,22 @@ area { cursor: pointer; }
 
 .hp-ohp-motto {
   text-align: center;
-  padding: 18px 14px;
-  margin-bottom: 5px;
-  border: 1px solid var(--gold);
-  box-shadow: 0 0 12px rgba(216,184,93,0.25), 0 6px 18px rgba(0,0,0,0.35);
+  padding: 16.2px 12.6px;
+  margin-bottom: 4.5px;
+  border: 0.9px solid var(--gold);
+  box-shadow: 0 0 10.8px rgba(216,184,93,0.25), 0 5.4px 16.2px rgba(0,0,0,0.35);
 }
 
 .hp-ohp-motto-en {
   font-family: 'Great Vibes', cursive;
-  font-size: 24px;
+  font-size: 21.6px;
   color: var(--gold);
-  margin: 0 0 8px;
+  margin: 0 0 7.2px;
   line-height: 1.3;
 }
 
 .hp-ohp-motto-cz {
-  font-size: 12px;
+  font-size: 10.8px;
   color: #aebbc8;
   font-style: italic;
   margin: 0;

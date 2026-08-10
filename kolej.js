@@ -157,7 +157,7 @@
       const tbody = document.getElementById("hp-trezor-rows");
       if (!tbody) return;
       if (safiryData.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #aebbc8; padding: 10px;">Trezor je prázdný.</td></tr>`;
+        tbody.innerHTML = `<tr><td colspan="3" style="text-align: center; color: #aebbc8; padding: 9px;">Trezor je prázdný.</td></tr>`;
         return;
       }
       safiryData.sort((a, b) => b.pocet - a.pocet);
@@ -257,7 +257,7 @@
       hp_qList.forEach(p => {
         const i = document.createElement("div");
         i.className = "hp-f-item";
-        i.innerHTML = `<img src="${p.i}" width="100px" height="100px"><div><strong style="color:var(--text);">${p.n}</strong><br><span style="font-size:12px; color:#aebbc8;">${p.p}</span></div>`;
+        i.innerHTML = `<img src="${p.i}" width="90px" height="90px"><div><strong style="color:var(--text);">${p.n}</strong><br><span style="font-size:10.8px; color:#aebbc8;">${p.p}</span></div>`;
         div.appendChild(i);
       });
     }
@@ -269,7 +269,7 @@
       div.innerHTML = "";
       
       if (hp_studentiData.length === 0) {
-        div.innerHTML = `<p style="text-align:center; color:#aebbc8; font-size:12px; padding:20px;">Aktuálně zde nejsou žádní zapsaní studenti.</p>`;
+        div.innerHTML = `<p style="text-align:center; color:#aebbc8; font-size:10.8px; padding:18px;">Aktuálně zde nejsou žádní zapsaní studenti.</p>`;
         return;
       }
 
@@ -283,7 +283,7 @@
           <img src="${fotoUrl}" class="hp-student-portrait" onerror="this.src='ikony/eagle.png'">
           <div>
             <h4 class="hp-student-name">${student.jmeno}</h4>
-            <span style="font-size:10px; color:#aebbc8;"><p class="hp-student-info">${infoText}</p></span>
+            <span style="font-size:9px; color:#aebbc8;"><p class="hp-student-info">${infoText}</p></span>
           </div>
         `;
         div.appendChild(i);
@@ -500,7 +500,7 @@
       hp_sList.forEach(s => { 
         const i = document.createElement("div"); 
         i.className = "hp-grid-item"; 
-        i.innerHTML = `<img src="${s.i}" style="width: 90px; height: 90px;"><strong>${s.n}</strong><span class="hp-spell-name">${s.s}</span>`; 
+        i.innerHTML = `<img src="${s.i}" style="width: 81px; height: 81px;"><strong>${s.n}</strong><span class="hp-spell-name">${s.s}</span>`; 
         i.onclick = () => hp_cp(s.s); 
         div.appendChild(i); 
       }); 
@@ -525,7 +525,7 @@
       const i = document.createElement("div"); 
       i.className = "hp-potion-item"; 
       const srcIkony = (p.t === "pos") ? "ikony/lektvar_poz.png" : "ikony/lektvar_neg.png";
-      i.innerHTML = `<img src="${srcIkony}" class="hp-potion-img"><div><strong style="color:var(--text);">${p.n}</strong><br><span style="font-size:11px; color:#aebbc8;">${p.d}</span></div>`; 
+      i.innerHTML = `<img src="${srcIkony}" class="hp-potion-img"><div><strong style="color:var(--text);">${p.n}</strong><br><span style="font-size:9.9px; color:#aebbc8;">${p.d}</span></div>`; 
       i.onclick = () => window.open(p.r, "_blank"); 
       return i; 
     } 
@@ -539,7 +539,7 @@
         if(a.t === "pos") tintClass = "hp-tint-pos"; 
         const i = document.createElement("div"); 
         i.className = "hp-potion-item"; 
-        i.innerHTML = `<img src="${a.i}" class="hp-artifact-img ${tintClass}" onerror="this.src='ikony/lektvar_poz.png'"><div><strong style="color:var(--text);">${a.n}</strong><br><span style="font-size:11px; color:#aebbc8;">${a.d}</span></div>`; 
+        i.innerHTML = `<img src="${a.i}" class="hp-artifact-img ${tintClass}" onerror="this.src='ikony/lektvar_poz.png'"><div><strong style="color:var(--text);">${a.n}</strong><br><span style="font-size:9.9px; color:#aebbc8;">${a.d}</span></div>`; 
         i.onclick = () => window.open(a.i, "_blank"); 
         div.appendChild(i); 
       }); 
