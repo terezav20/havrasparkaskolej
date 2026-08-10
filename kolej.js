@@ -14,7 +14,7 @@
       {n:"Ďasovec", s:"Relashio", i:"ikony/dasovec.png"}, 
       {n:"Had", s:"Vipera evanesca", i:"ikony/had.png"}, 
       {n:"Mozkomor", s:"Expecto patronum", i:"ikony/mozkomor.png"}, 
-      {n:"Neživí", s:"Incendio", i:"ikony/nezivi.png"}, 
+      {n:"Neživí", s:"Lacresiva", i:"ikony/nezivi.png"}, 
       {n:"Akromantule", s:"Arania exuma", i:"ikony/akromantule.png"}, 
       {n:"Rarach", s:"Imobilis", i:"ikony/rarach.png"}, 
       {n:"Salamandr", s:"Glacius", i:"ikony/salamander.png"}, 
