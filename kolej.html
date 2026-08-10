@@ -2,7 +2,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="kolej.css?v=5">
+  <link rel="stylesheet" href="kolej.css?v=9">
 
   <!-- Animované hvězdné pozadí -->
   <div class="hp-sky" aria-hidden="true">
@@ -56,46 +56,47 @@
   
   <div id="hp-door-view" class="hp-hidden">
     <h2>Klepadlo</h2>
-    <div id="hp-klepadlo-hadanka-box">
-      <span style="font-size:12px; color:#aebbc8;"><i>*Chceš si přečíst knihu, ale najednou si všimneš, že pod vlajkou na knihovně něco světélkuje. Protože jsi zvědavý havran, tak ti to nedá a odkryješ vlajku. Před tebou se objeví obrovské klepadlo ve tvaru orla, který na tebe promluví*</i></span>
-       <span style="font-size:12px; color:#aebbc8;">Jsi dostatečně moudrý, aby jsi odpověděl na mou otázku a nalezl safírový poklad?</span>
-      <img class="hp-door" id="hp-door-img" src="ikony/klepadlo.png" alt="Klepadlo ve tvaru orla" onclick="hp_h()">
-      
-      <p id="hp-q" style="display:none; font-weight:500; margin:15px 0;"></p>
-      <div id="hp-input-box" style="display:none;">
-        <input type="text" id="hp-a" placeholder="Tvoje odpověď..."><br>
-        <button onclick="hp_c()" style="margin-bottom:10px;">Odeslat odpověď</button>
+    <div class="hp-door-scroll">
+      <div id="hp-klepadlo-hadanka-box">
+        <span style="font-size:12px; color:#aebbc8;"><i>*Chceš si přečíst knihu, ale najednou si všimneš, že pod vlajkou na knihovně něco světélkuje. Protože jsi zvědavý havran, tak ti to nedá a odkryješ vlajku. Před tebou se objeví obrovské klepadlo ve tvaru orla, který na tebe promluví*</i></span>
+         <span style="font-size:12px; color:#aebbc8;">Jsi dostatečně moudrý, aby jsi odpověděl na mou otázku a nalezl safírový poklad?</span>
+        <img class="hp-door" id="hp-door-img" src="ikony/klepadlo.png" alt="Klepadlo ve tvaru orla" onclick="hp_h()">
+        
+        <p id="hp-q" style="display:none; font-weight:500; margin:15px 0;"></p>
+        <div id="hp-input-box" style="display:none;">
+          <input type="text" id="hp-a" placeholder="Tvoje odpověď..."><br>
+          <button onclick="hp_c()" style="margin-bottom:10px;">Odeslat odpověď</button>
+        </div>
       </div>
-    </div>
 
-    <div id="hp-trezor-obsah" class="hp-hidden">
-      <i><p style="color: #4affa4; font-weight: bold; margin-bottom: 12px;">*Orel uznale pokývne hlavou a dveře se s hlasitým cvaknutím otevřou. Vstoupíš do trezoru.*</p></i>
-      <div class="hp-trezor-box">
-        <div class="hp-trezor-header">
-          <img src="kdovik_obrazky/presypacihodiny.png" alt="Safír"><h3>Safírový trezor</h3>
-          <p style="font-size:12px; color:#aebbc8;">Zde vidíš přehled všech safírů, které se ti podařilo získat.
-           Co teď? Pošli některému z Péček sovu, aby ti je vyměnili za předměty z Příčné ulice či Prasinek!
-             Hodnota jednoho safíru jsou <b>2 galeony</b>.</p> 
-        </div>
-        <div style="max-height: 280px; overflow-y: auto;">
-          <table class="hp-trezor-table">
-            <thead>
-              <tr>
-                <th style="text-align: left;">Student</th>
-                <th style="text-align: center;">Safíry</th>
-                <th style="text-align: center;">Galeony</th>
-              </tr>
-            </thead>
-            <tbody id="hp-trezor-rows">
-              <tr>
-                <td colspan="3" style="text-align: center; color: #aebbc8; padding: 10px;">Načítám poklad z trezoru...</td>
-              </tr>
-            </tbody>
-          </table>
+      <div id="hp-trezor-obsah" class="hp-hidden">
+        <i><p style="color: #4affa4; font-weight: bold; margin-bottom: 12px;">*Orel uznale pokývne hlavou a dveře se s hlasitým cvaknutím otevřou. Vstoupíš do trezoru.*</p></i>
+        <div class="hp-trezor-box">
+          <div class="hp-trezor-header">
+            <img src="kdovik_obrazky/presypacihodiny.png" alt="Safír"><h3>Safírový trezor</h3>
+            <p style="font-size:12px; color:#aebbc8;">Zde vidíš přehled všech safírů, které se ti podařilo získat.
+             Co teď? Pošli některému z Péček sovu, aby ti je vyměnili za předměty z Příčné ulice či Prasinek!
+               Hodnota jednoho safíru jsou <b>2 galeony</b>.</p> 
+          </div>
+          <div style="max-height: 280px; overflow-y: auto;">
+            <table class="hp-trezor-table">
+              <thead>
+                <tr>
+                  <th style="text-align: left;">Student</th>
+                  <th style="text-align: center;">Safíry</th>
+                  <th style="text-align: center;">Galeony</th>
+                </tr>
+              </thead>
+              <tbody id="hp-trezor-rows">
+                <tr>
+                  <td colspan="3" style="text-align: center; color: #aebbc8; padding: 10px;">Načítám poklad z trezoru...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-    <br><br>
     <button class="hp-back-btn" onclick="hp_hideViews()">Zpět do místnosti</button>
   </div>
 
@@ -263,100 +264,86 @@
   <div id="hp-flag-view" class="hp-hidden">
     <h2>Motivační soutěže</h2>
     <div id="hp-flag-list" class="hp-flag-list">
-      <div style="background:var(--surface); border: 1px solid var(--border); padding:15px; border-radius:8px; text-align:left; margin-bottom:10px;">
-        <img src="kdovik_obrazky/kdovik_tk.png" alt="Kdovíkova výprava do komnat" style="width:60%; max-width:180px; border-radius:6px; margin:8px auto 0; display:block;">
-        <strong style="color:var(--gold); font-size:14px; display:block; margin-top:10px;">Kdovíkova výprava do komnat</strong>
-        <p style="font-size:12px; margin-top:8px; line-height:1.4;">Vydej se hledat ukrytou tajemnou komnatu a odhal místo, které čeká jen na ty nejzvídavější studenty. Za nalezení komnaty a vstup do jejího tajemného prostoru můžeš získat safíry do svého safírového konta.</p>
-        <p style="font-size:11px; margin-top:8px; color:#aebbc8; font-style:italic;">O tuto aktivitu se stará Mia Rose.</p>
+      <div class="hp-flag-card">
+        <img src="kdovik_obrazky/kdovik_tk.png" alt="Kdovíkova výprava do komnat" class="hp-flag-card-img">
+        <strong class="hp-flag-card-title">Kdovíkova výprava do komnat</strong>
+        <p class="hp-flag-card-text">Vydej se hledat ukrytou tajemnou komnatu a odhal místo, které čeká jen na ty nejzvídavější studenty. Za nalezení komnaty a vstup do jejího tajemného prostoru můžeš získat safíry do svého safírového konta.</p>
+        <p class="hp-flag-card-note">O tuto aktivitu se stará Mia Rose.</p>
 
-        <div style="text-align: center; margin-top: 12px;">
+        <div class="hp-flag-card-footer">
           <a href="#" target="_blank" style="text-decoration: none;">
-            <button style="width: 75%; background: linear-gradient(180deg, #b58900 0%, #856404 100%); border-color: var(--gold);">
-               Výsledky motivaček za měsíce
-            </button>
+            <button>Výsledky motivaček za měsíce</button>
           </a>
         </div>
       </div>
-      <div style="background:var(--surface); border: 1px solid var(--border); padding:15px; border-radius:8px; text-align:left; margin-bottom:10px;">
-        <img src="kdovik_obrazky/kdovik_postup.png" alt="Kdovíkův školní pohár" style="width:60%; max-width:180px; border-radius:6px; margin:8px auto 0; display:block;">
-        <strong style="color:var(--gold); font-size:14px; display:block; margin-top:10px;">Kdovíkův školní pohár</strong>
-        <p style="font-size:12px; margin-top:8px; line-height:1.4;">Každý bod se počítá! Pomoz své koleji získávat body do školního poháru a přispěj k jejímu vítězství. Za svou aktivitu, úspěchy a nasbírané body můžeš získat safíry do svého safírového konta.</p>
-        <p style="font-size:11px; margin-top:8px; color:#aebbc8; font-style:italic;">O tuto aktivitu se stará Mia Rose.</p>
+      <div class="hp-flag-card">
+        <img src="kdovik_obrazky/kdovik_postup.png" alt="Kdovíkův školní pohár" class="hp-flag-card-img">
+        <strong class="hp-flag-card-title">Kdovíkův školní pohár</strong>
+        <p class="hp-flag-card-text">Každý bod se počítá! Pomoz své koleji získávat body do školního poháru a přispěj k jejímu vítězství. Za svou aktivitu, úspěchy a nasbírané body můžeš získat safíry do svého safírového konta.</p>
+        <p class="hp-flag-card-note">O tuto aktivitu se stará Mia Rose.</p>
 
-        <div style="text-align: center; margin-top: 12px;">
+        <div class="hp-flag-card-footer">
           <a href="#" target="_blank" style="text-decoration: none;">
-            <button style="width: 75%; background: linear-gradient(180deg, #b58900 0%, #856404 100%); border-color: var(--gold);">
-               Výsledky motivaček za měsíce
-            </button>
+            <button>Výsledky motivaček za měsíce</button>
           </a>
         </div>
       </div>
-      <div style="background:var(--surface); border: 1px solid var(--border); padding:15px; border-radius:8px; text-align:left; margin-bottom:10px;">
-        <img src="kdovik_obrazky/kdovik_obruce.png" alt="Připrav se na pořádný famfrpálový trénink! Létej s Kdovíkem" style="width:60%; max-width:180px; border-radius:6px; margin:8px auto 0; display:block;">
-        <strong style="color:var(--gold); font-size:14px; display:block; margin-top:10px;">Připrav se na pořádný famfrpálový trénink! Létej s Kdovíkem</strong>
-        <p style="font-size:12px; margin-top:8px; line-height:1.4;">Zlepšuj své schopnosti, piluj své dovednosti a staň se lepším hráčem pod Kdovíkovým dohledem. Za svou snahu, pravidelný trénink a pokroky můžeš získat safíry do svého safírového konta.</p>
-        <p style="font-size:11px; margin-top:8px; color:#aebbc8; font-style:italic;">O tuto aktivitu se stará Mia Rose.</p>
+      <div class="hp-flag-card">
+        <img src="kdovik_obrazky/kdovik_obruce.png" alt="Připrav se na pořádný famfrpálový trénink! Létej s Kdovíkem" class="hp-flag-card-img">
+        <strong class="hp-flag-card-title">Připrav se na pořádný famfrpálový trénink! Létej s Kdovíkem</strong>
+        <p class="hp-flag-card-text">Zlepšuj své schopnosti, piluj své dovednosti a staň se lepším hráčem pod Kdovíkovým dohledem. Za svou snahu, pravidelný trénink a pokroky můžeš získat safíry do svého safírového konta.</p>
+        <p class="hp-flag-card-note">O tuto aktivitu se stará Mia Rose.</p>
 
-        <div style="text-align: center; margin-top: 12px;">
+        <div class="hp-flag-card-footer">
           <a href="#" target="_blank" style="text-decoration: none;">
-            <button style="width: 75%; background: linear-gradient(180deg, #b58900 0%, #856404 100%); border-color: var(--gold);">
-               Výsledky motivaček za měsíce
-            </button>
+            <button>Výsledky motivaček za měsíce</button>
           </a>
         </div>
       </div>
-      <div style="background:var(--surface); border: 1px solid var(--border); padding:15px; border-radius:8px; text-align:left; margin-bottom:10px;">
-        <img src="kdovik_obrazky/kdovik_knihy_levitujici.png" alt="Moudrý Kdovík" style="width:60%; max-width:180px; border-radius:6px; margin:8px auto 0; display:block;">
-        <strong style="color:var(--gold); font-size:14px; display:block; margin-top:10px;">Moudrý Kdovík</strong>
-        <p style="font-size:12px; margin-top:8px; line-height:1.4;">Ukaž své znalosti v odborných učebnách, vyřeš zapeklité otázky a prokaž svou moudrost. Za správné odpovědi a úspěšné splnění vědomostních výzev můžeš získat safíry do svého safírového konta.</p>
-        <p style="font-size:11px; margin-top:8px; color:#aebbc8; font-style:italic;">O tuto aktivitu se stará Mia Rose.</p>
+      <div class="hp-flag-card">
+        <img src="kdovik_obrazky/kdovik_knihy_levitujici.png" alt="Moudrý Kdovík" class="hp-flag-card-img">
+        <strong class="hp-flag-card-title">Moudrý Kdovík</strong>
+        <p class="hp-flag-card-text">Ukaž své znalosti v odborných učebnách, vyřeš zapeklité otázky a prokaž svou moudrost. Za správné odpovědi a úspěšné splnění vědomostních výzev můžeš získat safíry do svého safírového konta.</p>
+        <p class="hp-flag-card-note">O tuto aktivitu se stará Mia Rose.</p>
 
-        <div style="text-align: center; margin-top: 12px;">
+        <div class="hp-flag-card-footer">
           <a href="#" target="_blank" style="text-decoration: none;">
-            <button style="width: 75%; background: linear-gradient(180deg, #b58900 0%, #856404 100%); border-color: var(--gold);">
-               Výsledky motivaček za měsíce
-            </button>
+            <button>Výsledky motivaček za měsíce</button>
           </a>
         </div>
       </div>
-      <div style="background:var(--surface); border: 1px solid var(--border); padding:15px; border-radius:8px; text-align:left; margin-bottom:10px;">
-        <img src="kdovik_obrazky/kdovik_uceni.png" alt="Zvídavý Kdovík" style="width:60%; max-width:180px; border-radius:6px; margin:8px auto 0; display:block;">
-        <strong style="color:var(--gold); font-size:14px; display:block; margin-top:10px;">Zvídavý Kdovík</strong>
-        <p style="font-size:12px; margin-top:8px; line-height:1.4;">Kdovík se vydává na cestu poznání a zve tě do školních lavic, kde můžeš objevovat nová kouzla, vědomosti a dovednosti. Za každých 10+32 bodů získaných na hodinách ti přiletí safíry do tvého safírového konta.</p>
-        <p style="font-size:11px; margin-top:8px; color:#aebbc8; font-style:italic;">O tuto aktivitu se stará Mia Rose.</p>
+      <div class="hp-flag-card">
+        <img src="kdovik_obrazky/kdovik_uceni.png" alt="Zvídavý Kdovík" class="hp-flag-card-img">
+        <strong class="hp-flag-card-title">Zvídavý Kdovík</strong>
+        <p class="hp-flag-card-text">Kdovík se vydává na cestu poznání a zve tě do školních lavic, kde můžeš objevovat nová kouzla, vědomosti a dovednosti. Za každých 10+32 bodů získaných na hodinách ti přiletí safíry do tvého safírového konta.</p>
+        <p class="hp-flag-card-note">O tuto aktivitu se stará Mia Rose.</p>
 
-        <div style="text-align: center; margin-top: 12px;">
+        <div class="hp-flag-card-footer">
           <a href="#" target="_blank" style="text-decoration: none;">
-            <button style="width: 75%; background: linear-gradient(180deg, #b58900 0%, #856404 100%); border-color: var(--gold);">
-               Výsledky motivaček za měsíce
-            </button>
+            <button>Výsledky motivaček za měsíce</button>
           </a>
         </div>
       </div>
-      <div style="background:var(--surface); border: 1px solid var(--border); padding:15px; border-radius:8px; text-align:left; margin-bottom:10px;">
-        <img src="kdovik_obrazky/kdovik_pise.png" alt="Kdovíkova otázka dne" style="width:60%; max-width:180px; border-radius:6px; margin:8px auto 0; display:block;">
-        <strong style="color:var(--gold); font-size:14px; display:block; margin-top:10px;">Kdovíkova otázka dne</strong>
-        <p style="font-size:12px; margin-top:8px; line-height:1.4;">Každý všední den se v kolejce objeví nová otázka od Kdovíka. Buď rychlý, odpověz správně jako první a můžeš získat safírovou i sladkou odměnu na své konto.</p>
-        <p style="font-size:11px; margin-top:8px; color:#aebbc8; font-style:italic;">Tuto aktivitu má na starosti Shaunee.</p>
+      <div class="hp-flag-card">
+        <img src="kdovik_obrazky/kdovik_pise.png" alt="Kdovíkova otázka dne" class="hp-flag-card-img">
+        <strong class="hp-flag-card-title">Kdovíkova otázka dne</strong>
+        <p class="hp-flag-card-text">Každý všední den se v kolejce objeví nová otázka od Kdovíka. Buď rychlý, odpověz správně jako první a můžeš získat safírovou i sladkou odměnu na své konto.</p>
+        <p class="hp-flag-card-note">Tuto aktivitu má na starosti Shaunee.</p>
 
-        <div style="text-align: center; margin-top: 12px;">
+        <div class="hp-flag-card-footer">
           <a href="#" target="_blank" style="text-decoration: none;">
-            <button style="width: 75%; background: linear-gradient(180deg, #b58900 0%, #856404 100%); border-color: var(--gold);">
-               Výsledky motivaček za měsíce
-            </button>
+            <button>Výsledky motivaček za měsíce</button>
           </a>
         </div>
       </div>
-      <div style="background:var(--surface); border: 1px solid var(--border); padding:15px; border-radius:8px; text-align:left; margin-bottom:10px;">
-        <strong style="color:var(--gold); font-size:14px; display:block; margin-top:10px;">Kdovíkova víkendová výzva</strong>
-        <p style="font-size:12px; margin-top:8px; line-height:1.4;">Každý víkend na tebe čeká speciální soutěž nebo úkol připravený Kdovíkem. Zapoj se, splň výzvu a můžeš získat extra safíry do svého safírového konta.</p>
-        <p style="font-size:11px; margin-top:8px; color:#aebbc8; font-style:italic;">O tuto aktivitu se stará Mia Rose.</p>
+      <div class="hp-flag-card">
+        <strong class="hp-flag-card-title" style="margin-top:0;">Kdovíkova víkendová výzva</strong>
+        <p class="hp-flag-card-text">Každý víkend na tebe čeká speciální soutěž nebo úkol připravený Kdovíkem. Zapoj se, splň výzvu a můžeš získat extra safíry do svého safírového konta.</p>
+        <p class="hp-flag-card-note">O tuto aktivitu se stará Mia Rose.</p>
 
-        <div style="text-align: center; margin-top: 12px;">
+        <div class="hp-flag-card-footer">
           <a href="#" target="_blank" style="text-decoration: none;">
-            <button style="width: 75%; background: linear-gradient(180deg, #b58900 0%, #856404 100%); border-color: var(--gold);">
-               Výsledky motivaček za měsíce
-            </button>
+            <button>Výsledky motivaček za měsíce</button>
           </a>
         </div>
       </div>
@@ -367,5 +354,5 @@
   <div id="hp-copy-toast">Kouzlo zkopírováno!</div>
 
 
-  <script src="kolej.js?v=1"></script>
+  <script src="kolej.js?v=3"></script>
 </div>

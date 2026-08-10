@@ -56,7 +56,7 @@
    ========================================= */
 #hp-door-view, #hp-form-view, #hp-chest-view, 
 #hp-statue-view, #hp-quidditch-view, #hp-gallery-view, #hp-flag-view {
-  height: 626px;
+  height: 571px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -76,7 +76,7 @@
 }
 
 .hp-f-list, .hp-grid, #hp-gallery-list, 
-#hp-tab-potions, #hp-tab-artifacts, .hp-flag-list, #hp-db-list {
+#hp-tab-potions, #hp-tab-artifacts, .hp-flag-list, #hp-db-list, .hp-door-scroll {
   overflow-y: auto !important;
   flex-grow: 1;
   padding-right: 5px;
@@ -784,6 +784,70 @@ area { cursor: pointer; }
   color: var(--text);
   margin: 0;
   line-height: 1.5;
+}
+
+/* Karty v Motivačních soutěžích - jednotná výška podle první karty s obrázkem */
+.hp-flag-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 15px;
+  border-radius: 8px;
+  text-align: left;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  height: 320px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hp-flag-card-img {
+  width: 60%;
+  max-width: 180px;
+  height: 90px;
+  object-fit: contain;
+  border-radius: 6px;
+  margin: 0 auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+.hp-flag-card-title {
+  color: var(--gold);
+  font-size: 14px;
+  display: block;
+  margin-top: 10px;
+  flex-shrink: 0;
+}
+
+.hp-flag-card-text {
+  font-size: 12px;
+  margin-top: 8px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.hp-flag-card-note {
+  font-size: 11px;
+  margin-top: 8px;
+  color: #aebbc8;
+  font-style: italic;
+  flex-shrink: 0;
+}
+
+.hp-flag-card-footer {
+  text-align: center;
+  margin-top: auto;
+  padding-top: 12px;
+  flex-shrink: 0;
+}
+
+.hp-flag-card-footer button {
+  width: 75%;
+  background: linear-gradient(180deg, #b58900 0%, #856404 100%);
+  border-color: var(--gold);
 }
 
 .hp-ohp-card {
