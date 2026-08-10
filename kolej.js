@@ -663,10 +663,10 @@
     const hour = new Date().getHours();
     let image = "kolejky_ruzne/kolejka.png";
 
-    if (hour >= 5 && hour < 7) image = "kolejky_ruzne/kolejka_vychodslunce.png";
-    else if (hour >= 17 && hour < 18) image = "kolejky_ruzne/kolejka_svitani.png";
-    else if (hour >= 18 && hour < 19) image = "kolejky_ruzne/kolejka_zapadslunce.png";
-    else if (hour >= 19 || hour < 5) image = "kolejky_ruzne/kolejka_noc.png";
+    if (hour >= 6 && hour < 8) image = "kolejky_ruzne/kolejka_vychodslunce.png";
+    else if (hour >= 19 && hour < 20) image = "kolejky_ruzne/kolejka_svitani.png";
+    else if (hour >= 20 && hour < 21) image = "kolejky_ruzne/kolejka_zapadslunce.png";
+    else if (hour >= 21 || hour < 6) image = "kolejky_ruzne/kolejka_noc.png";
 
     if (img.getAttribute('src') !== image) {
         img.src = image;
