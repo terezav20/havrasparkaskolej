@@ -9,7 +9,7 @@
     const hp_u = "https://script.google.com/macros/s/AKfycbzDn0lPGlL1PpFQl87aYxsh2k1Ne8_h7BVGp4UfGv5K09JTTPfVzrPpuuJhb6caLu4/exec";
 
     const hp_sList = [
-      {n:"Bubák", s:"Riddikulus", i:"ikony/duch.png"}, 
+      {n:"Bubák", s:"Riddiculus", i:"ikony/duch.png"}, 
       {n:"Drak", s:"Konjunktivitus", i:"ikony/drak.png"}, 
       {n:"Ďasovec", s:"Relashio", i:"ikony/dasovec.png"}, 
       {n:"Had", s:"Vipera evanesca", i:"ikony/had.png"}, 
