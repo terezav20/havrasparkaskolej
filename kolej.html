@@ -2,7 +2,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="kolej.css?v=3">
+  <link rel="stylesheet" href="kolej.css?v=7">
 
   <!-- Animované hvězdné pozadí -->
   <div class="hp-sky" aria-hidden="true">
@@ -39,7 +39,7 @@
   <div id="hp-game-view">
     <img src="kolejky_ruzne/kolejka.png" id="hp-main-room-img" usemap="#image-map" class="hp-room-img" alt="Kolejní místnost">
     <map name="image-map">
-      <area shape="poly" coords="23.4,331.2,17.1,251.1,100.8,259.2,98.1,334.8,25.2,342.9" href="https://bradavice.eu" target="_blank" alt="Krb" title="Krb">
+      <area shape="poly" coords="23.4,331.2,17.1,251.1,100.8,259.2,98.1,334.8,25.2,342.9" alt="Nástěnka" title="Nástěnka" onclick="hp_showBoard()">
       <area shape="poly" coords="128.7,351.9,120.6,355.5,125.1,362.7,160.2,366.3,198,359.1,193.5,353.7,184.5,335.7,189.9,316.8,180,300.6,181.8,264.6,181.8,233.1,183.6,214.2,175.5,194.4,164.7,174.6,158.4,175.5,153,186.3,145.8,202.5,142.2,225.9,142.2,270.9,142.2,294.3,135,308.7,128.7,315.9,132.3,324,134.1,334.8,134.1,342" alt="Socha" title="Socha" onclick="hp_showStatue()">
       <area shape="poly" coords="215.1,490.5,214.2,437.4,247.5,420.3,341.1,450,337.5,509.4,250.2,512.1" alt="Truhla" title="Truhla" onclick="hp_showChest()">
       <area shape="poly" coords="91.8,479.7,142.2,493.2,168.3,465.3,168.3,426.6,126.9,414,89.1,436.5" alt="Balíčky" title="Balíčky" onclick="hp_showForm()">
@@ -96,6 +96,33 @@
           </div>
         </div>
       </div>
+    </div>
+    <button class="hp-back-btn" onclick="hp_hideViews()">Zpět do místnosti</button>
+  </div>
+
+  <div id="hp-board-view" class="hp-hidden">
+    <h2>Nástěnka</h2>
+    <p style="font-size:11.7px; margin-bottom:9px;">Pozvánky, novinky a oznámení pro studenty:</p>
+    <div class="hp-board" id="hp-board-list">
+      <!--
+      Sem vkládej jednotlivé "lístky" na nástěnku. Každý blok zkopíruj a uprav.
+      Pokud žádný lístek nepřidáš (nebo je zakomentovaný jako teď), nástěnka
+      zůstane prázdná a nic se nezobrazí.
+
+      <div class="hp-board-note">
+        <span class="hp-board-pin"></span>
+        <img src="URL_OBRAZKU_POZVANKY" alt="Pozvánka" class="hp-board-note-img">
+        <h3 class="hp-board-note-title">Název akce</h3>
+        <p class="hp-board-note-text">Sem patří text pozvánky nebo popis akce, kterou chceš studentům oznámit.</p>
+        <span class="hp-board-note-meta">Přidal/a: XXX</span>
+      </div>
+      <div class="hp-board-note">
+        <span class="hp-board-pin"></span>
+        <h3 class="hp-board-note-title">Oznámení</h3>
+        <p class="hp-board-note-text">Tahle karta nemá obrázek — hodí se pro krátká textová oznámení, upozornění nebo připomínky.</p>
+        <span class="hp-board-note-meta">Přidal/a: XXX</span>
+      </div>
+      -->
     </div>
     <button class="hp-back-btn" onclick="hp_hideViews()">Zpět do místnosti</button>
   </div>
@@ -247,9 +274,36 @@
   </div>
 
   <div id="hp-quidditch-view" class="hp-hidden">
-    <h2>Famfrpálový tým</h2>
-    <p style="font-size:11.7px; margin-bottom:13.5px;">Soupiska havraspárských hráčů, kteří bojují o Famfrpálový pohár v roce 2026:</p>
-    <div class="hp-f-list" id="hp-q-players-list"></div>
+    <h2>Famfrpál</h2>
+    <div class="hp-tabs">
+      <button class="hp-tab-b active" id="tab-q-players-btn" onclick="hp_switchQuidditchTab('players')">Hráči</button>
+      <button class="hp-tab-b" id="tab-q-info-btn" onclick="hp_switchQuidditchTab('info')">Informace</button>
+      <button class="hp-tab-b" id="tab-q-pokriky-btn" onclick="hp_switchQuidditchTab('pokriky')">Pokřiky</button>
+    </div>
+
+    <div id="hp-tab-q-players">
+      <p style="font-size:11.7px; margin-bottom:13.5px;">Soupiska havraspárských hráčů, kteří bojují o Famfrpálový pohár v roce 2026:</p>
+      <div class="hp-f-list" id="hp-q-players-list"></div>
+    </div>
+
+    <div id="hp-tab-q-info" class="hp-hidden">
+      <div class="hp-card hp-ohp-card">
+        <h3 class="hp-ohp-title">O týmu</h3>
+        <p class="hp-ohp-text">Sem patří obecné informace o havraspárském famfrpálovém týmu — XXX.</p>
+      </div>
+      <div class="hp-card hp-ohp-card">
+        <h3 class="hp-ohp-title">Tréninky</h3>
+        <p class="hp-ohp-text">Sem patří informace o tom, kdy a jak probíhají tréninky — XXX.</p>
+      </div>
+    </div>
+
+    <div id="hp-tab-q-pokriky" class="hp-hidden">
+      <div class="hp-card hp-ohp-card">
+        <h3 class="hp-ohp-title">Havraspárské pokřiky</h3>
+        <p class="hp-ohp-text">"XXX"</p>
+      </div>
+    </div>
+
     <button onclick="hp_hideViews()" style="background:var(--surface); color:var(--text); border-color:var(--border); margin-top:13.5px;">Zpět do místnosti</button>
   </div>
 
@@ -355,5 +409,5 @@
   <div id="hp-copy-toast">Kouzlo zkopírováno!</div>
 
 
-  <script src="kolej.js?v=3"></script>
+  <script src="kolej.js?v=4"></script>
 </div>

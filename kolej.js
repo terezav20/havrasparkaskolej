@@ -220,6 +220,12 @@
       document.getElementById("hp-gallery-view").classList.add("hp-hidden"); 
       document.getElementById("hp-flag-view").classList.add("hp-hidden"); 
       document.getElementById("hp-door-view").classList.add("hp-hidden"); 
+      document.getElementById("hp-board-view").classList.add("hp-hidden"); 
+    } 
+
+    function hp_showBoard() { 
+      hp_bAll(); 
+      document.getElementById("hp-board-view").classList.remove("hp-hidden"); 
     } 
 
     function hp_showForm() { 
@@ -252,6 +258,7 @@
     function hp_showQuidditch() {
       hp_bAll();
       document.getElementById("hp-quidditch-view").classList.remove("hp-hidden");
+      hp_switchQuidditchTab('players');
       const div = document.getElementById("hp-q-players-list");
       div.innerHTML = "";
       hp_qList.forEach(p => {
@@ -260,6 +267,26 @@
         i.innerHTML = `<img src="${p.i}" width="90px" height="90px"><div><strong style="color:var(--text);">${p.n}</strong><br><span style="font-size:10.8px; color:#aebbc8;">${p.p}</span></div>`;
         div.appendChild(i);
       });
+    }
+
+    function hp_switchQuidditchTab(t) {
+      document.getElementById("tab-q-players-btn").classList.remove("active");
+      document.getElementById("tab-q-info-btn").classList.remove("active");
+      document.getElementById("tab-q-pokriky-btn").classList.remove("active");
+      document.getElementById("hp-tab-q-players").classList.add("hp-hidden");
+      document.getElementById("hp-tab-q-info").classList.add("hp-hidden");
+      document.getElementById("hp-tab-q-pokriky").classList.add("hp-hidden");
+
+      if (t === 'players') {
+        document.getElementById("tab-q-players-btn").classList.add("active");
+        document.getElementById("hp-tab-q-players").classList.remove("hp-hidden");
+      } else if (t === 'info') {
+        document.getElementById("tab-q-info-btn").classList.add("active");
+        document.getElementById("hp-tab-q-info").classList.remove("hp-hidden");
+      } else if (t === 'pokriky') {
+        document.getElementById("tab-q-pokriky-btn").classList.add("active");
+        document.getElementById("hp-tab-q-pokriky").classList.remove("hp-hidden");
+      }
     }
 
     function hp_showGallery() {
@@ -666,8 +693,8 @@
     if (hour >= 7 && hour < 8) image = "kolejky_ruzne/kolejka_vychodslunce.png";
     else if (hour >= 19 && hour < 20) image = "kolejky_ruzne/kolejka_svitani.png";
     else if (hour >= 20 && hour < 21) image = "kolejky_ruzne/kolejka_zapadslunce.png";
-    else if (hour >= 21 || hour < 0) image = "kolejky_ruzne/kolejka_noc.png";
-    else if (hour >= 0 || hour < 6) image = "kolejky_ruzne/kolejka_vecer.png";
+    else if (hour >= 21 || hour < 0) image = "kolejky_ruzne/kolejka_vecer2.png";
+    else if (hour >= 0 && hour < 6) image = "kolejky_ruzne/kolejka_noc.png";
 
     if (img.getAttribute('src') !== image) {
         img.src = image;

@@ -54,7 +54,7 @@
    2. SCROLLOVÁNÍ A STRÁNKY
    ========================================= */
 #hp-door-view, #hp-form-view, #hp-chest-view, 
-#hp-statue-view, #hp-quidditch-view, #hp-gallery-view, #hp-flag-view {
+#hp-statue-view, #hp-quidditch-view, #hp-gallery-view, #hp-flag-view, #hp-board-view {
   height: 513.9px;
   display: flex;
   flex-direction: column;
@@ -69,13 +69,14 @@
 
 /* Odsazení pro všechny pohledy kromě hlavní místnosti */
 #hp-door-view, #hp-form-view, #hp-chest-view, 
-#hp-statue-view, #hp-quidditch-view, #hp-gallery-view, #hp-flag-view {
+#hp-statue-view, #hp-quidditch-view, #hp-gallery-view, #hp-flag-view, #hp-board-view {
   padding: 0 3.6px 5.4px;
   box-sizing: border-box;
 }
 
 .hp-f-list, .hp-grid, #hp-gallery-list, 
-#hp-tab-potions, #hp-tab-artifacts, .hp-flag-list, #hp-db-list, .hp-door-scroll {
+#hp-tab-potions, #hp-tab-artifacts, .hp-flag-list, #hp-db-list, .hp-door-scroll,
+.hp-board, #hp-tab-q-players, #hp-tab-q-info, #hp-tab-q-pokriky {
   overflow-y: auto !important;
   flex-grow: 1;
   padding-right: 4.5px;
@@ -743,7 +744,8 @@ area { cursor: pointer; }
 
 /* Tlačítko Zpět přitažené k patě pohledu (klepadlo, motivační soutěže) */
 #hp-door-view .hp-back-btn,
-#hp-flag-view .hp-back-btn {
+#hp-flag-view .hp-back-btn,
+#hp-board-view .hp-back-btn {
   margin-top: auto;
 }
 
@@ -929,4 +931,93 @@ area { cursor: pointer; }
   color: #aebbc8;
   font-style: italic;
   margin: 0;
+}
+/* =========================================
+   11. NÁSTĚNKA (pergamenové oznámení)
+   ========================================= */
+
+.hp-board {
+  display: flex;
+  flex-direction: column;
+  gap: 15.3px;
+  padding: 10.8px 5.4px 5.4px;
+}
+
+.hp-board-note {
+  position: relative;
+  background:
+    radial-gradient(circle at 18% 12%, rgba(255,255,255,0.35), transparent 42%),
+    radial-gradient(circle at 85% 90%, rgba(101, 72, 31, 0.22), transparent 55%),
+    linear-gradient(150deg, #f2e4bb 0%, #e7d29e 45%, #d7bb80 100%);
+  border-radius: 2.7px;
+  padding: 18px 14.4px 13.5px;
+  box-shadow:
+    0 9px 18px rgba(0, 0, 0, 0.45),
+    inset 0 0 22.5px rgba(112, 78, 30, 0.18);
+  color: #4a3417;
+  text-align: left;
+  transform: rotate(-1.1deg);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.hp-board-note:nth-child(even) { transform: rotate(1deg); }
+.hp-board-note:nth-child(3n) { transform: rotate(-0.5deg); }
+
+.hp-board-note:hover {
+  transform: rotate(0deg) scale(1.015);
+  box-shadow:
+    0 10.8px 21.6px rgba(0, 0, 0, 0.5),
+    inset 0 0 22.5px rgba(112, 78, 30, 0.18);
+}
+
+.hp-board-pin {
+  position: absolute;
+  top: -8.1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14.4px;
+  height: 14.4px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #ff7a68 0%, #9c2317 55%, #6e1109 100%);
+  box-shadow: 0 2.7px 5.4px rgba(0, 0, 0, 0.55);
+  border: 0.9px solid #4a0c06;
+}
+
+.hp-board-note-img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 220px;
+  object-fit: contain;
+  border-radius: 1.8px;
+  margin: 0 auto 9px;
+  border: 0.9px solid rgba(90, 60, 20, 0.35);
+  background: rgba(74, 52, 23, 0.12);
+  filter: sepia(0.18) contrast(1.02);
+}
+
+.hp-board-note h3.hp-board-note-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 22.5px;
+  font-weight: normal;
+  color: #6b3a12 !important;
+  text-shadow: none !important;
+  margin: 0 0 4.5px;
+  letter-spacing: 0.3px;
+}
+
+.hp-board-note p.hp-board-note-text {
+  font-size: 10.8px;
+  line-height: 1.5;
+  color: #4a3417 !important;
+  margin: 0;
+}
+
+.hp-board-note-meta {
+  display: block;
+  font-size: 9px;
+  color: #7a5a30;
+  font-style: italic;
+  margin-top: 7.2px;
 }
