@@ -694,7 +694,7 @@
     else if (hour >= 19 && hour < 20) image = "kolejky_ruzne/kolejka_svitani.png";
     else if (hour >= 20 && hour < 21) image = "kolejky_ruzne/kolejka_zapadslunce.png";
     else if (hour >= 21 || hour < 0) image = "kolejky_ruzne/kolejka_vecer2.png";
-    else if (hour >= 0 && hour < 6) image = "kolejky_ruzne/kolejka_noc.png";
+    else if (hour >= 0 && hour < 6) image = "kolejky_ruzne/kolejka_noc4.png";
 
     if (img.getAttribute('src') !== image) {
         img.src = image;
