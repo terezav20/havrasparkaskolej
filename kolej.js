@@ -42,20 +42,20 @@
 
     const hp_aList = [
       {n:"Očarovaný nůž", i:"https://bradavice.eu/obrazky/pu/nuz.jpg", d:"Otráví sladkosti, které pak budou energii odebírat namísto přidávání.", t:"neg"}, 
-      {n:"Zakrvácené karty", i:"https://bradavice.eu/obrazky/pu/kartyz.jpg", d:"Přidá na vámi vlastněné karty strašidelné stříkance krve.", t:"neg"}, 
+      {n:"Zakrvácené karty", i:"https://bradavice.eu/obrazky/pu/kartyz.jpg", d:"Přidá na vámi vlastněné karty stříkance krve.", t:"neg"}, 
       {n:"Temnonosný prášek", i:"https://bradavice.eu/obrazky/pu/prasek.jpg", d:"Při příchodu do sekce 'Majetek' a následném odchodu zatmaví EB na černo po dobu 5 minut.", t:"neg"}, 
       {n:"Amulet smůly", i:"https://bradavice.eu/obrazky/pu/amulets.jpg", d:"Zamezuje nalezení balíčků a pravděpodobně i TK.", t:"neg"}, 
       {n:"Náramek neoblíbenosti", i:"https://bradavice.eu/obrazky/pu/naramekn.jpg", d:"Vypisuje pouze červené hlášky (které odebírají galeony).", t:"neg"}, 
-      {n:"Náramek oblíbenosti", i:"https://bradavice.eu/obrazky/pu/narameko.jpg", d:"Vypisuje pouze zelené hlášky (které přidávají vzácné galeony).", t:"pos"}, 
-      {n:"Ruce Mozkomora", i:"https://bradavice.eu/obrazky/pu/mozkomru.jpg", d:"Mnohonásobně odebírají drahocennou energii při trénování Famfrpálu a brigádách.", t:"neg"}, 
+      {n:"Náramek oblíbenosti", i:"https://bradavice.eu/obrazky/pu/narameko.jpg", d:"Vypisuje pouze zelené hlášky (které přidávají galeony).", t:"pos"}, 
+      {n:"Ruce Mozkomora", i:"https://bradavice.eu/obrazky/pu/mozkomru.jpg", d:"Mnohonásobně odebírají energii při trénování Famfrpálu a brigádách.", t:"neg"}, 
       {n:"Lotroskop", i:"https://bradavice.eu/obrazky/pu/lotroskop.jpg", d:"Zasílá do SP systémovou zprávu o tom, že vám někdo podstrčil nějaké zboží od BB.", t:"pos"}, 
-      {n:"Ruka slávy", i:"https://bradavice.eu/obrazky/pu/rukasl.jpg", d:"Mocný předmět, který spolehlivě zamezuje zaktivování Temnonosného prášku.", t:"pos"}, 
-      {n:"Sérum proti neviditelnosti", i:"https://bradavice.eu/obrazky/pu/sernev.jpg", d:"Okamžitě a účinně deaktivuje lektvar neviditelnosti.", t:"pos"}, 
+      {n:"Ruka slávy", i:"https://bradavice.eu/obrazky/pu/rukasl.jpg", d:"Zamezuje zaktivování Temnonosného prášku.", t:"pos"}, 
+      {n:"Sérum proti neviditelnosti", i:"https://bradavice.eu/obrazky/pu/sernev.jpg", d:"Deaktivuje lektvar neviditelnosti.", t:"pos"}, 
       {n:"Seshlá hlava", i:"https://bradavice.eu/obrazky/pu/hlava.jpg", d:"Vypisuje podivné a velmi vtipné hlášky pod vodorovné menu.", t:"pos"}, 
       {n:"Zakletý náhrdelník", i:"https://bradavice.eu/obrazky/pu/nahrdelo.jpg", d:"Zrádný šperk. Přidává nebo ubírá každý den po obnovení systému energii.", t:"neu"}, 
-      {n:"Pamatováček", i:"https://bradavice.eu/obrazky/pu/pamatovacek2.jpg", d:"Magická kulička. Naplní se jasně červeným kouřem, kdykoliv na něco zapomeneš.", t:"pos"}, 
-      {n:"Seshlá ruka", i:"https://bradavice.eu/obrazky/pu/rukas.jpg", d:"Zobrazuje se v menu. Stihnete-li včas zareagovat, přidá vám energii, pokud ne, energii odebere.", t:"neu"}, 
-      {n:"Velký obraceč času", i:"https://bradavice.eu/obrazky/pu/obracec.png", d:"Dokáže výrazně pomoct v portále a celkově ti umožní ovládat a měnit čas.", t:"pos"}
+      {n:"Pamatováček", i:"https://bradavice.eu/obrazky/pu/pamatovacek2.jpg", d:"Magická kulička. Připomíná ti to, že máš odevzdat úkoly.", t:"pos"}, 
+      {n:"Seshlá ruka", i:"https://bradavice.eu/obrazky/pu/rukas.jpg", d:"Zobrazuje se ve vertikálním menu. Stihnete-li včas zareagovat, přidá vám energii, pokud ne, energii odebere.", t:"neu"}, 
+      {n:"Velký obraceč času", i:"https://bradavice.eu/obrazky/pu/obracec.png", d:"Dokáže výrazně pomoct v portále i při jiných hrách a celkově ti umožní ovládat a měnit čas.", t:"pos"}
     ]; 
 
     const hp_qList = [
