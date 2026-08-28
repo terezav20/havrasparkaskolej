@@ -978,9 +978,9 @@ area { cursor: pointer; }
   width: 14.4px;
   height: 14.4px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 30%, #ff7a68 0%, #9c2317 55%, #6e1109 100%);
+  background: radial-gradient(circle at 35% 30%, #7aa2d6 0%, #387eda 55%, #0065e9 100%);
   box-shadow: 0 2.7px 5.4px rgba(0, 0, 0, 0.55);
-  border: 0.9px solid #4a0c06;
+  border: 0.9px solid #050024;
 }
 
 .hp-board-note-img {
