@@ -691,7 +691,7 @@
     let image = "kolejky_ruzne/kolejka_oslava/kolejka_oslava.png";
 
     if (hour >= 7 && hour < 8) image = "kolejky_ruzne/kolejka_oslava/kolejka_oslava_vychod.png";
-    else if (hour >= 20 && hour < 21) image = "kolejky_ruzne/kolejka_oslava/kolejka_oslava_vychod.png";
+    else if (hour >= 20 && hour < 21) image = "kolejky_ruzne/kolejka_oslava/oslava_kolejka_vychod.png";
     else if (hour >= 21 || hour < 0) image = "kolejky_ruzne/kolejka_oslava/kolejka_oslava_vecer.png";
     else if (hour >= 0 && hour < 6) image = "kolejky_ruzne/kolejka_oslava/kolejka_oslava_noc.png";
 
