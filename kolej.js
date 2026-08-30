@@ -683,45 +683,23 @@
     /* -----------------------------------------
        8. OBRÁZEK MÍSTNOSTI OSLAVA
        ----------------------------------------- */
-
-    function updateRoomImage() {
-    const img = document.getElementById("hp-main-room-img");
-    if (!img) return;
-    const hour = new Date().getHours();
-    let image = "kolejky_ruzne/kolejka_oslava/kolejka_oslava.png";
-
-    if (hour >= 7 && hour < 8) image = "kolejky_ruzne/kolejka_oslava/kolejka_oslava_vychod.png";
-    else if (hour >= 20 && hour < 21) image = "kolejky_ruzne/kolejka_oslava/oslava_kolejka_vychod.png";
-    else if (hour >= 21 || hour < 0) image = "kolejky_ruzne/kolejka_oslava/kolejka_oslava_vecer.png";
-    else if (hour >= 0 && hour < 6) image = "kolejky_ruzne/kolejka_oslava/kolejka_oslava_noc.png";
-
-    if (img.getAttribute('src') !== image) {
-        img.src = image;
-    }
-}
-/*
-    -----------------------------------------
-    8. OBRÁZEK MÍSTNOSTI PODLE DENNÍ DOBY
-    -----------------------------------------
-
     function updateRoomImage() {
         const img = document.getElementById("hp-main-room-img");
         if (!img) return;
 
         const hour = new Date().getHours();
-        let image = "kolejky_ruzne/kolejka.png";
+        let image = "kolejky_ruzne/kolej/kolejka.webp";
 
-        if (hour >= 7 && hour < 8) image = "kolejky_ruzne/kolejka_vychodslunce.png";
-        else if (hour >= 19 && hour < 20) image = "kolejky_ruzne/kolejka_svitani.png";
-        else if (hour >= 20 && hour < 21) image = "kolejky_ruzne/kolejka_zapadslunce.png";
-        else if (hour >= 21 || hour < 0) image = "kolejky_ruzne/kolejka_vecer2.png";
-        else if (hour >= 0 && hour < 6) image = "kolejky_ruzne/kolejka_noc4.png";
+        if (hour >= 6 && hour < 8) image = "kolejky_ruzne/kolej/kolejka_vychodslunce.webp";
+        else if (hour >= 19 && hour < 20) image = "kolejky_ruzne/kolej/kolejka_zapadslunce.webp";
+        else if (hour >= 21 || hour < 0) image = "kolejky_ruzne/kolej/kolejka_vecer2.webp";
+        else if (hour >= 0 && hour < 6) image = "kolejky_ruzne/kolej/kolejka_noc4.webp";
 
         if (img.getAttribute('src') !== image) {
             img.src = image;
         }
     }
-*/
+
 
 updateRoomImage();
 hp_fPkg();
