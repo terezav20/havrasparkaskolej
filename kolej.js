@@ -51,10 +51,10 @@
       {n:"Lotroskop", i:"https://bradavice.eu/obrazky/pu/lotroskop.jpg", d:"Zasílá do SP systémovou zprávu o tom, že vám někdo podstrčil nějaké zboží od BB.", t:"pos"}, 
       {n:"Ruka slávy", i:"https://bradavice.eu/obrazky/pu/rukasl.jpg", d:"Zamezuje zaktivování Temnonosného prášku.", t:"pos"}, 
       {n:"Sérum proti neviditelnosti", i:"https://bradavice.eu/obrazky/pu/sernev.jpg", d:"Deaktivuje lektvar neviditelnosti.", t:"pos"}, 
-      {n:"Seshlá hlava", i:"https://bradavice.eu/obrazky/pu/hlava.jpg", d:"Vypisuje podivné a velmi vtipné hlášky pod vodorovné menu.", t:"pos"}, 
+      {n:"Seschlá hlava", i:"https://bradavice.eu/obrazky/pu/hlava.jpg", d:"Vypisuje podivné a velmi vtipné hlášky pod vodorovné menu.", t:"pos"}, 
       {n:"Zakletý náhrdelník", i:"https://bradavice.eu/obrazky/pu/nahrdelo.jpg", d:"Zrádný šperk. Přidává nebo ubírá každý den po obnovení systému energii.", t:"neu"}, 
       {n:"Pamatováček", i:"https://bradavice.eu/obrazky/pu/pamatovacek2.jpg", d:"Magická kulička. Připomíná ti to, že máš odevzdat úkoly.", t:"pos"}, 
-      {n:"Seshlá ruka", i:"https://bradavice.eu/obrazky/pu/rukas.jpg", d:"Zobrazuje se ve vertikálním menu. Stihnete-li včas zareagovat, přidá vám energii, pokud ne, energii odebere.", t:"neu"}, 
+      {n:"Seschlá ruka", i:"https://bradavice.eu/obrazky/pu/rukas.jpg", d:"Zobrazuje se ve vertikálním menu. Stihnete-li včas zareagovat, přidá vám energii, pokud ne, energii odebere.", t:"neu"}, 
       {n:"Velký obraceč času", i:"https://bradavice.eu/obrazky/pu/obracec.png", d:"Dokáže výrazně pomoct v portále i při jiných hrách a celkově ti umožní ovládat a měnit čas.", t:"pos"}
     ]; 
 
