@@ -2,7 +2,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="kolej.css?v=3">
+  <link rel="stylesheet" href="kolej.css?v=4.0">
 
   <!-- Animované hvězdné pozadí -->
   <div class="hp-sky" aria-hidden="true">
@@ -46,7 +46,7 @@
       <area shape="poly" coords="232.2,181.8,327.6,151.2,333,312.3,234,314.1" alt="Knihovna" title="Knihovna" onclick="hp_showDoor()">
       <area shape="poly" coords="30.6,125.1,29.7,205.2,60.3,240.3,86.4,220.5,82.8,148.5" alt="Motivační soutěže" title="Motivační soutěže" onclick="hp_showFlag()">
       <area shape="poly" coords="239.4,369.9,216,374.4,231.3,384.3,261,379.8" href="https://www.canva.com/design/DAHTq_U7JFY/vw0QlwSNY4srMd-o1Jzaiw/view?utm_content=DAHTq_U7JFY&utm_campaign=designshare&utm_medium=link&utm_source=viewer" target="_blank" alt="Návod HP3" title="Návod">
-      <!-- <area shape="poly" coords="20.7,6.3,93.6,71.1,173.7,101.7,243,93.6,286.2,57.6,315.9,5.4" alt="Famfrpál" title="Famfrpál" onclick="hp_showQuidditch()"> -->
+      <area shape="poly" coords="20.7,6.3,93.6,71.1,173.7,101.7,243,93.6,286.2,57.6,315.9,5.4" alt="Famfrpál" title="Famfrpál" onclick="hp_showQuidditch()">
       <area shape="poly" coords="279,86.4,282.6,132.3,310.5,116.1,308.7,65.7" alt="Obrazárna" title="Obrazárna" onclick="hp_showGallery()">
       <area shape="poly" coords="5.4,440.1,51.3,452.7,74.7,486,54,500.4,9,503.1" href="https://bradavice.eu/kuchyn.php?action=havrvchod" target="_blank" alt="Kuchyň" title="Kuchyň">
     </map>
@@ -287,8 +287,8 @@
     <h2>Famfrpál</h2>
     <div class="hp-tabs">
       <button class="hp-tab-b active" id="tab-q-players-btn" onclick="hp_switchQuidditchTab('players')">Hráči</button>
-      <button class="hp-tab-b" id="tab-q-info-btn" onclick="hp_switchQuidditchTab('info')">Informace</button>
-      <button class="hp-tab-b" id="tab-q-pokriky-btn" onclick="hp_switchQuidditchTab('pokriky')">Pokřiky</button>
+      <button class="hp-tab-b" id="tab-q-info-btn" onclick="hp_switchQuidditchTab('info')">Jak trénovat?</button>
+      <button class="hp-tab-b hp-hidden" id="tab-q-pokriky-btn" onclick="hp_switchQuidditchTab('pokriky')">Pokřiky</button>
     </div>
 
     <div id="hp-tab-q-players">
@@ -298,12 +298,86 @@
 
     <div id="hp-tab-q-info" class="hp-hidden">
       <div class="hp-card hp-ohp-card">
-        <h3 class="hp-ohp-title">O týmu</h3>
-        <p class="hp-ohp-text">Sem patří obecné informace o havraspárském famfrpálovém týmu — XXX.</p>
+        <h3 class="hp-ohp-title">Rychlý průvodce pro nové hráče</h3>
+        <p class="hp-ohp-text">Na začátku není potřeba řešit všechny vlastnosti své vysněné pozice. Nejdřív je dobré vybudovat základ, který využiješ prakticky kdekoliv na hřišti.</p>
       </div>
+
       <div class="hp-card hp-ohp-card">
-        <h3 class="hp-ohp-title">Tréninky</h3>
-        <p class="hp-ohp-text">Sem patří informace o tom, kdy a jak probíhají tréninky — XXX.</p>
+        <h3 class="hp-ohp-title">Co trénovat jako první?</h3>
+        <p class="hp-ohp-text">Prioritou každého nového hráče by měla být především <b>obratnost a rychlost letu</b>.</p>
+        <div class="hp-ohp-symbols">
+          <div class="hp-ohp-symbol-row">
+            <span class="hp-ohp-symbol-label">Obratnost</span>
+            <span class="hp-ohp-symbol-value">alespoň 20 → maximum 42</span>
+          </div>
+          <div class="hp-ohp-symbol-row">
+            <span class="hp-ohp-symbol-label">Rychlost letu</span>
+            <span class="hp-ohp-symbol-value">alespoň 15 → maximum 24</span>
+          </div>
+          <div class="hp-ohp-symbol-row">
+            <span class="hp-ohp-symbol-label">Rychlost letu (brankář)</span>
+            <span class="hp-ohp-symbol-value">stačí cca 16</span>
+          </div>
+        </div>
+        <p class="hp-ohp-text" style="margin-top:7.2px;">Jakmile se dostaneš přibližně na 20 obratnosti a 15 rychlosti, můžeš začít přidávat specializovaný trénink. Na rychlost a obratnost ale nezapomínej a postupně je dál navyšuj.</p>
+      </div>
+
+      <div class="hp-card hp-ohp-card">
+        <h3 class="hp-ohp-title">Odrážeč</h3>
+        <p class="hp-ohp-text"><b>Pořadí tréninku:</b> silný úder → přesnost odpalu → rychlost protiodpalu → kroucený odpal</p>
+        <p class="hp-ohp-text">Silný úder můžeš postupně dostat až na 25, není ale nutné trénovat pouze jej — klidně ho průběžně střídej například s přesností odpalu. Odrážeč potřebuje rychlost a obratnost, aby se vůbec dokázal k potlouku dostat. Potom přichází na řadu schopnost pořádně ho odpálit a poslat ho tam, kam potřebuje.</p>
+      </div>
+
+      <div class="hp-card hp-ohp-card">
+        <h3 class="hp-ohp-title">Střelec</h3>
+        <p class="hp-ohp-text"><b>Pořadí tréninku:</b> síla hodu → odebrání míče → přesnost hodu / udržení míče</p>
+        <p class="hp-ohp-text">Sílu hodu můžeš postupně trénovat až na 25 a zároveň ji prokládat třeba s odebráním míče. Střelec se musí nejprve dostat k soupeři, proto potřebuje rychlost a obratnost. Pak přichází souboj o camrál — musí ho umět získat a ideálně si ho také udržet. Síla a přesnost hodu mu následně pomáhají při samotném zakončení na bránu.</p>
+      </div>
+
+      <div class="hp-card hp-ohp-card">
+        <h3 class="hp-ohp-title">Brankář</h3>
+        <p class="hp-ohp-text"><b>Pořadí tréninku (po obratnosti):</b> bránění → odebrání míče → udržení míče → síla hodu</p>
+        <p class="hp-ohp-text">Obratnost mu pomáhá reagovat na střely a přesouvat se při bránění. Potřebuje ale také samotnou střelu zastavit, udržet získaný camrál nebo si ho případně vzít zpátky. Rychlost letu se hodí při přesunu mezi pozicemi, ale na rozdíl od ostatních hráčů nemusí být její maximální hodnota první prioritou.</p>
+      </div>
+
+      <div class="hp-card hp-ohp-card">
+        <h3 class="hp-ohp-title">Chytač</h3>
+        <p class="hp-ohp-text">Pro chytače jsou základní vlastnosti obzvlášť důležité. Potom pokračuj především: <b>rozhled → postřeh</b> — a nezapomeň ani na odolnost.</p>
+        <p class="hp-ohp-text">Chytač potřebuje být rychlý a obratný, protože se musí pohybovat za zlatonkou a soupeřit s druhým chytačem. Rozhled mu pomáhá při jejím hledání a postřeh následně ve chvíli, kdy ji potřebuje skutečně chytit.</p>
+      </div>
+
+      <div class="hp-card hp-ohp-card">
+        <h3 class="hp-ohp-title">A co odolnost?</h3>
+        <p class="hp-ohp-text">Na odolnost by postupně měli myslet všichni hráči kromě brankáře. Hodí se především proto, že během zápasu můžeš schytat útok potloukem a potřebuješ na hřišti něco vydržet.</p>
+      </div>
+
+      <div class="hp-card hp-ohp-card">
+        <h3 class="hp-ohp-title">Jak často trénovat?</h3>
+        <p class="hp-ohp-text">Pokud máš možnost, vyplatí se využívat kratší tréninky pravidelně během dne. Není ale potřeba hlídat hru každé dvě hodiny — <b>každý odtrénovaný trénink se počítá.</b></p>
+        <div style="overflow-x:auto;">
+          <table class="hp-trezor-table">
+            <thead>
+              <tr>
+                <th style="text-align:left;">Intenzita</th>
+                <th style="text-align:center;">Energie</th>
+                <th style="text-align:center;">Doba</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Velmi lehký</td><td style="text-align:center;">15 %</td><td style="text-align:center;">2 h</td></tr>
+              <tr><td>Lehký</td><td style="text-align:center;">25 %</td><td style="text-align:center;">3 h</td></tr>
+              <tr><td>Těžší</td><td style="text-align:center;">40 %</td><td style="text-align:center;">5 h</td></tr>
+              <tr><td>Těžký</td><td style="text-align:center;">60 %</td><td style="text-align:center;">8 h</td></tr>
+              <tr><td>Intenzivní</td><td style="text-align:center;">80 %</td><td style="text-align:center;">12 h</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="hp-ohp-motto">
+        <p class="hp-ohp-motto-cz" style="font-size:11.7px; font-style:normal; margin-bottom:7.2px;"><b>Když si máš zapamatovat jen jednu věc:</b></p>
+        <p class="hp-ohp-motto-cz" style="font-size:10.8px;">Nejdřív obratnost + rychlost. Dostaň se alespoň na 20 obratnosti a 15 rychlosti, potom postupně přidávej vlastnosti své pozice a zároveň základní dvojici dotahuj co nejvýš.</p>
+        <p class="hp-ohp-motto-cz" style="font-size:10.8px; margin-top:7.2px;"><b>Cílově: 42 obratnost + 24 rychlost</b> (u brankáře stačí rychlost přibližně 16)</p>
       </div>
     </div>
 
@@ -431,5 +505,5 @@
   <div id="hp-copy-toast">Kouzlo zkopírováno!</div>
 
 
-  <script src="kolej.js?v=9"></script>
+  <script src="kolej.js?v=1.0"></script>
 </div>

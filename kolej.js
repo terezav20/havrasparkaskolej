@@ -69,7 +69,14 @@
       {p:"Brankář", n:"Jméno Brankáře", i:"famfr/brankar.png"}
     ];
 
-    let hp_x, hp_dbData = [], hp_studentiData = [];
+    // Přehled studujících – seznam se zadává napevno přímo zde v kódu.
+    // Pro každého studenta odkomentuj/zkopíruj řádek níže a uprav hodnoty:
+    // jmeno = jméno studenta, portret = cesta/URL k fotce, info = krátký popisek.
+    const hp_studentiData = [
+      // {jmeno:"Jméno Studenta", portret:"ikony/eagle.png", info:"Krátký popisek studenta."},
+    ];
+
+    let hp_x, hp_dbData = [];
 
     /* -----------------------------------------
        2. NAČÍTÁNÍ A CACHOVÁNÍ DAT (Google Apps Script)
@@ -100,7 +107,6 @@
       if (elementTK) { elementTK.innerText = noveTK; }
 
       hp_renderTrezor(d.safiry || []);
-      hp_studentiData = d.studenti || [];
 
       if (d.roomImg) {
         let cestaKObrazku = d.roomImg.startsWith("http") ? d.roomImg : "kolejky_ruzne/" + d.roomImg;
@@ -609,15 +615,19 @@
       }
     }
 
+    let hp_searchTimeout = null;
+    let hp_posledniShodaUrl = null; // URL, u které nám server naposledy potvrdil, že už byla nalezena
+
     function hp_checkAutocompleteAndDuplicate() {
       let inputVal = document.getElementById("hp-f-url").value.trim();
       const infoDiv = document.getElementById("hp-duplicita-info");
-      
+
       if (!inputVal) {
         infoDiv.style.display = "none";
         return;
       }
 
+      // Rychlé doplnění URL podle ID z nedávno nalezených balíčků (bez čekání na server).
       if (!inputVal.startsWith("http") && !inputVal.includes("/")) {
         const shodaPodleId = hp_dbData.find(b => b.id.toLowerCase() === inputVal.toLowerCase());
         if (shodaPodleId) {
@@ -626,21 +636,39 @@
         }
       }
 
-      const nalezenyBalicek = hp_dbData.find(b => 
-        b.url.toLowerCase() === inputVal.toLowerCase() || 
-        b.id.toLowerCase() === inputVal.toLowerCase()
-      );
+      // Ověření, jestli balíček už byl nalezen, se ptá přímo serveru (prohledá celou historii,
+      // ne jen posledních pár týdnů) – s malým zpožděním, aby se nevolalo při každém úhozu.
+      clearTimeout(hp_searchTimeout);
+      hp_searchTimeout = setTimeout(() => hp_hledejBalicek(inputVal, infoDiv), 400);
+    }
 
-      if (nalezenyBalicek) {
-        infoDiv.style.display = "block";
-        infoDiv.innerHTML = ` <strong>Tento balíček už byl nalezen!</strong><br>` +
-                             `<strong>Vložil/a:</strong> ${nalezenyBalicek.jmeno}<br>` +
-                             `<strong>Obsah:</strong> ${nalezenyBalicek.obsah}`;
-        document.getElementById("hp-f-obsah").value = nalezenyBalicek.obsah;
-      } else {
-        infoDiv.style.display = "none";
+    async function hp_hledejBalicek(dotaz, infoDiv) {
+      try {
+        const r = await fetch(hp_u + "?search=" + encodeURIComponent(dotaz), { cache: "no-store" });
+        const d = await r.json();
+
+        if (d.nalezeno) {
+          hp_posledniShodaUrl = d.url;
+          infoDiv.style.display = "block";
+          infoDiv.innerHTML = `
+            <div style="display:flex; align-items:center; gap:9px;">
+              <img src="${d.url}" onerror="this.src='https://img.icons8.com/fluency/48/box.png'" style="width:45px; height:45px; object-fit:cover; border-radius:5.4px; flex-shrink:0;">
+              <div>
+                <strong>Tento balíček už byl nalezen!</strong><br>
+                <strong>Vložil/a:</strong> ${d.jmeno}<br>
+                <strong>Obsah:</strong> ${d.obsah}
+              </div>
+            </div>`;
+          document.getElementById("hp-f-obsah").value = d.obsah;
+        } else {
+          hp_posledniShodaUrl = null;
+          infoDiv.style.display = "none";
+        }
+      } catch (e) {
+        console.error("Chyba při ověřování balíčku:", e);
       }
     }
+
 
     async function hp_sendForm() { 
       let u = document.getElementById("hp-f-url").value.trim(), 
@@ -663,7 +691,7 @@
         let id = "Neznámé ID"; 
         if (u.indexOf("balicky/") !== -1) { id = u.substring(u.indexOf("balicky/") + 8).replace(".png",""); } 
         
-        const jeDuplicitni = hp_dbData.some(b => b.url === u); 
+        const jeDuplicitni = hp_posledniShodaUrl === u || hp_dbData.some(b => b.url === u); 
         if (jeDuplicitni) { 
           alert("Tento balíček už byl v minulosti nalezen. Informace se přesto uložila do databáze."); 
         } else { 
@@ -671,6 +699,7 @@
           hp_dbData.push({ url: u, id: id, obsah: o, jmeno: j }); 
           hp_renderDb(); 
         } 
+        hp_posledniShodaUrl = null;
         document.getElementById("hp-f-url").value = ""; 
         document.getElementById("hp-f-obsah").value = ""; 
         document.getElementById("hp-f-jmeno").value = ""; 
