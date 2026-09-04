@@ -142,7 +142,7 @@
 
     async function hp_fPkg() { 
       try { 
-        const r = await fetch(hp_u); 
+        const r = await fetch(hp_u + (hp_u.includes("?") ? "&" : "?") + "_=" + Date.now(), { cache: "no-store" }); 
         const d = await r.json(); 
 
         hp_applyData(d);
@@ -688,7 +688,7 @@
         if (!img) return;
 
         const hour = new Date().getHours();
-        let image = "kolejky_ruzne/kolej/narozeniny_apo.webp";
+        let image = "kolejky_ruzne/kolej/kolejka.webp";
 
         if (hour >= 6 && hour < 8) image = "kolejky_ruzne/kolej/kolejka_vychodslunce.webp";
         else if (hour >= 19 && hour < 20) image = "kolejky_ruzne/kolej/kolejka_zapadslunce.webp";
@@ -700,9 +700,6 @@
         }
     }
 
-
-updateRoomImage();
-hp_fPkg();
 
 // Aktualizace každých 5 minut
 setInterval(() => {
