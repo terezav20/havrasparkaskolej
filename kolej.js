@@ -624,11 +624,14 @@
     }
 
     function hp_filtrujHistorii() {
+      const filtrEl = document.getElementById("hp-db-filter");
+      document.getElementById("hp-db-filter-clear").style.display = filtrEl.value ? "block" : "none";
       hp_renderDb();
     }
 
     function hp_vycistitFiltr() {
       document.getElementById("hp-db-filter").value = "";
+      document.getElementById("hp-db-filter-clear").style.display = "none";
       hp_renderDb();
     }
 
@@ -658,7 +661,7 @@
         const jeAktualni = !!hp_dnesniUrl && b.url === hp_dnesniUrl;
 
         const r = document.createElement("tr"); 
-        if (jeAktualni) r.style.outline = "1.8px solid #4affa4";
+        if (jeAktualni) r.style.backgroundColor = "rgba(74, 255, 164, 0.14)";
 
         const img = document.createElement("img");
         img.src = b.url;
@@ -674,15 +677,15 @@
         const codeEl = document.createElement("code");
         codeEl.textContent = b.id;
         tdId.appendChild(codeEl);
-        if (jeAktualni) {
-          const badge = document.createElement("div");
-          badge.textContent = "Aktuální";
-          badge.style.cssText = "margin-top:2.7px; font-size:8.1px; font-weight:bold; color:#0d1b12; background:#4affa4; padding:0.9px 5.4px; border-radius:999px; display:inline-block;";
-          tdId.appendChild(badge);
-        }
 
         const tdObsah = document.createElement("td");
         tdObsah.textContent = b.obsah;
+        if (jeAktualni) {
+          const znacka = document.createElement("div");
+          znacka.textContent = "✓ Aktuální";
+          znacka.style.cssText = "margin-top:2.7px; font-size:9px; font-weight:bold; color:#4affa4;";
+          tdObsah.appendChild(znacka);
+        }
 
         const tdJmeno = document.createElement("td");
         tdJmeno.textContent = b.jmeno;
