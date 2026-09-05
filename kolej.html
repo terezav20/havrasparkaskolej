@@ -2,7 +2,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="kolej.css?v=4.0">
+  <link rel="stylesheet" href="kolej.css?v=3">
 
   <!-- Animované hvězdné pozadí -->
   <div class="hp-sky" aria-hidden="true">
@@ -134,32 +134,44 @@
   </div>
 
   <div id="hp-form-view" class="hp-hidden">
-    <h2>Přidat nový balíček</h2>
-    <div class="hp-form-box">
-      <div id="hp-duplicita-info" style="display:none; background:#5c1d24; border:0.9px solid #ff4a5a; padding:9px; border-radius:5.4px; font-size:10.8px; width:80%; margin-bottom:9px; text-align:left; color:var(--text);"></div>
-      <input type="text" id="hp-f-url" placeholder="URL obrázku nebo jen zkrácené ID" oninput="hp_checkAutocompleteAndDuplicate()">
-      <input type="text" id="hp-f-obsah" placeholder="Obsah balíku">
-      <input type="text" id="hp-f-jmeno" placeholder="Tvoje jméno">
-      <button onclick="hp_sendForm()">Odeslat balík</button>
+    <h2>Balíčky</h2>
+    <div class="hp-tabs">
+      <button class="hp-tab-b active" id="tab-balicek-pridat-btn" onclick="hp_switchBalicekTab('pridat')">➕ Přidat balíček</button>
+      <button class="hp-tab-b" id="tab-balicek-historie-btn" onclick="hp_switchBalicekTab('historie')">📜 Dosud nalezené</button>
     </div>
+
+    <div id="hp-tab-balicek-pridat">
+      <div class="hp-form-box">
+        <div id="hp-duplicita-info" style="display:none; background:#5c1d24; border:0.9px solid #ff4a5a; padding:9px; border-radius:5.4px; font-size:10.8px; width:80%; margin-bottom:9px; text-align:left; color:var(--text);">
+          <div id="hp-duplicita-text"></div>
+          <button id="hp-btn-nastavit-dnesni" type="button" style="margin-top:7.2px; width:100%; display:none;">📌 Nastavit jako dnešní balíček</button>
+        </div>
+        <input type="text" id="hp-f-url" placeholder="URL obrázku nebo jen zkrácené ID" oninput="hp_checkAutocompleteAndDuplicate()">
+        <input type="text" id="hp-f-obsah" placeholder="Obsah balíku">
+        <input type="text" id="hp-f-jmeno" placeholder="Tvoje jméno">
+        <button onclick="hp_sendForm()">Odeslat balík</button>
+      </div>
+      <span style="font-size:9.9px; color:#aebbc8; display:block; margin-bottom:5.4px;">⚠️ Máš problém s odesláním balíčku? Dej vědět Mii Rose!</span>
+    </div>
+
+    <div id="hp-tab-balicek-historie" class="hp-hidden">
+      <span style="font-size:9.9px; color:#aebbc8; display:block; margin-bottom:5.4px;">💡 Kliknutím na obrázek balíčku ho rovnou nastavíš jako <strong>Dnešní balíček</strong>!</span>
+      <div id="hp-db-list" style="overflow-y:auto; border: 0.9px solid var(--border); border-radius: 10.8px; padding: 5.4px; box-sizing: border-box; flex-grow:1;">
+        <table class="hp-db-table">
+          <thead>
+            <tr>
+              <th>Obrázek</th>
+              <th>Zkrácené ID</th>
+              <th>Obsah</th>
+              <th>Vložil</th>
+            </tr>
+          </thead>
+          <tbody id="hp-db-rows"></tbody>
+        </table>
+      </div>
+    </div>
+
     <button onclick="hp_hideViews()" style="background:var(--surface); color:var(--text); border-color:var(--border); margin-top:7.2px; margin-bottom:3.6px;">Zpět do místnosti</button>
-   <span style="font-size:9.9px; color:#aebbc8; display:block; margin-bottom:5.4px;">⚠️ Máš problém s odesláním balíčku? Dej vědět Mii Rose!</span>
-    <hr style="border-color:var(--border); margin:9px 0;">
-    <h2>Dosud nalezené balíčky</h2>
-    <span style="font-size:9.9px; color:#aebbc8; display:block; margin-bottom:5.4px;">💡 Kliknutím na obrázek balíčku ho rovnou nastavíš jako <strong>Dnešní balíček</strong>!</span>
-    <div id="hp-db-list" style="overflow-y:auto; border: 0.9px solid var(--border); border-radius: 10.8px; padding: 5.4px; box-sizing: border-box; flex-grow:1;">
-      <table class="hp-db-table">
-        <thead>
-          <tr>
-            <th>Obrázek</th>
-            <th>Zkrácené ID</th>
-            <th>Obsah</th>
-            <th>Vložil</th>
-          </tr>
-        </thead>
-        <tbody id="hp-db-rows"></tbody>
-      </table>
-    </div>
   </div>
 
   <div id="hp-chest-view" class="hp-hidden">
@@ -505,5 +517,5 @@
   <div id="hp-copy-toast">Kouzlo zkopírováno!</div>
 
 
-  <script src="kolej.js?v=1.0"></script>
+  <script src="kolej.js?v=9"></script>
 </div>

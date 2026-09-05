@@ -99,9 +99,6 @@
 
       document.getElementById("hp-live-t").innerText = hp_cleanDnesni(d.dnesni); 
 
-      hp_dbData = d.databaze || []; 
-      hp_renderDb(); 
-
       const noveTK = d.tkText || d.tk || d.pocitadlo || "Načteno";
       const elementTK = document.getElementById("hp-tk-pocitadlo");
       if (elementTK) { elementTK.innerText = noveTK; }
@@ -237,9 +234,30 @@
     function hp_showForm() { 
       hp_bAll(); 
       document.getElementById("hp-form-view").classList.remove("hp-hidden"); 
+      document.getElementById("hp-f-url").value = "";
+      document.getElementById("hp-f-obsah").value = "";
+      document.getElementById("hp-f-jmeno").value = "";
       document.getElementById("hp-duplicita-info").style.display = "none";
-      hp_renderDb(); 
+      document.getElementById("hp-btn-nastavit-dnesni").style.display = "none";
+      hp_posledniShodaUrl = null;
+      hp_switchBalicekTab('pridat');
     } 
+
+    function hp_switchBalicekTab(t) {
+      document.getElementById("tab-balicek-pridat-btn").classList.remove("active");
+      document.getElementById("tab-balicek-historie-btn").classList.remove("active");
+      document.getElementById("hp-tab-balicek-pridat").classList.add("hp-hidden");
+      document.getElementById("hp-tab-balicek-historie").classList.add("hp-hidden");
+
+      if (t === 'historie') {
+        document.getElementById("tab-balicek-historie-btn").classList.add("active");
+        document.getElementById("hp-tab-balicek-historie").classList.remove("hp-hidden");
+        hp_nactiHistorii();
+      } else {
+        document.getElementById("tab-balicek-pridat-btn").classList.add("active");
+        document.getElementById("hp-tab-balicek-pridat").classList.remove("hp-hidden");
+      }
+    }
 
     function hp_showChest() { 
       hp_bAll(); 
@@ -582,14 +600,62 @@
        7. DATABÁZE BALÍČKŮ (formulář, seznam, odeslání)
        ----------------------------------------- */
 
+    let hp_historieNactena = false;
+
+    async function hp_nactiHistorii() {
+      const tbody = document.getElementById("hp-db-rows");
+      if (!tbody) return;
+
+      // Když už jsme historii v téhle relaci jednou natáhli, nemusíme pokaždé znovu čekat na síť.
+      if (hp_historieNactena) { hp_renderDb(); return; }
+
+      tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:9px;">Načítám historii…</td></tr>`;
+
+      try {
+        const r = await fetch(hp_u + "?historie=1", { cache: "no-store" });
+        const d = await r.json();
+        hp_dbData = d.databaze || [];
+        hp_historieNactena = true;
+        hp_renderDb();
+      } catch (e) {
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:9px;">Historii se nepodařilo načíst, zkus to prosím znovu.</td></tr>`;
+      }
+    }
+
     function hp_renderDb() { 
       const tbody = document.getElementById("hp-db-rows"); 
       if (!tbody) return; 
       tbody.innerHTML = ""; 
-      
+
+      if (hp_dbData.length === 0) {
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:9px;">Zatím tu nejsou žádné nalezené balíčky.</td></tr>`;
+        return;
+      }
+
       hp_dbData.forEach(b => { 
         const r = document.createElement("tr"); 
-        r.innerHTML = `<td><img src="${b.url}" onerror="this.src='https://img.icons8.com/fluency/48/box.png'" onclick="hp_setAsDnesni('${b.url.replace(/'/g, "\\'")}', '${b.obsah.replace(/'/g, "\\'")}', '${b.jmeno.replace(/'/g, "\\'")}')" title="Nastavit jako dnešní balíček"></td><td><code>${b.id}</code></td><td>${b.obsah}</td><td>${b.jmeno}</td>`; 
+        const img = document.createElement("img");
+        img.src = b.url;
+        img.title = "Nastavit jako dnešní balíček";
+        img.onerror = function () { img.src = "https://img.icons8.com/fluency/48/box.png"; };
+        // Data se předávají přes proměnnou v uzávěru, ne vkládáním do HTML atributu —
+        // takže apostrof/uvozovka v obsahu nebo jméně nemůže nic rozbít.
+        img.addEventListener("click", () => hp_setAsDnesni(b.url, b.obsah, b.jmeno));
+
+        const tdImg = document.createElement("td");
+        tdImg.appendChild(img);
+
+        const tdId = document.createElement("td");
+        tdId.innerHTML = `<code></code>`;
+        tdId.querySelector("code").textContent = b.id;
+
+        const tdObsah = document.createElement("td");
+        tdObsah.textContent = b.obsah;
+
+        const tdJmeno = document.createElement("td");
+        tdJmeno.textContent = b.jmeno;
+
+        r.append(tdImg, tdId, tdObsah, tdJmeno);
         tbody.appendChild(r); 
       }); 
     } 
@@ -616,18 +682,23 @@
     }
 
     let hp_searchTimeout = null;
-    let hp_posledniShodaUrl = null; // URL, u které nám server naposledy potvrdil, že už byla nalezena
+    let hp_posledniShodaUrl = null;   // URL, u které nám server naposledy potvrdil, že už byla nalezena
+    let hp_posledniObsah = null;      // obsah/jméno nalezeného balíčku, pro tlačítko "nastavit jako dnešní"
+    let hp_posledniJmeno = null;
 
     function hp_checkAutocompleteAndDuplicate() {
       let inputVal = document.getElementById("hp-f-url").value.trim();
       const infoDiv = document.getElementById("hp-duplicita-info");
+      const btn = document.getElementById("hp-btn-nastavit-dnesni");
 
       if (!inputVal) {
         infoDiv.style.display = "none";
+        btn.style.display = "none";
+        hp_posledniShodaUrl = null;
         return;
       }
 
-      // Rychlé doplnění URL podle ID z nedávno nalezených balíčků (bez čekání na server).
+      // Rychlé doplnění URL podle ID ze známé historie (bez čekání na server).
       if (!inputVal.startsWith("http") && !inputVal.includes("/")) {
         const shodaPodleId = hp_dbData.find(b => b.id.toLowerCase() === inputVal.toLowerCase());
         if (shodaPodleId) {
@@ -639,18 +710,28 @@
       // Ověření, jestli balíček už byl nalezen, se ptá přímo serveru (prohledá celou historii,
       // ne jen posledních pár týdnů) – s malým zpožděním, aby se nevolalo při každém úhozu.
       clearTimeout(hp_searchTimeout);
-      hp_searchTimeout = setTimeout(() => hp_hledejBalicek(inputVal, infoDiv), 400);
+      hp_searchTimeout = setTimeout(() => hp_hledejBalicek(inputVal), 400);
     }
 
-    async function hp_hledejBalicek(dotaz, infoDiv) {
+    async function hp_hledejBalicek(dotaz) {
+      const infoDiv = document.getElementById("hp-duplicita-info");
+      const textDiv = document.getElementById("hp-duplicita-text");
+      const btn = document.getElementById("hp-btn-nastavit-dnesni");
+
       try {
         const r = await fetch(hp_u + "?search=" + encodeURIComponent(dotaz), { cache: "no-store" });
         const d = await r.json();
 
+        // Mezitím mohl uživatel dopsat něco jiného – zahodíme zastaralý výsledek.
+        if (document.getElementById("hp-f-url").value.trim() !== dotaz) return;
+
         if (d.nalezeno) {
           hp_posledniShodaUrl = d.url;
+          hp_posledniObsah = d.obsah;
+          hp_posledniJmeno = d.jmeno;
+
           infoDiv.style.display = "block";
-          infoDiv.innerHTML = `
+          textDiv.innerHTML = `
             <div style="display:flex; align-items:center; gap:9px;">
               <img src="${d.url}" onerror="this.src='https://img.icons8.com/fluency/48/box.png'" style="width:45px; height:45px; object-fit:cover; border-radius:5.4px; flex-shrink:0;">
               <div>
@@ -658,16 +739,28 @@
                 <strong>Vložil/a:</strong> ${d.jmeno}<br>
                 <strong>Obsah:</strong> ${d.obsah}
               </div>
-            </div>`;
+            </div>
+            <p style="font-size:9.9px; color:#aebbc8; margin:7.2px 0 0;">Chceš ho i tak zaznamenat jako nový nález (např. se opakuje v tomhle školním roce)? Obsah je předvyplněný — stačí níž doplnit své jméno a odeslat.</p>`;
+          btn.style.display = "block";
           document.getElementById("hp-f-obsah").value = d.obsah;
         } else {
           hp_posledniShodaUrl = null;
           infoDiv.style.display = "none";
+          btn.style.display = "none";
         }
       } catch (e) {
         console.error("Chyba při ověřování balíčku:", e);
       }
     }
+
+    // Tlačítko "Nastavit jako dnešní" se napojí jednou při načtení stránky – bere data z
+    // proměnných výše, nic se nevkládá jako text do HTML atributu, takže žádný apostrof
+    // nebo uvozovka v obsahu/jménu nemůže rozbít funkčnost.
+    document.getElementById("hp-btn-nastavit-dnesni").addEventListener("click", () => {
+      if (hp_posledniShodaUrl) {
+        hp_setAsDnesni(hp_posledniShodaUrl, hp_posledniObsah, hp_posledniJmeno);
+      }
+    });
 
 
     async function hp_sendForm() { 
@@ -688,22 +781,20 @@
           body: JSON.stringify({ url: u, obsah: o, jmeno: j }) 
         }); 
         document.getElementById("hp-live-t").innerText = o; 
-        let id = "Neznámé ID"; 
-        if (u.indexOf("balicky/") !== -1) { id = u.substring(u.indexOf("balicky/") + 8).replace(".png",""); } 
-        
-        const jeDuplicitni = hp_posledniShodaUrl === u || hp_dbData.some(b => b.url === u); 
+
+        const jeDuplicitni = hp_posledniShodaUrl === u; 
         if (jeDuplicitni) { 
           alert("Tento balíček už byl v minulosti nalezen. Informace se přesto uložila do databáze."); 
         } else { 
           alert("Balíček byl přidán do seznamu nalezených balíčků. Děkujeme za pomoc Havraspáru!"); 
-          hp_dbData.push({ url: u, id: id, obsah: o, jmeno: j }); 
-          hp_renderDb(); 
         } 
+        hp_historieNactena = false; // příští otevření záložky "Dosud nalezené" si natáhne čerstvá data ze serveru
         hp_posledniShodaUrl = null;
         document.getElementById("hp-f-url").value = ""; 
         document.getElementById("hp-f-obsah").value = ""; 
         document.getElementById("hp-f-jmeno").value = ""; 
         document.getElementById("hp-duplicita-info").style.display = "none";
+        document.getElementById("hp-btn-nastavit-dnesni").style.display = "none";
         hp_hideViews(); 
       } catch (e) { 
         alert("Balíček se nepodařilo odeslat. Zkus to prosím za chvíli znovu."); 
