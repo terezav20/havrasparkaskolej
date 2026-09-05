@@ -76,7 +76,7 @@
       // {jmeno:"Jméno Studenta", portret:"ikony/eagle.png", info:"Krátký popisek studenta."},
     ];
 
-    let hp_x, hp_dbData = [];
+    let hp_x, hp_dbData = [], hp_dnesniUrl = "";
 
     /* -----------------------------------------
        2. NAČÍTÁNÍ A CACHOVÁNÍ DAT (Google Apps Script)
@@ -98,6 +98,7 @@
       if (box) box.className = "hp-hidden";
 
       document.getElementById("hp-live-t").innerText = hp_cleanDnesni(d.dnesni); 
+      hp_dnesniUrl = d.dnesniUrl || "";
 
       const noveTK = d.tkText || d.tk || d.pocitadlo || "Načteno";
       const elementTK = document.getElementById("hp-tk-pocitadlo");
@@ -622,32 +623,63 @@
       }
     }
 
+    function hp_filtrujHistorii() {
+      hp_renderDb();
+    }
+
+    function hp_vycistitFiltr() {
+      document.getElementById("hp-db-filter").value = "";
+      hp_renderDb();
+    }
+
     function hp_renderDb() { 
       const tbody = document.getElementById("hp-db-rows"); 
       if (!tbody) return; 
       tbody.innerHTML = ""; 
 
-      if (hp_dbData.length === 0) {
-        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:9px;">Zatím tu nejsou žádné nalezené balíčky.</td></tr>`;
+      const filtrEl = document.getElementById("hp-db-filter");
+      const filtr = filtrEl ? filtrEl.value.trim().toLowerCase() : "";
+
+      const zobrazit = hp_dbData.filter(b =>
+        !filtr ||
+        b.obsah.toLowerCase().includes(filtr) ||
+        b.id.toLowerCase().includes(filtr) ||
+        b.jmeno.toLowerCase().includes(filtr) ||
+        b.url.toLowerCase().includes(filtr)
+      );
+
+      if (zobrazit.length === 0) {
+        const zprava = hp_dbData.length === 0 ? "Zatím tu nejsou žádné nalezené balíčky." : "Ničemu neodpovídá zadaný filtr.";
+        tbody.innerHTML = `<tr><td colspan="4" style="text-align:center; padding:9px;">${zprava}</td></tr>`;
         return;
       }
 
-      hp_dbData.forEach(b => { 
+      zobrazit.forEach(b => { 
+        const jeAktualni = !!hp_dnesniUrl && b.url === hp_dnesniUrl;
+
         const r = document.createElement("tr"); 
+        if (jeAktualni) r.style.outline = "1.8px solid #4affa4";
+
         const img = document.createElement("img");
         img.src = b.url;
         img.title = "Nastavit jako dnešní balíček";
         img.onerror = function () { img.src = "https://img.icons8.com/fluency/48/box.png"; };
-        // Data se předávají přes proměnnou v uzávěru, ne vkládáním do HTML atributu —
-        // takže apostrof/uvozovka v obsahu nebo jméně nemůže nic rozbít.
+        // Data se předávají z uzávěru, ne vkládáním do HTML atributu — bezpečné vůči apostrofům/uvozovkám.
         img.addEventListener("click", () => hp_setAsDnesni(b.url, b.obsah, b.jmeno));
 
         const tdImg = document.createElement("td");
         tdImg.appendChild(img);
 
         const tdId = document.createElement("td");
-        tdId.innerHTML = `<code></code>`;
-        tdId.querySelector("code").textContent = b.id;
+        const codeEl = document.createElement("code");
+        codeEl.textContent = b.id;
+        tdId.appendChild(codeEl);
+        if (jeAktualni) {
+          const badge = document.createElement("div");
+          badge.textContent = "Aktuální";
+          badge.style.cssText = "margin-top:2.7px; font-size:8.1px; font-weight:bold; color:#0d1b12; background:#4affa4; padding:0.9px 5.4px; border-radius:999px; display:inline-block;";
+          tdId.appendChild(badge);
+        }
 
         const tdObsah = document.createElement("td");
         tdObsah.textContent = b.obsah;

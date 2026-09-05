@@ -155,7 +155,11 @@
     </div>
 
     <div id="hp-tab-balicek-historie" class="hp-hidden">
-      <span style="font-size:9.9px; color:#aebbc8; display:block; margin-bottom:5.4px;">💡 Kliknutím na obrázek balíčku ho rovnou nastavíš jako <strong>Dnešní balíček</strong>!</span>
+      <p style="font-size:11.7px; font-style:italic; margin:0 0 9px;">Kliknutím na obrázek balíčku ho nastavíš jako <strong>dnešní</strong>. Ostatním se změna projeví během pár minut.</p>
+      <div style="position:relative; margin-bottom:9px;">
+        <input type="text" id="hp-db-filter" placeholder="Filtrovat podle obsahu, ID nebo jména…" oninput="hp_filtrujHistorii()" style="padding-right:28px; width:100%; box-sizing:border-box;">
+        <button type="button" onclick="hp_vycistitFiltr()" style="position:absolute; right:3.6px; top:50%; transform:translateY(-50%); background:none; border:none; box-shadow:none; color:#ff6b6b; font-size:14.4px; cursor:pointer; padding:0 5.4px; line-height:1;">×</button>
+      </div>
       <div id="hp-db-list" style="overflow-y:auto; border: 0.9px solid var(--border); border-radius: 10.8px; padding: 5.4px; box-sizing: border-box; flex-grow:1;">
         <table class="hp-db-table">
           <thead>
@@ -171,7 +175,7 @@
       </div>
     </div>
 
-    <button onclick="hp_hideViews()" style="background:var(--surface); color:var(--text); border-color:var(--border); margin-top:7.2px; margin-bottom:3.6px;">Zpět do místnosti</button>
+    <button class="hp-back-btn" onclick="hp_hideViews()">Zpět do místnosti</button>
   </div>
 
   <div id="hp-chest-view" class="hp-hidden">

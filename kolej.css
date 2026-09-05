@@ -745,7 +745,8 @@ area { cursor: pointer; }
 /* Tlačítko Zpět přitažené k patě pohledu (klepadlo, motivační soutěže) */
 #hp-door-view .hp-back-btn,
 #hp-flag-view .hp-back-btn,
-#hp-board-view .hp-back-btn {
+#hp-board-view .hp-back-btn,
+#hp-form-view .hp-back-btn {
   margin-top: auto;
 }
 
