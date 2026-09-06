@@ -80,6 +80,20 @@
   padding-right: 4.5px;
 }
 
+/* Záložky u balíčků musí být samy flex kontejnery, jinak flex-grow/overflow-y
+   na #hp-db-list uvnitř nich nemá na čem fungovat a tabulka se donekonečna
+   natahuje na výšku místo toho, aby se uvnitř sama rolovala. */
+#hp-tab-balicek-pridat, #hp-tab-balicek-historie {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
+}
+
+#hp-db-list {
+  min-height: 0;
+}
+
 ::-webkit-scrollbar { width: 5.4px; }
 ::-webkit-scrollbar-track { background: rgba(15, 23, 35, 0.3); border-radius: 2.7px; }
 ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2.7px; border: 0.9px solid var(--bg); }

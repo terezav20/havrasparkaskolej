@@ -58,23 +58,116 @@
       {n:"Velký obraceč času", i:"https://bradavice.eu/obrazky/pu/obracec.png", d:"Dokáže výrazně pomoct v portále i při jiných hrách a celkově ti umožní ovládat a měnit čas.", t:"pos"}
     ]; 
 
-    const hp_qList = [
-      {p:"Kapitán", n:"Jméno Kapitána", i:"famfr/kapitan.png"},
-      {p:"Střelec", n:"Jméno Střelce 1", i:"famfr/strelec.png"},
-      {p:"Střelec", n:"Jméno Střelce 2", i:"famfr/strelec.png"},
-      {p:"Střelec", n:"Jméno Střelce 3", i:"famfr/strelec.png"},
-      {p:"Odrážeč", n:"Jméno Odrážeče 1", i:"famfr/odrazec.png"},
-      {p:"Odrážeč", n:"Jméno Odrážeče 2", i:"famfr/odrazec.png"},
-      {p:"Chytač", n:"Jméno Chytače", i:"famfr/chytac.png"},
-      {p:"Brankář", n:"Jméno Brankáře", i:"famfr/brankar.png"}
-    ];
+const hp_qList = [ 
+  {p:"Kapitán", n:"Benjamin Walter", i:"famfr/kapitan.png"}
+
+  /*
+  {p:"Střelec", n:"Jméno Střelce 1", i:"famfr/strelec.png"}, 
+  {p:"Střelec", n:"Jméno Střelce 2", i:"famfr/strelec.png"}, 
+  {p:"Střelec", n:"Jméno Střelce 3", i:"famfr/strelec.png"}, 
+  {p:"Odrážeč", n:"Jméno Odrážeče 1", i:"famfr/odrazec.png"}, 
+  {p:"Odrážeč", n:"Jméno Odrážeče 2", i:"famfr/odrazec.png"}, 
+  {p:"Chytač", n:"Jméno Chytače", i:"famfr/chytac.png"}, 
+  {p:"Brankář", n:"Jméno Brankáře", i:"famfr/brankar.png"} 
+  */
+];
 
     // Přehled studujících – seznam se zadává napevno přímo zde v kódu.
     // Pro každého studenta odkomentuj/zkopíruj řádek níže a uprav hodnoty:
     // jmeno = jméno studenta, portret = cesta/URL k fotce, info = krátký popisek.
-    const hp_studentiData = [
-      // {jmeno:"Jméno Studenta", portret:"ikony/eagle.png", info:"Krátký popisek studenta."},
-    ];
+ const hp_studentiData = [
+  {
+    jmeno: "Julinka Smailinka",
+    portret: "studenti_profilovky/julinka.jpg",
+    info: `Miluju zvířata, hlavně ta chlupatá. Mám je raději, než některé mudly. Ale svého mudlu mám také ráda.<br>Baví mně moje zahrádka, stromy, kytičky. Nesekám přiliš trávu a tak miluju ranní procházku zahradou, kdy už létá hmyz a baští z mých kytiček. Miluju odpolední siestu na houpačce u malého jezírka, kde létají šídla a vážky a kvetou lekníny. Miluju večerní sezení na terase se skleničkou vína, kdy čekáme až začnou létat netopýři. Moje poznávací znamení je postel zavalená plyšákama a knížkama. Mám cca 3 800 knih.<br>Štve mě zákeřnost, nafoukanost, nečestnost. Snažím se dodržet "nad nikým se nepovyšuj a před nikým se neponižuj".<br>No a pak hodně pořádkumilovné mudly vytáčím, protože, co se týká naší mudlovské domácnosti - sterilní domácnost u mě nehledej. A pár mudlů téměř zkolabovalo, když jsem jim líčila, jak nám ráno nosí kocour do postele klíšťata a pak taky mně nedělá problém ošetřovat hodně ošklivé, hluboké rány a další hnusy, což mně přinesl život ze zvířátky.`
+  },
+
+  {
+    jmeno: "Angel de Fox",
+    portret: "studenti_profilovky/angel.jpg",
+    info: `Jsem introvert s melancholickou a trochu zamyšlenou povahou. Konflikty opravdu nemusím – pokud se jim dá vyhnout, udělám to, a když ne, tiše trpím.<br>Nejraději mám chvíle, kdy můžu zalézt do knížky nebo vlastního světa a něco tvořit. Baví mě psaní příběhů, výroba svíček a šperků, háčkování, focení i geocaching. Jsem ráda, když můžu někomu pomoct, a i když jsem spíš tichá, rozhodně nejsem bez zájmů. Jen mě většinou najdete někde v klidu, s něčím kreativním v ruce.`
+  },
+
+  {
+    jmeno: "Shaunee von Castile",
+    portret: "studenti_profilovky/shaunee.jpg",
+    info: `Já jsem Šónina. Učitelka, kávoholik, milovnice avokáda a kokosu a velká knihomolka. Miluju contemporary romány a romantasy. Mám černou kočku jménem Rhysand, což je moje tříleté miminko. Španělsko je mým druhým domovem. Miluju okurku, ale okurkový salát nesním. To stejné mám se zelím. Segedín ble. Ráda ale vařím a peču pro druhé.<br>Než odcházím z domu, kontroluju vše třikrát, ale na focení zásuvek ještě nedošlo. Zásadně loupu banán od stopky a kdekoli vidím začátek toaleťáku u zdi, musím ho otočit (i na návštěvě). U LOTR jsem vypila s kamarádkou flašku vína, abych to vydržela do konce, u Hobita jsem usnula. Indická kuchyň je moje guilty pleasure.<br>Kdybych se měla stát princeznou, budu Belle – ta dostala od Zvířete velkou knihovnu v paláci.`
+  },
+
+  {
+    jmeno: "Mia Rose",
+    portret: "studenti_profilovky/mia.jpg",
+    info: `Jsem takový mix technického a kreativního člověka, baví mě věci vymýšlet, tvořit a pak se až zbytečně dlouho hrabat v detailech. Mám ráda pokojovky, mapy, moji smečku, grafiku, kreativní projekty a všechno, u čeho můžu zapojit fantazii s technickým přemýšlením.<br>Nemusím odfláknuté věci, nelogičnosti a větu „vždyť je to jedno“, protože ono to většinou jedno není. A taky nedávám kopr, brokolici, květák a plísňáky!<br>Lidi můžu občas štvát tím, že jsem puntičkář a všímám si detailů, které by ostatní s klidem přešli. Když mi něco nedává smysl, potřebuju vědět proč, a když vím, že by něco šlo udělat líp, těžko to nechám jen tak být. Taky mám občas tendenci z jednoduchého nápadu udělat projekt o sedmnácti dalších nápadech. A ano, pro další pokojovku se místo vždycky nějak najde. 🌿`
+  },
+
+{
+  jmeno: "Apo Grey",
+  portret: "studenti_profilovky/apo.jpg",
+  info: `Jsem spíš klidnější introvert, mám rád svůj prostor a lidi, kterým můžu věřit.<br>Baví mě investování, čísla, strategie, sport a hlavně fantasy a sci-fi. Rád se ztrácím ve světech jako Harry Potter, Star Wars nebo Pán prstenů.<br>Nemusím hloupost, povrchnost, přetvářku, faleš a zbytečné drama.<br>Baví mě učit se nové věci, přemýšlet, zlepšovat se a mít pocit, že se někam posouvám. A někdy si prostě rád vypnu hlavu u dobrého příběhu.`
+},
+
+  {
+    jmeno: "Casandra Cooperová",
+    portret: "studenti_profilovky/casandra.jpg",
+    info: `Mám ráda lasagne. Zbožňuji čokošku. I máslový ležák. Nemám ráda, když mě někdo vyděsí. Baví mě a naplňují hry a odpočinek. Hrozně zbožňuju svátky Halloween a Vánoce. Nákupy šatů a bot vyrobených z kůže a laku. Jsem taková, jak se říká, královna rebelka nebo gotka. Což znamená, že chodím pouze v černé a všechny doplňky mám černé.`
+  },
+
+  {
+    jmeno: "Cassian Mortain",
+    portret: "studenti_profilovky/cassian.jpg",
+    info: `Ahoj, jsem Cass a je mi 21 let. Ráda kreslím, čtu, dělám grafiku a hraju hry. Věnuju se čarodějnictví, démonologii a satanismu (poslední dvěma jen okrajově). Nemám ráda tepelně zpracovanou zeleninu :D`
+  },
+
+  {
+    jmeno: "Denestra Valentino",
+    portret: "studenti_profilovky/denestra.jpg",
+    info: `Jmenuji se Denestra Valentino, je mi 35 let a kromě manžela mám doma dvě kočky, králíka a rybičky. :) Miluju metal, pivo a tetování. Ráda si zahraju na PS a aktuálně šetřím na motorku. :D<br>Svět HP jsem objevila asi v 10 letech, kdy jsem dostala první knížku, a pak jsem s ním vyrostla. Mimo to jsem velký fanoušek Star Wars.`
+  },
+
+  {
+    jmeno: "Elizabeth Wright",
+    portret: "studenti_profilovky/elizabeth.jpg",
+    info: `Elizabeth je prvačka, která je natěšená na nabytí nových znalostí. Ve volném čase nepřekvapivě ráda čte, poslouchá hudbu, pobývá s přáteli a hraje deskovky.`
+  },
+
+  {
+    jmeno: "Evelyn McGregor",
+    portret: "studenti_profilovky/evelyn.jpg",
+    info: `Moje záliby jsou: bylinkaření, cosplay, hudba, houbaření a příroda všeobecně. Miluju knížky a jsem vlastně dost velký knihomol. Buďto čtu knihy, čtečku nebo poslouchám audioknihy.<br>Říkají mi Morbidka, i když dneska už tak není poznat proč. Nemám ráda falešné lidi a přetvařování se.`
+  },
+
+  {
+    jmeno: "Lucia Janulíková",
+    portret: "studenti_profilovky/lucia.jpg",
+    info: `Mám ráda humor a lidi, se kterými si člověk nemusí na nic hrát. Miluju čtení, chvíle nicnedělání a svět HP. Nesnáším manipulaci a lidi, kteří si myslí, že jsou něco víc než kdokoliv jiný. Občas mám milion nápadů najednou a rozhodně nejsem typ člověka, který se spokojí s něčím jen proto, že „se to tak dělá“.`
+  },
+
+{
+  jmeno: "Lucretia Viperina",
+  portret: "studenti_profilovky/lucretia.jpg",
+  info: `Život bez vody si Lucrecie neumí představit — buď si jde zaplavat do jezera, nebo mizí v horké koupeli. K lidem si hledá cestu pomaleji, ale jakmile zapadne do party, nezkazí žádnou zábavu. Na koštěti nejraději oblétá naši domovinu a obchází staré hrady i příbytky kouzelných zvířat.<br>V pokoji jí vedle monstery bují vzácné přísady do lektvarů a nenechá se odradit ani tím, když jí botanická sbírka občas vymře.<br>Pořád trénuje Patronovo zaklínadlo. Její obří černý pes odráží útoky kousacích rukávů ukrytých pod černým pláštěm mozkomorů — protože figurant, nebo mozkomor, rozdíl v tom stejně nevidí.`
+},
+
+  {
+    jmeno: "Matt Drake",
+    portret: "studenti_profilovky/matt.jpg",
+    info: `Mám rád Harryho Pottera, seriály Red Dwarf a M*A*S*H. Co nemám rád, tak jsou falešní lidi, kteří se tváří jako kámoši a za zády tě pomlouvají. Baví mě pletení náramků přátelství, focení přírody a zajímavých staveb, ale lidi nefotím.`
+  },
+
+{
+  jmeno: "Thomas Rookwood",
+  portret: "studenti_profilovky/thomas.jpg",
+  info: `Ahoj! Jmenuji se Thomas Rookwood a letos poprvé nastupuji do Havraspáru.<br>Jsem spíš zvídavý typ a baví mě objevovat věci, kterým ještě úplně nerozumím. Mám rád kouzla, záhady, nejrůznější hlavolamy a všechno, u čeho je potřeba trochu přemýšlet. Občas jsem ale taky pěkně soutěživý.<br>Ve volném čase rád něco tvořím a rozhodně nepohrdnu ani dobrou společností. Ze začátku možná působím trochu tišeji, ale jakmile se rozkoukám, většinou mě už jen tak někdo nezastaví.<br>Do školy přicházím hlavně s tím, že bych chtěl poznat nové lidi, vyzkoušet co nejvíc věcí a zjistit, v čem budu opravdu dobrý. A protože je to můj úplně první rok, jsem zvědavý, co všechno mě tady čeká.`
+},
+
+  {
+    jmeno: "Veron von Arbon",
+    portret: "studenti_profilovky/veron.jpg",
+    info: `Veron je vysoký a nepřehlédnutelný kouzelník z Havraspáru, kterého odjakživa přitahovala příroda, zvířata a magická stvoření.<br>Zatímco někteří studenti tráví volný čas v knihovně, Veron rozhodně ne. Jeho vztah ke zvířatům je mimořádně silný a má přirozený cit pro jejich chování. Proto ho fascinují především péče o kouzelné tvory, bylinkářství a kouzla spojená s přírodou.<br>Jeho největším vzorem je patronka Shaunee, které si nesmírně váží a kterou považuje za člověka, od něhož se může stále učit. Druhým velkým vzorem je prefekt Miuš – člověk, jehož autoritu Veron respektuje a jehož rady bere vážně.`
+  }
+
+  // {jmeno:"Jméno Studenta", portret:"ikony/eagle.png", info:"Krátký popisek studenta."},
+];
 
     let hp_x, hp_dbData = [], hp_dnesniUrl = "";
 
