@@ -136,6 +136,12 @@ const hp_qList = [
     info: `Moje záliby jsou: bylinkaření, cosplay, hudba, houbaření a příroda všeobecně. Miluju knížky a jsem vlastně dost velký knihomol. Buďto čtu knihy, čtečku nebo poslouchám audioknihy.<br>Říkají mi Morbidka, i když dneska už tak není poznat proč. Nemám ráda falešné lidi a přetvařování se.`
   },
 
+{
+  jmeno: "George Winchester",
+  portret: "studenti_profilovky/george.jpg",
+  info: `George Winchester vyrůstal v neobvyklé kouzelnické rodině opředené tajemstvími a zvláštními událostmi. Od dětství byl citlivý, všímavý a zvídavý. Kolem jedenáctého roku se u něj výrazněji projevily vrozené věštecké schopnosti. Nečekané vize a sny ho zpočátku děsily, protože je nedokázal ovládat ani vždy rozeznat od skutečných vzpomínek.<br>Přesto zůstal mírným a laskavým chlapcem, jenž se vyhýbal konfliktům. Pokud však někdo ohrozil jeho rodinu, přátele nebo zvířata, dokázal překonat strach a postavit se mu. S příchodem dopisu ze školy kouzel začal poznávat nejen svět magie, ale také svůj neobyčejný dar.<br>Mezi jeho největší záliby patří hvězdy, knihy, staré předměty a artefakty, historie a tvoření. Zvláštní slabost má také pro inteligentní ptáky, především straky a havrany. Naopak příliš nemusí houby a není mu příjemná ani dlouhá samota.`
+},
+
   {
     jmeno: "Lucia Janulíková",
     portret: "studenti_profilovky/lucia.jpg",
