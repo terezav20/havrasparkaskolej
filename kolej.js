@@ -160,6 +160,12 @@ const hp_qList = [
     info: `Mám rád Harryho Pottera, seriály Red Dwarf a M*A*S*H. Co nemám rád, tak jsou falešní lidi, kteří se tváří jako kámoši a za zády tě pomlouvají. Baví mě pletení náramků přátelství, focení přírody a zajímavých staveb, ale lidi nefotím.`
   },
 
+  {
+  jmeno: "Sunny Snow",
+  portret: "studenti_profilovky/sunny.jpg",
+  info: `Harry Potter pro mě už dávno není jen dobrá kniha. I když se přiznám, že si dodnes pamatuji, jak jsem vždy o Vánocích hltala každé slovo, když knihy vycházely. Jo, táhne mi na 40, ale duchem se cítím tak na patnáct. Hih.<br>Miluju hluboké debaty o smyslu čehokoliv. Taky jsem dost náladová a někdy na několik dní zmizím a nekomunikuji, no a jindy nezavřu pusu (jako třeba teď). Vesměs jsem proměnlivá jak počasí v dubnu. Na druhou stranu jsem velmi přátelská a dokážu se bavit o všem. Někdy sarkastická, jindy vážná a někdy se snažím být vtipná, což se mi teda zřejmě moc nedaří, protože se svým vtipům směju jenom já. Ehm. :-D<br>Ráda fotím, dělám si různé nástěnky, ať ze samolepek, nebo na Pinterestu. Bez hudby nežiju. Nejlepší anime je Devil May Cry. Jo a ještě miluju kakao. Studený. Jo, je to prej barbarství. A jo, i tak to pořád dělám. Všude cpu tunu cute obrázků a smajlíky :) A kdo to dočetl až sem, má u mě čokoládovou žabku :D`
+},
+
 {
   jmeno: "Thomas Rookwood",
   portret: "studenti_profilovky/thomas.jpg",
