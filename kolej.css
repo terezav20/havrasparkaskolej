@@ -296,6 +296,20 @@ area { cursor: pointer; }
 .hp-f-item { padding: 7.2px; margin-bottom: 4.5px; display: flex; align-items: center; gap: 7.2px; box-sizing: border-box; } 
 .hp-f-item img { width: 72px !important; height: 72px !important; object-fit: cover; border-radius: 50%; flex-shrink: 0; }
 
+/* Hráči Famfrpálu s víc pozicemi (několik ikon vedle sebe) */
+.hp-q-icons { display: flex; flex-shrink: 0; }
+.hp-q-icons img { margin-left: -9px; }
+.hp-q-icons img:first-child { margin-left: 0; }
+.hp-f-item .hp-q-icons img { width: 40.5px !important; height: 40.5px !important; border-radius: 50%; object-fit: cover; border: 1.8px solid var(--bg); background: var(--surface); box-shadow: 0 1.8px 5.4px rgba(0,0,0,0.4); }
+
+.hp-q-captain { border-color: var(--gold) !important; background: #2a2515 !important; box-shadow: 0 5.4px 16.2px rgba(0,0,0,0.35), 0 0 12.6px rgba(255,215,0,0.25) !important; }
+.hp-q-captain-tag { font-size: 8.1px; font-weight: bold; color: var(--gold); text-transform: uppercase; letter-spacing: 0.45px; border: 0.9px solid var(--gold); border-radius: 5.4px; padding: 1.35px 4.5px; margin-left: 3.6px; vertical-align: middle; }
+
+.hp-q-divider { display: flex; align-items: center; text-align: center; font-size: 9.9px; color: #aebbc8; text-transform: uppercase; letter-spacing: 0.9px; margin: 10.8px 0 7.2px; }
+.hp-q-divider::before, .hp-q-divider::after { content: ""; flex: 1; height: 0.9px; background: var(--border); }
+.hp-q-divider::before { margin-right: 7.2px; }
+.hp-q-divider::after { margin-left: 7.2px; }
+
 .hp-student-profile { padding: 9px; margin-bottom: 7.2px; display: flex; flex-direction: column; align-items: center; text-align: center; gap: 5.4px; box-sizing: border-box; }
 .hp-student-portrait { width: 120px; height: 120px; object-fit: cover; border-radius: 50%; border: 2.7px solid var(--accent); background: var(--bg); box-shadow: 0 3.6px 9px rgba(0,0,0,0.5); }
 .hp-student-name { color: var(--gold); font-size: 12.6px; font-weight: 700; margin: 0 0 4.5px 0; letter-spacing: 0.45px; }

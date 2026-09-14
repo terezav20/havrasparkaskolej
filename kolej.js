@@ -58,18 +58,22 @@
       {n:"Velký obraceč času", i:"https://bradavice.eu/obrazky/pu/obracec.png", d:"Dokáže výrazně pomoct v portále i při jiných hrách a celkově ti umožní ovládat a měnit čas.", t:"pos"}
     ]; 
 
-const hp_qList = [ 
-  {p:"Kapitán", n:"Benjamin Walter", i:"famfr/kapitan.png"}
+const hp_qPosIcons = {
+  "Chytač": "famfr/chytac.png",
+  "Odrážeč": "famfr/odrazec.png",
+  "Brankář": "famfr/brankar.png",
+  "Střelec": "famfr/strelec.png"
+};
 
-  /*
-  {p:"Střelec", n:"Jméno Střelce 1", i:"famfr/strelec.png"}, 
-  {p:"Střelec", n:"Jméno Střelce 2", i:"famfr/strelec.png"}, 
-  {p:"Střelec", n:"Jméno Střelce 3", i:"famfr/strelec.png"}, 
-  {p:"Odrážeč", n:"Jméno Odrážeče 1", i:"famfr/odrazec.png"}, 
-  {p:"Odrážeč", n:"Jméno Odrážeče 2", i:"famfr/odrazec.png"}, 
-  {p:"Chytač", n:"Jméno Chytače", i:"famfr/chytac.png"}, 
-  {p:"Brankář", n:"Jméno Brankáře", i:"famfr/brankar.png"} 
-  */
+const hp_qList = [ 
+  {p:"Chytač", n:"Mia Rose", i:"famfr/chytac.png"},
+  {p:"Chytač", n:"Jamie Foster", i:"famfr/chytac.png"},
+  {p:"Odrážeč/Chytač", n:"Shira Ruden Yaiko", i:"famfr/odrazec.png"},
+  {p:"Brankář/Střelec", n:"Benjamin Walter", i:"famfr/brankar.png", kapitan:true},
+  {p:"Střelec", n:"John van Smith", i:"famfr/strelec.png"},
+  {p:"Odrážeč", n:"Magnolie Smaragdová", i:"famfr/odrazec.png"},
+  {p:"Odrážeč/Chytač", n:"Angel de Fox", i:"famfr/odrazec.png"},
+  {p:"Odrážeč", n:"Shaunee von Castille", i:"famfr/odrazec.png"}
 ];
 
     // Přehled studujících – seznam se zadává napevno přímo zde v kódu.
@@ -299,8 +303,14 @@ const hp_qList = [
       document.getElementById("hp-trezor-obsah").classList.add("hp-hidden");
     }
 
+    function hp_dailyHadanka() {
+      const today = new Date();
+      const dayKey = today.getFullYear() * 372 + (today.getMonth() + 1) * 31 + today.getDate();
+      return hp_r[dayKey % hp_r.length];
+    }
+
     function hp_h() { 
-      hp_x = hp_r[Math.floor(Math.random() * hp_r.length)]; 
+      hp_x = hp_dailyHadanka(); 
       document.getElementById("hp-q").innerText = hp_x.q; 
       document.getElementById("hp-door-img").style.display = "none"; 
       document.getElementById("hp-q").style.display = "block"; 
@@ -315,8 +325,9 @@ const hp_qList = [
         document.getElementById("hp-klepadlo-hadanka-box").classList.add("hp-hidden"); 
         document.getElementById("hp-trezor-obsah").classList.remove("hp-hidden");
       } else { 
-        alert("To nebyla správná odpověď! *Orel se pobaveně ušklíbne a položí ti novou hádanku.*"); 
-        hp_h(); 
+        alert("To nebyla správná odpověď! *Orel se pobaveně ušklíbne a čeká na jinou odpověď.*"); 
+        document.getElementById("hp-a").value = ""; 
+        document.getElementById("hp-a").focus(); 
       } 
     } 
 
@@ -385,17 +396,39 @@ const hp_qList = [
       document.getElementById("hp-flag-view").classList.remove("hp-hidden");
     }
 
+    function hp_renderQPlayer(p, isCaptain) {
+      const icons = p.p.split("/").map(pos =>
+        `<img src="${hp_qPosIcons[pos.trim()] || p.i}" class="hp-q-icon" alt="${pos.trim()}">`
+      ).join("");
+      const div = document.createElement("div");
+      div.className = "hp-f-item hp-q-player" + (isCaptain ? " hp-q-captain" : "");
+      div.innerHTML = `
+        <div class="hp-q-icons">${icons}</div>
+        <div>
+          <strong style="color:var(--text);">${p.n}</strong>${isCaptain ? ' <span class="hp-q-captain-tag">Kapitán</span>' : ''}<br>
+          <span style="font-size:10.8px; color:#aebbc8;">${p.p}</span>
+        </div>`;
+      return div;
+    }
+
     function hp_showQuidditch() {
       hp_bAll();
       document.getElementById("hp-quidditch-view").classList.remove("hp-hidden");
       hp_switchQuidditchTab('players');
       const div = document.getElementById("hp-q-players-list");
       div.innerHTML = "";
-      hp_qList.forEach(p => {
-        const i = document.createElement("div");
-        i.className = "hp-f-item";
-        i.innerHTML = `<img src="${p.i}" width="90px" height="90px"><div><strong style="color:var(--text);">${p.n}</strong><br><span style="font-size:10.8px; color:#aebbc8;">${p.p}</span></div>`;
-        div.appendChild(i);
+
+      const captain = hp_qList.find(p => p.kapitan);
+      if (captain) {
+        div.appendChild(hp_renderQPlayer(captain, true));
+        const divider = document.createElement("div");
+        divider.className = "hp-q-divider";
+        divider.innerText = "Celá soupiska";
+        div.appendChild(divider);
+      }
+
+      [...hp_qList].sort((a, b) => a.n.localeCompare(b.n, 'cs')).forEach(p => {
+        div.appendChild(hp_renderQPlayer(p, false));
       });
     }
 
@@ -453,26 +486,13 @@ const hp_qList = [
     } 
 
         const hp_r = [
-   {"q": "Když mě máš, nevidíš mě. Když mě vidíš, nemáš mě. Co jsem?", "a": "život"},
-    {"q": "Mluvím jen tehdy, když mluvíš ty. Co jsem?", "a": "ozvěna"},
+   {"q": "Padám z nebe, nezraním se, létám bez křídel. Co jsem?", "a": "sníh"},
     {"q": "Mám hlavu i patu, ale žádné tělo. Co jsem?", "a": "mince"},
-    {"q": "Padám z nebe, nezraním se, létám bez křídel. Co jsem?", "a": "sníh"},
-    {"q": "Jdu jen dopředu a nikdy zpět. Co jsem?", "a": "čas"},
-    {"q": "Jsem vždy před tebou, ale nedohoníš mě. Co jsem?", "a": "budoucnost"},
-    {"q": "Na boku jsem všechno, napůl nejsem nic. Co jsem?", "a": "osmička"},
-    {"q": "Bez zámku a klíče skrývám zlatý poklad. Co jsem?", "a": "vejce"},
-    {"q": "Rodím se velká, umírám malá. Co jsem?", "a": "svíčka"},
     {"q": "Čím víc mě čistíš, tím jsem špinavější. Co jsem?", "a": "voda"},
     {"q": "Čím víc si ze mě bereš, tím jsem větší. Co jsem?", "a": "díra"},
     {"q": "Mám mnoho zubů, ale nikdy nekoušu. Co jsem?", "a": "hřeben"},
-    {"q": "Když mě potřebuješ, vyhodíš mě. Když mě nepotřebuješ, vrátíš mě zpět. Co jsem?", "a": "kotva"},
-    {"q": "Vždy běžím, ale nikdy se nehýbu z místa. Co jsem?", "a": "řeka"},
-    {"q": "Patřím tobě, ale ostatní mě používají častěji než ty. Co jsem?", "a": "tvé jméno"},
-    {"q": "Co má tisíce očí, ale nevidí? Co jsem?", "a": "síto"},
-    {"q": "Čím víc mě je, tím méně vidíš. Co jsem?", "a": "tma"},
     {"q": "Mám hrdlo, ale nemám hlavu. Mám tělo, ale nemám ruce. Co jsem?", "a": "láhev"},
-    {"q": "Létám bez křídel a pláču bez očí. Co jsem?", "a": "mrak"},
-    {"q": "Můžeš mě zlomit, aniž by ses mě dotkl. Co jsem?", "a": "slib"}
+    {"q": "Vždy běžím, ale nikdy se nehýbu z místa. Co jsem?", "a": "řeka"}
     ]; 
 
     /* -----------------------------------------
