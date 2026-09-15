@@ -303,21 +303,23 @@ const hp_qList = [
       document.getElementById("hp-trezor-obsah").classList.add("hp-hidden");
     }
 
-    function hp_dailyHadanka() {
-      const today = new Date();
-      const dayKey = today.getFullYear() * 372 + (today.getMonth() + 1) * 31 + today.getDate();
-      return hp_r[dayKey % hp_r.length];
-    }
+    let hp_pokusy = 0;
 
-    function hp_h() { 
-      hp_x = hp_dailyHadanka(); 
+    function hp_showHadanka() {
       document.getElementById("hp-q").innerText = hp_x.q; 
       document.getElementById("hp-door-img").style.display = "none"; 
       document.getElementById("hp-q").style.display = "block"; 
       document.getElementById("hp-input-box").style.display = "block"; 
+      document.getElementById("hp-skip-box").classList.add("hp-hidden");
       document.getElementById("hp-trezor-obsah").classList.add("hp-hidden");
       document.getElementById("hp-a").value = ""; 
       document.getElementById("hp-a").focus(); 
+    }
+
+    function hp_h() { 
+      hp_x = hp_r[Math.floor(Math.random() * hp_r.length)]; 
+      hp_pokusy = 0;
+      hp_showHadanka();
     } 
 
     function hp_c() { 
@@ -325,11 +327,22 @@ const hp_qList = [
         document.getElementById("hp-klepadlo-hadanka-box").classList.add("hp-hidden"); 
         document.getElementById("hp-trezor-obsah").classList.remove("hp-hidden");
       } else { 
-        alert("To nebyla správná odpověď! *Orel se pobaveně ušklíbne a čeká na jinou odpověď.*"); 
-        document.getElementById("hp-a").value = ""; 
-        document.getElementById("hp-a").focus(); 
+        hp_pokusy++;
+        if (hp_pokusy >= 3) {
+          alert("To nebyla správná odpověď! *Orel vidí, že to dnes nepůjde, a nabídne ti jinou cestu dovnitř.*");
+          document.getElementById("hp-skip-box").classList.remove("hp-hidden");
+        } else {
+          alert("To nebyla správná odpověď! *Orel se pobaveně ušklíbne a položí ti novou hádanku.*"); 
+          hp_x = hp_r[Math.floor(Math.random() * hp_r.length)];
+          hp_showHadanka();
+        }
       } 
     } 
+
+    function hp_skipHadanka() {
+      document.getElementById("hp-klepadlo-hadanka-box").classList.add("hp-hidden");
+      document.getElementById("hp-trezor-obsah").classList.remove("hp-hidden");
+    }
 
     function hp_bAll() { 
       document.getElementById("hp-game-view").classList.add("hp-hidden"); 
