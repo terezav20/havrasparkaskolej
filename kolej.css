@@ -52,7 +52,7 @@
    2. SCROLLOVÁNÍ A STRÁNKY
    ========================================= */
 #hp-door-view, #hp-form-view, #hp-chest-view, 
-#hp-statue-view, #hp-quidditch-view, #hp-gallery-view, #hp-flag-view, #hp-board-view {
+#hp-statue-view, #hp-quidditch-view, #hp-gallery-view, #hp-flag-view, #hp-board-view, #hp-links-view {
   height: 513.9px;
   display: flex;
   flex-direction: column;
@@ -67,14 +67,14 @@
 
 /* Odsazení pro všechny pohledy kromě hlavní místnosti */
 #hp-door-view, #hp-form-view, #hp-chest-view, 
-#hp-statue-view, #hp-quidditch-view, #hp-gallery-view, #hp-flag-view, #hp-board-view {
+#hp-statue-view, #hp-quidditch-view, #hp-gallery-view, #hp-flag-view, #hp-board-view, #hp-links-view {
   padding: 0 3.6px 5.4px;
   box-sizing: border-box;
 }
 
 .hp-f-list, .hp-grid, #hp-gallery-list, 
 #hp-tab-potions, #hp-tab-artifacts, .hp-flag-list, #hp-db-list, .hp-door-scroll,
-.hp-board, #hp-tab-q-players, #hp-tab-q-info, #hp-tab-q-pokriky {
+.hp-board, #hp-tab-q-players, #hp-tab-q-info, #hp-tab-q-pokriky, .hp-links-list {
   overflow-y: auto !important;
   flex-grow: 1;
   padding-right: 4.5px;
@@ -771,7 +771,8 @@ area { cursor: pointer; }
 #hp-door-view .hp-back-btn,
 #hp-flag-view .hp-back-btn,
 #hp-board-view .hp-back-btn,
-#hp-form-view .hp-back-btn {
+#hp-form-view .hp-back-btn,
+#hp-links-view .hp-back-btn {
   margin-top: auto;
 }
 
@@ -871,6 +872,70 @@ area { cursor: pointer; }
   width: 75%;
   background: linear-gradient(180deg, #b58900 0%, #856404 100%);
   border-color: var(--gold);
+}
+
+/* Lišty s odkazy (Knihovna) */
+.hp-links-section-title {
+  margin: 9px 0 10.8px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 19.8px;
+  font-weight: normal;
+  color: var(--gold);
+  text-align: center;
+  text-shadow: 0 0 9px rgba(216, 184, 93, 0.3);
+}
+
+/* Kouzelná kniha - Havraspárský průvodce */
+.hp-lib-book {
+  position: relative;
+  margin-bottom: 10.8px;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(216, 184, 93, 0.12), transparent 50%),
+    linear-gradient(160deg, rgba(122, 162, 214, 0.12) 0%, rgba(20, 30, 46, 0.92) 65%);
+  border: 1.8px solid var(--gold);
+  border-radius: 10.8px;
+  padding: 10.8px 14.4px;
+  text-align: center;
+  box-shadow: 0 0 13.5px rgba(216, 184, 93, 0.25), var(--shadow);
+  animation: hp-glow 6s ease-in-out infinite;
+}
+.hp-lib-book-icon {
+  display: block;
+  font-size: 19.8px;
+  margin-bottom: 2.7px;
+  filter: drop-shadow(0 3.6px 5.4px rgba(0,0,0,0.5));
+}
+.hp-lib-book-title {
+  font-family: 'Great Vibes', cursive;
+  font-size: 19.8px;
+  font-weight: normal;
+  color: var(--gold);
+  margin: 0 0 3.6px;
+  text-shadow: 0 0 9px rgba(216, 184, 93, 0.35);
+}
+.hp-lib-book-text {
+  font-size: 10.8px;
+  margin: 0 0 8.1px;
+}
+
+.hp-lib-btn {
+  display: inline-block;
+  padding: 6.3px 14.4px;
+  border-radius: 18px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 9.9px;
+  letter-spacing: 0.3px;
+  transition: all 0.3s ease;
+}
+.hp-lib-btn-gold {
+  background: linear-gradient(180deg, #e8c877 0%, #b58900 100%);
+  color: #2b1d00;
+  box-shadow: 0 3.6px 9px rgba(0,0,0,0.4);
+}
+.hp-lib-btn-gold:hover {
+  transform: scale(1.06);
+  box-shadow: 0 5.4px 13.5px rgba(216, 184, 93, 0.5);
 }
 
 .hp-ohp-card {

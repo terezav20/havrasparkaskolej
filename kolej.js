@@ -354,6 +354,12 @@ const hp_qList = [
       document.getElementById("hp-flag-view").classList.add("hp-hidden"); 
       document.getElementById("hp-door-view").classList.add("hp-hidden"); 
       document.getElementById("hp-board-view").classList.add("hp-hidden"); 
+      document.getElementById("hp-links-view").classList.add("hp-hidden"); 
+    } 
+
+    function hp_showLinks() { 
+      hp_bAll(); 
+      document.getElementById("hp-links-view").classList.remove("hp-hidden"); 
     } 
 
     function hp_showBoard() { 
@@ -974,8 +980,27 @@ const hp_qList = [
       } 
     }
     /* -----------------------------------------
-       8. OBRÁZEK MÍSTNOSTI OSLAVA
+       8. OBRÁZEK MÍSTNOSTI - Podzim
        ----------------------------------------- */
+function updateRoomImage() {
+        const img = document.getElementById("hp-main-room-img");
+        if (!img) return;
+
+        const hour = new Date().getHours();
+        let image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim.png";
+
+        if (hour >= 6 && hour < 8) image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim_vychod.png";
+        else if (hour >= 19 && hour < 20) image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim_zapad.png";
+        else if (hour >= 20 || hour < 0) image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim_vecer.png";
+        else if (hour >= 0 && hour < 6) image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim_noc.png";
+
+        if (img.getAttribute('src') !== image) {
+            img.src = image;
+        }
+    }
+
+
+/*
     function updateRoomImage() {
         const img = document.getElementById("hp-main-room-img");
         if (!img) return;
@@ -991,7 +1016,7 @@ const hp_qList = [
         if (img.getAttribute('src') !== image) {
             img.src = image;
         }
-    }
+    }*/
 
 
 // Aktualizace každých 5 minut
