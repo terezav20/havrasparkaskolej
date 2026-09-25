@@ -990,8 +990,8 @@ function updateRoomImage() {
         let image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim.png";
 
         if (hour >= 6 && hour < 8) image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim_vychod.png";
-        else if (hour >= 19 && hour < 20) image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim_zapad.png";
-        else if (hour >= 20 || hour < 0) image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim_vecer.png";
+        else if (hour >= 18 && hour < 19) image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim_zapad.png";
+        else if (hour >= 19 || hour < 0) image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim_vecer.png";
         else if (hour >= 0 && hour < 6) image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim_noc.png";
 
         if (img.getAttribute('src') !== image) {
