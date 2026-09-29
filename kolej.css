@@ -1112,3 +1112,172 @@ area { cursor: pointer; }
   font-style: italic;
   margin-top: 7.2px;
 }
+/* =========================================
+   12. FAMFRPÁL – POKŘIKY
+   ========================================= */
+
+.hp-pk-panel { margin-bottom: 9px; }
+
+.hp-pk-selects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7.2px;
+}
+.hp-pk-field { display: flex; flex-direction: column; gap: 2.7px; text-align: left; }
+.hp-pk-field label {
+  font-size: 8.1px;
+  font-weight: bold;
+  color: #aebbc8;
+  text-transform: uppercase;
+  letter-spacing: 0.45px;
+}
+.hp-pk-field select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5.4px 7.2px;
+  background: var(--bg);
+  color: var(--text);
+  border: 0.9px solid var(--border);
+  border-radius: 7.2px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9.9px;
+  cursor: pointer;
+}
+.hp-pk-field select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 7.2px rgba(142,154,175,0.4); }
+
+/* Filtry a náhodný pokřik */
+.hp-pk-tools {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6.3px;
+  margin-bottom: 9px;
+}
+.hp-pk-chips { display: flex; flex-wrap: wrap; gap: 4.5px; justify-content: center; }
+.hp-wrap button.hp-pk-chip {
+  padding: 3.6px 9px;
+  font-size: 8.1px;
+  border-radius: 12.6px;
+  background: transparent;
+  color: #aebbc8;
+}
+.hp-wrap button.hp-pk-chip.active {
+  background: var(--border);
+  color: var(--text);
+  border-color: var(--accent);
+}
+.hp-wrap button.hp-pk-random {
+  padding: 5.4px 14.4px;
+  font-size: 9px;
+  color: var(--gold);
+  border-color: var(--gold);
+  background: rgba(216,184,93,0.08);
+}
+.hp-wrap button.hp-pk-random:hover {
+  background: rgba(216,184,93,0.18);
+  border-color: var(--gold);
+}
+
+/* Karta pokřiku */
+.hp-pk-card {
+  position: relative;
+  overflow: hidden;
+  padding: 18px 14.4px 9px;
+  margin-bottom: 9px;
+  text-align: center;
+  background: linear-gradient(160deg, rgba(38,58,84,0.85) 0%, rgba(26,37,51,0.75) 100%);
+  box-shadow: 0 5.4px 16.2px rgba(0,0,0,0.35), 0 0 10.8px rgba(122,162,214,0.08);
+  box-sizing: border-box;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.hp-pk-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2.7px;
+  background: linear-gradient(90deg, transparent, var(--accent) 30%, var(--gold) 70%, transparent);
+  opacity: 0.85;
+}
+.hp-pk-card::after {
+  content: "\201C";
+  position: absolute;
+  top: -3.6px; left: 7.2px;
+  font-family: 'Great Vibes', cursive;
+  font-size: 48.6px;
+  line-height: 1;
+  color: rgba(216,184,93,0.2);
+  pointer-events: none;
+}
+.hp-pk-card:hover {
+  border-color: var(--gold);
+  box-shadow: 0 7.2px 19.8px rgba(0,0,0,0.4), 0 0 14.4px rgba(216,184,93,0.18);
+}
+
+.hp-pk-tag {
+  position: absolute;
+  top: 7.2px; right: 7.2px;
+  font-size: 7.2px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.45px;
+  color: #aebbc8;
+  border: 0.9px solid var(--border);
+  border-radius: 5.4px;
+  padding: 1.35px 5.4px;
+}
+
+.hp-wrap p.hp-pk-text {
+  margin: 0;
+  font-size: 11.7px;
+  line-height: 1.8;
+  color: var(--text);
+}
+
+.hp-pk-shout {
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.45px;
+  text-shadow: 0 0 7.2px rgba(216,184,93,0.4);
+}
+
+.hp-pk-fill {
+  color: var(--gold);
+  font-weight: 700;
+  border-bottom: 0.9px solid var(--gold);
+  padding: 0 1.8px;
+  animation: hp-pk-pop 0.35s ease;
+}
+.hp-pk-fill.hp-pk-empty {
+  color: #aebbc8;
+  font-weight: 500;
+  font-style: italic;
+  border-bottom: 0.9px dashed #aebbc8;
+  animation: none;
+}
+@keyframes hp-pk-pop {
+  0%   { background: rgba(216,184,93,0.45); }
+  100% { background: transparent; }
+}
+
+.hp-pk-foot { display: flex; justify-content: center; margin-top: 7.2px; }
+.hp-wrap button.hp-pk-copy {
+  padding: 3.6px 10.8px;
+  font-size: 8.1px;
+  border-radius: 12.6px;
+  background: transparent;
+  color: #aebbc8;
+}
+.hp-wrap button.hp-pk-copy:hover { color: var(--text); }
+.hp-wrap button.hp-pk-copy.hp-pk-copied { color: #4affa4; border-color: #4affa4; }
+
+.hp-pk-glow { animation: hp-pk-glow 1.8s ease-out 1; border-color: var(--gold); }
+@keyframes hp-pk-glow {
+  0%   { box-shadow: 0 0 0 0 rgba(216,184,93,0.7); }
+  100% { box-shadow: 0 0 0 16px rgba(216,184,93,0); }
+}
+
+.hp-wrap p.hp-pk-empty-msg { text-align: center; color: #aebbc8; font-style: italic; }
+
+@media (max-width: 420px) {
+  .hp-pk-selects { grid-template-columns: 1fr; }
+}

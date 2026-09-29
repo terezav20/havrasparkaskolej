@@ -468,7 +468,197 @@ const hp_qList = [
       } else if (t === 'pokriky') {
         document.getElementById("tab-q-pokriky-btn").classList.add("active");
         document.getElementById("hp-tab-q-pokriky").classList.remove("hp-hidden");
+        hp_pkInit();
       }
+    }
+
+    /* -----------------------------------------
+       FAMFRPÁL – POKŘIKY
+       Zástupné tokeny: {hrac} {kolej} {odrazec1} {odrazec2} {chytac}
+       Nové pokřiky přidávej jako další položku pole (řádky odděl \n).
+       ----------------------------------------- */
+    const hp_pokriky = [
+      "Křídla vzhůru, žádný strach,\nHavraspár vám dá dnes šach!",
+      "Hej, {hrac}, poleť výš,\nna tribuně nás všech uslyšíš!\nHAV-RAS-PÁR!",
+      "Modrá, bronzová, vzhůru letí,\nHavraspár se soupeřů nelekne!\nKřídla vzhůru, hlavy výš,\nHAV-RAS-PÁR! Teď uvidíš!",
+      "Křídla vzhůru!\nDrápy ven!\nHAV-RAS-PÁR!\nJDEM SI PRO VÝHRU JEN!",
+      "Koště sviští, camrál letí,\nsoupeř už se trochu potí!\nModrá vlaje, slyšet řev -\nHAV-RAS-PÁR slaví svůj den!",
+      "Letí Havran letí\nletí na koštěti.\nHlavu drží hrdě vzhůru,\nvstříc vítěznému chóru.",
+      "Kdo by se soupeře bál?\nNeumí hrát famfrpál!\nHavrani jsou nejlepší\nVítězstvím si přilepší!",
+      "Kdo je hvězda dnešní hry?\n{hrac}, to je jasný, ty!",
+      "Havrani jsou famfr hvězdy\nne jako ti druzí\nna košťatech nemaj brzdy\njsou to prostě bozi!",
+      "Havraspár to vyhraje,\n{hrac} ta to rozjede!\nJóóó {hrac}!",
+      "{kolej}, {kolej}, kam to letíš?\nProti Havranům nic nezmůžeš!",
+      "Chytré hlavy, rychlý let! Havraspár ovládne svět!",
+      "Modrá a bronz, to je náš znak!\nHavraspár poletí jak vítězný pták!",
+      "{hrac}! {hrac}! {hrac}!\nHAV-RAS-PÁR VÍTĚZÍ!",
+      "Kapitán v bráně, střelec v poli, soupeře to dneska zabolí! Do toho, {hrac}!",
+      "{kolej} dneska prohrát musí,\nHavraspár to prostě umí!",
+      "Od Smaragdové k van Smithovi,\nsláva patří kapitánovi!\nWalter bránu střeží,\na {kolej} mu to nandá jen stěží!",
+      "Naši odrážeči ti jsou tvrdí, {odrazec1} a {odrazec2} vás rozdrtí!",
+      "{chytac} rychlá/ý je,\nzlatonku nám rychle donese!",
+      "Modrá vlajka nad hřištěm,\n{hrac} letí s vítězstvím!",
+      "Když se setmí na hřišti,\nkdyž už síly dochází,\nHavraspár svá křídla zvedne,\nžádný strach nás nezastaví!",
+      "{hrac} vzlétá, letí výš,\nkdo ho zastaví? Nikdo, víš?",
+      "Havraspár, bojujte, tribuna tu skanduje!",
+      "Ať se {kolej} snaží jak chce,\nHavran to dneska vyhraje!",
+      "Havraspár - silný ďas - CELÝ HRAD JE HAVRA HLAS!",
+      "Vzhůru, {hrac}, letíme s tebou,\nHavraspár vítězí – jinak to nebude!",
+      "Havraspár míří výš a výš,\nna silných křídlech havraních,\nkterá nikdy nic nezlomí."
+    ];
+
+    const hp_pkState = { hrac: "", kolej: "", odrazec1: "", odrazec2: "", chytac: "" };
+    const hp_pkLabels = {
+      hrac: "(jméno hráče)", kolej: "(jméno koleje)",
+      odrazec1: "(jméno odrážeče)", odrazec2: "(jméno odrážeče)",
+      chytac: "(jméno chytače)"
+    };
+    const hp_pkFilters = [
+      { id: "all",   label: "Všechny" },
+      { id: "hrac",  label: "S hráčem" },
+      { id: "kolej", label: "Proti soupeři" },
+      { id: "tym",   label: "Pro celý tým" }
+    ];
+    let hp_pkReady = false;
+    let hp_pkFilter = "all";
+    let hp_pkGlow = -1;
+
+    function hp_pkEsc(t) {
+      return String(t).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+    }
+
+    // Do jaké skupiny pokřik patří (podle použitých zástupných jmen)
+    function hp_pkType(raw) {
+      if (/\{kolej\}/.test(raw)) return "kolej";
+      if (/\{(hrac|odrazec1|odrazec2|chytac)\}/.test(raw)) return "hrac";
+      return "tym";
+    }
+
+    // Text s dosazenými jmény bez HTML (pro kopírování)
+    function hp_pkPlain(raw) {
+      return raw.replace(/\{(\w+)\}/g, (m, k) => hp_pkState[k] || hp_pkLabels[k] || m);
+    }
+
+    // Text se zvýrazněním (křik = zlatě, dosazená jména = podtržená)
+    function hp_pkHtml(raw) {
+      let h = hp_pkEsc(raw);
+      h = h.replace(/(^|[^\p{L}\-])(\p{Lu}[\p{Lu}\-]+(?:[ ]+\p{Lu}[\p{Lu}\-]+)*|Jóóó)(?![\p{L}])/gu,
+        (m, a, b) => a + '<strong class="hp-pk-shout">' + b + '</strong>');
+      h = h.replace(/\{(\w+)\}/g, (m, k) => {
+        if (!(k in hp_pkLabels)) return m;
+        if (k !== "hrac" && k !== "kolej") return hp_pkLabels[k];
+        return hp_pkState[k]
+          ? '<span class="hp-pk-fill">' + hp_pkEsc(hp_pkState[k]) + '</span>'
+          : '<span class="hp-pk-fill hp-pk-empty">' + hp_pkLabels[k] + '</span>';
+      });
+      return h.replace(/\n/g, "<br>");
+    }
+
+    function hp_pkRefresh() {
+      const list = document.getElementById("hp-pk-list");
+      list.innerHTML = "";
+      const tagNames = { hrac: "Hráč", kolej: "Soupeř", tym: "Tým" };
+
+      hp_pokriky.forEach((raw, i) => {
+        const type = hp_pkType(raw);
+        if (hp_pkFilter !== "all" && hp_pkFilter !== type) return;
+
+        const card = document.createElement("div");
+        card.className = "hp-card hp-pk-card" + (i === hp_pkGlow ? " hp-pk-glow" : "");
+        card.id = "hp-pk-card-" + i;
+        card.innerHTML =
+          '<span class="hp-pk-tag">' + tagNames[type] + '</span>' +
+          '<p class="hp-pk-text">' + hp_pkHtml(raw) + '</p>' +
+          '<div class="hp-pk-foot"><button type="button" class="hp-pk-copy" onclick="hp_pkCopy(' + i + ', this)">📋 Kopírovat</button></div>';
+        list.appendChild(card);
+      });
+
+      if (!list.children.length) {
+        list.innerHTML = '<p class="hp-pk-empty-msg">V téhle skupině zatím nic není.</p>';
+      }
+    }
+
+    function hp_pkCopy(i, btn) {
+      const txt = hp_pkPlain(hp_pokriky[i]);
+      navigator.clipboard.writeText(txt).then(() => {
+        if (btn) {
+          btn.innerText = "✓ Zkopírováno";
+          btn.classList.add("hp-pk-copied");
+          setTimeout(() => { btn.innerText = "📋 Kopírovat"; btn.classList.remove("hp-pk-copied"); }, 1600);
+        }
+        const t = document.getElementById("hp-copy-toast");
+        t.innerText = "Pokřik zkopírován!";
+        t.style.display = "block";
+        setTimeout(() => { t.style.display = "none"; }, 1600);
+      }).catch(e => console.error(e));
+    }
+
+    function hp_pkSetFilter(id) {
+      hp_pkFilter = id;
+      hp_pkGlow = -1;
+      document.querySelectorAll(".hp-pk-chip").forEach(c => c.classList.toggle("active", c.dataset.f === id));
+      hp_pkRefresh();
+    }
+
+    function hp_pkRandom() {
+      const pool = hp_pokriky.map((r, i) => i).filter(i => hp_pkFilter === "all" || hp_pkType(hp_pokriky[i]) === hp_pkFilter);
+      if (!pool.length) return;
+      let pick = pool[Math.floor(Math.random() * pool.length)];
+      if (pool.length > 1) { while (pick === hp_pkGlow) pick = pool[Math.floor(Math.random() * pool.length)]; }
+      hp_pkGlow = pick;
+      hp_pkRefresh();
+      const el = document.getElementById("hp-pk-card-" + pick);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function hp_pkInit() {
+      if (hp_pkReady) return;
+      hp_pkReady = true;
+
+      // Výběr hráče a koleje
+      const fields = [
+        { k: "hrac",  label: "Hráč",            opts: hp_qList.map(p => p.n).sort((a, b) => a.localeCompare(b, 'cs')) },
+        { k: "kolej", label: "Soupeřova kolej", opts: ["Nebelvír", "Mrzimor", "Zmijozel"] }
+      ];
+      const box = document.getElementById("hp-pk-selects");
+      box.innerHTML = "";
+      fields.forEach(f => {
+        const wrap = document.createElement("div");
+        wrap.className = "hp-pk-field";
+        const lab = document.createElement("label");
+        lab.innerText = f.label;
+        const sel = document.createElement("select");
+        sel.innerHTML = '<option value="">– vyber –</option>' +
+          f.opts.map(o => '<option value="' + hp_pkEsc(o) + '">' + hp_pkEsc(o) + '</option>').join("");
+        sel.onchange = () => { hp_pkState[f.k] = sel.value; hp_pkRefresh(); };
+        wrap.appendChild(lab);
+        wrap.appendChild(sel);
+        box.appendChild(wrap);
+      });
+
+      // Filtry + náhodný pokřik
+      const tools = document.getElementById("hp-pk-tools");
+      tools.innerHTML = "";
+      const chips = document.createElement("div");
+      chips.className = "hp-pk-chips";
+      hp_pkFilters.forEach(f => {
+        const b = document.createElement("button");
+        b.type = "button";
+        b.className = "hp-pk-chip" + (f.id === hp_pkFilter ? " active" : "");
+        b.dataset.f = f.id;
+        b.innerText = f.label;
+        b.onclick = () => hp_pkSetFilter(f.id);
+        chips.appendChild(b);
+      });
+      const rnd = document.createElement("button");
+      rnd.type = "button";
+      rnd.className = "hp-pk-random";
+      rnd.innerText = "🎲 Náhodný pokřik";
+      rnd.onclick = hp_pkRandom;
+      tools.appendChild(chips);
+      tools.appendChild(rnd);
+
+      hp_pkRefresh();
     }
 
     function hp_showGallery() {
