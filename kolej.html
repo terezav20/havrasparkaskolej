@@ -2,7 +2,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="kolej.css?v=4">
+  <link rel="stylesheet" href="kolej.css?v=5">
 
   <!-- Animované hvězdné pozadí -->
   <div class="hp-sky" aria-hidden="true">
@@ -65,7 +65,7 @@
         <p id="hp-q" style="display:none; font-weight:500; margin:13.5px 0;"></p>
         <div id="hp-input-box" style="display:none;">
           <input type="text" id="hp-a" placeholder="Tvoje odpověď..."><br>
-          <button onclick="hp_c()" style="margin-bottom:9px;">Odeslat odpověď</button>
+          <button onclick="hp_c()">Odeslat odpověď</button>
           <div id="hp-skip-box" class="hp-hidden">
             <p style="font-size:10.8px; color:#aebbc8; margin:7.2px 0;"><i>*Orel si tě soucitně prohlíží a nakonec jen mávne křídlem.*</i></p>
             <button onclick="hp_skipHadanka()">Otevřít i tak</button>
@@ -104,16 +104,16 @@
 
   <div id="hp-board-view" class="hp-hidden">
     <h2>Nástěnka</h2>
-    <p style="font-size:11.7px; margin-bottom:9px;">Pozvánky, novinky a oznámení pro studenty:</p>
+    <p style="font-size:10.8px; margin-bottom:9px;">Pozvánky, novinky a oznámení pro studenty:</p>
     <div class="hp-board" id="hp-board-list">
-       <div class="hp-board-note">
+       <!-- <div class="hp-board-note">
         <span class="hp-board-pin"></span>
         <a href="" target="_blank">
         <img src="akce/kdovik_vyzva4.png" alt="Pozvánka" class="hp-board-note-img">
         </a>
         <span class="hp-board-note-meta">Přidala: Mia Rose</span>
       </div>
-       <!-- 
+       
       Sem vkládej jednotlivé "lístky" na nástěnku. Každý blok zkopíruj a uprav.
       Pokud žádný lístek nepřidáš (nebo je zakomentovaný jako teď), nástěnka
       zůstane prázdná a nic se nezobrazí.
@@ -188,9 +188,9 @@
 
     <div id="hp-tab-balicek-pridat">
       <div class="hp-form-box">
-        <div id="hp-duplicita-info" style="display:none; background:#5c1d24; border:0.9px solid #ff4a5a; padding:9px; border-radius:5.4px; font-size:10.8px; width:80%; margin-bottom:9px; text-align:left; color:var(--text);">
+        <div id="hp-duplicita-info" class="hp-alert" style="display:none;">
           <div id="hp-duplicita-text"></div>
-          <button id="hp-btn-nastavit-dnesni" type="button" style="margin-top:7.2px; width:100%; display:none;">📌 Nastavit jako dnešní balíček</button>
+          <button id="hp-btn-nastavit-dnesni" class="hp-btn-block" type="button" style="display:none;">📌 Nastavit jako dnešní balíček</button>
         </div>
         <input type="text" id="hp-f-url" placeholder="URL obrázku nebo jen zkrácené ID" oninput="hp_checkAutocompleteAndDuplicate()">
         <input type="text" id="hp-f-obsah" placeholder="Obsah balíku">
@@ -201,10 +201,10 @@
     </div>
 
     <div id="hp-tab-balicek-historie" class="hp-hidden">
-      <p style="font-size:11.7px; font-style:italic; margin:0 0 9px;">Kliknutím na obrázek balíčku ho nastavíš jako <strong>dnešní</strong>. Ostatním se změna projeví během pár minut.</p>
+      <p style="font-size:10.8px; font-style:italic; margin:0 0 9px;">Kliknutím na obrázek balíčku ho nastavíš jako <strong>dnešní</strong>. Ostatním se změna projeví během pár minut.</p>
       <div style="position:relative; margin-bottom:9px;">
         <input type="text" id="hp-db-filter" placeholder="Filtrovat podle obsahu, ID nebo jména…" oninput="hp_filtrujHistorii()" style="padding-right:28px; width:100%; box-sizing:border-box;">
-        <button type="button" id="hp-db-filter-clear" onclick="hp_vycistitFiltr()" style="display:none; position:absolute; right:3.6px; top:50%; transform:translateY(-50%); background:none; border:none; box-shadow:none; color:#aebbc8; font-size:15.3px; cursor:pointer; padding:0 7.2px; line-height:1;" title="Vymazat filtr">×</button>
+        <button type="button" id="hp-db-filter-clear" class="hp-icon-btn" onclick="hp_vycistitFiltr()" style="display:none;" title="Vymazat filtr">×</button>
       </div>
       <div id="hp-db-list" style="overflow-y:auto; border: 0.9px solid var(--border); border-radius: 10.8px; padding: 5.4px; box-sizing: border-box; flex-grow:1;">
         <table class="hp-db-table">
@@ -234,7 +234,7 @@
     <div id="hp-tab-spells" class="hp-grid" style="max-height:630px; overflow-y:auto;"></div>
     <div id="hp-tab-potions" class="hp-hidden" style="max-height:630px; overflow-y:auto;"></div>
     <div id="hp-tab-artifacts" class="hp-hidden" style="max-height:630px; overflow-y:auto; padding:4.5px;"></div>
-    <button onclick="hp_hideViews()" style="background:var(--surface); color:var(--text); border-color:var(--border); margin-top:13.5px;">Zpět do místnosti</button>
+    <button class="hp-back-btn" onclick="hp_hideViews()">Zpět do místnosti</button>
   </div>
   <div id="hp-statue-view" class="hp-hidden">
     <h2>Socha Roweny</h2>
@@ -246,7 +246,7 @@
 
     <div id="hp-tab-rowena">
       <img src="ikony/havraspar.gif" alt="Socha Roweny" class="hp-rowena-gif" id="hp-rowena-img">
-      <p style="font-size:11.7px; font-style:italic; margin:9px 0 13.5px;">Socha Roweny z Havraspáru po staletí střeží kolejní věž. Občas ožije a podělí se se studenty o svou moudrost.</p>
+      <p style="font-size:10.8px; font-style:italic; margin:9px 0 13.5px;">Socha Roweny z Havraspáru po staletí střeží kolejní věž. Občas ožije a podělí se se studenty o svou moudrost.</p>
 
       <div class="hp-card hp-rowena-daily-box" id="hp-rowena-daily-box">
         <h3 class="hp-rowena-daily-title">Dnešní moudrost</h3>
@@ -255,7 +255,7 @@
     </div>
 
  <div id="hp-tab-funk" class="hp-hidden">
-      <p style="font-size:11.7px; margin-bottom:13.5px;">Zde odpočívají a na pořádek dohlížejí funkcionáři naší koleje pro tento rok:</p>
+      <p style="font-size:10.8px; margin-bottom:13.5px;">Zde odpočívají a na pořádek dohlížejí funkcionáři naší koleje pro tento rok:</p>
       <div class="hp-f-list">
         <div class="hp-f-item">
           <img src="ikony/reditel.png" width="90" height="90" alt="Ředitel">
@@ -342,7 +342,7 @@
         <div class="hp-ohp-symbol-row"><span class="hp-ohp-symbol-label">Relikvie</span><span class="hp-ohp-symbol-value">Diadém Roweny z Havraspáru</span></div>
       </div>
 </div>
-    <button onclick="hp_hideViews()" style="background:var(--surface); color:var(--text); border-color:var(--border); margin-top:13.5px;">Zpět do místnosti</button>
+    <button class="hp-back-btn" onclick="hp_hideViews()">Zpět do místnosti</button>
   </div>
 
   <div id="hp-quidditch-view" class="hp-hidden">
@@ -354,7 +354,7 @@
     </div>
 
     <div id="hp-tab-q-players">
-      <p style="font-size:11.7px; margin-bottom:13.5px;">Soupiska havraspárských hráčů, kteří bojují o Famfrpálový pohár v roce 2026:</p>
+      <p style="font-size:10.8px; margin-bottom:13.5px;">Soupiska havraspárských hráčů, kteří bojují o Famfrpálový pohár v roce 2026:</p>
       <div class="hp-f-list" id="hp-q-players-list"></div>
     </div>
 
@@ -437,7 +437,7 @@
       </div>
 
       <div class="hp-ohp-motto">
-        <p class="hp-ohp-motto-cz" style="font-size:11.7px; font-style:normal; margin-bottom:7.2px;"><b>Když si máš zapamatovat jen jednu věc:</b></p>
+        <p class="hp-ohp-motto-cz" style="font-size:10.8px; font-style:normal; margin-bottom:7.2px;"><b>Když si máš zapamatovat jen jednu věc:</b></p>
         <p class="hp-ohp-motto-cz" style="font-size:10.8px;">Nejdřív obratnost + rychlost. Dostaň se alespoň na 20 obratnosti a 15 rychlosti, potom postupně přidávej vlastnosti své pozice a zároveň základní dvojici dotahuj co nejvýš.</p>
         <p class="hp-ohp-motto-cz" style="font-size:10.8px; margin-top:7.2px;"><b>Cílově: 42 obratnost + 24 rychlost</b> (u brankáře stačí rychlost přibližně 16)</p>
       </div>
@@ -454,15 +454,15 @@
       <div id="hp-pk-list"></div>
     </div>
 
-    <button onclick="hp_hideViews()" style="background:var(--surface); color:var(--text); border-color:var(--border); margin-top:13.5px;">Zpět do místnosti</button>
+    <button class="hp-back-btn" onclick="hp_hideViews()">Zpět do místnosti</button>
   </div>
 
   <div id="hp-gallery-view" class="hp-hidden">
     <h2>Přehled studujících</h2>
-    <p style="font-size:11.7px; margin-bottom:1.8px;">Moudří havrani, kteří momentálně obývají naši kolejní věž:</p>
+    <p style="font-size:10.8px; margin-bottom:1.8px;">Moudří havrani, kteří momentálně obývají naši kolejní věž:</p>
     <div style="max-height: 630px; overflow-y: auto; padding: 4.5px;" id="hp-gallery-list"></div>
 
-    <button onclick="hp_hideViews()" style="background:var(--surface); color:var(--text); border-color:var(--border); margin-top:13.5px;">Zpět do místnosti</button>
+    <button class="hp-back-btn" onclick="hp_hideViews()">Zpět do místnosti</button>
   </div>
 
   <div id="hp-flag-view" class="hp-hidden">
@@ -475,9 +475,7 @@
         <p class="hp-flag-card-note">O tuto aktivitu se stará Angel de Fox.</p>
 
         <div class="hp-flag-card-footer">
-         <!-- <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9QG0vxgo_-w_Cj1Y5X4iZmPmHYttQpxxNMy7gy2AfCf92KtnDoy-Bq-TiGtAPNOpw9wbER5woGtdh/pubhtml?gid=0&single=true" target="_blank" style="text-decoration: none;">
-            <button>Výsledky motivaček za měsíce</button>
-          </a>-->
+          <a class="hp-lib-btn hp-lib-btn-gold" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9QG0vxgo_-w_Cj1Y5X4iZmPmHYttQpxxNMy7gy2AfCf92KtnDoy-Bq-TiGtAPNOpw9wbER5woGtdh/pubhtml?gid=0&single=true" target="_blank" rel="noopener">Výsledky motivaček za měsíce</a>
         </div>
       </div>
       <div class="hp-flag-card">
@@ -487,9 +485,7 @@
         <p class="hp-flag-card-note">O tuto aktivitu se stará Mia Rose.</p>
 
        <div class="hp-flag-card-footer">
-           <!-- <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9QG0vxgo_-w_Cj1Y5X4iZmPmHYttQpxxNMy7gy2AfCf92KtnDoy-Bq-TiGtAPNOpw9wbER5woGtdh/pubhtml?gid=1195466320&single=true" target="_blank" style="text-decoration: none;">
-            <button>Výsledky motivaček za měsíce</button>
-          </a>-->
+           <a class="hp-lib-btn hp-lib-btn-gold" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9QG0vxgo_-w_Cj1Y5X4iZmPmHYttQpxxNMy7gy2AfCf92KtnDoy-Bq-TiGtAPNOpw9wbER5woGtdh/pubhtml?gid=1195466320&single=true" target="_blank" rel="noopener">Výsledky motivaček za měsíce</a>
         </div>
       </div>
       <div class="hp-flag-card">
@@ -499,9 +495,7 @@
         <p class="hp-flag-card-note">O tuto aktivitu se stará Mia Rose.</p>
 
         <div class="hp-flag-card-footer">
-          <!--<a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9QG0vxgo_-w_Cj1Y5X4iZmPmHYttQpxxNMy7gy2AfCf92KtnDoy-Bq-TiGtAPNOpw9wbER5woGtdh/pubhtml?gid=285685536&single=true" target="_blank" style="text-decoration: none;">
-            <button>Výsledky motivaček za měsíce</button>
-          </a>-->
+          <a class="hp-lib-btn hp-lib-btn-gold" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9QG0vxgo_-w_Cj1Y5X4iZmPmHYttQpxxNMy7gy2AfCf92KtnDoy-Bq-TiGtAPNOpw9wbER5woGtdh/pubhtml?gid=285685536&single=true" target="_blank" rel="noopener">Výsledky motivaček za měsíce</a>
         </div>
       </div>
       <div class="hp-flag-card">
@@ -511,9 +505,7 @@
         <p class="hp-flag-card-note">O tuto aktivitu se stará Shaunee von Castile a Mia Rose.</p>
 
         <div class="hp-flag-card-footer">
-        <!--  <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9QG0vxgo_-w_Cj1Y5X4iZmPmHYttQpxxNMy7gy2AfCf92KtnDoy-Bq-TiGtAPNOpw9wbER5woGtdh/pubhtml?gid=747287515&single=true" target="_blank" style="text-decoration: none;">
-            <button>Výsledky motivaček za měsíce</button>-->
-          </a>
+          <a class="hp-lib-btn hp-lib-btn-gold" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9QG0vxgo_-w_Cj1Y5X4iZmPmHYttQpxxNMy7gy2AfCf92KtnDoy-Bq-TiGtAPNOpw9wbER5woGtdh/pubhtml?gid=747287515&single=true" target="_blank" rel="noopener">Výsledky motivaček za měsíce</a>
         </div>
       </div>
       <div class="hp-flag-card">
@@ -523,9 +515,7 @@
         <p class="hp-flag-card-note">O tuto aktivitu se stará Shaunee von Castile a Mia Rose.</p>
 
         <div class="hp-flag-card-footer">
-          <!-- <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9QG0vxgo_-w_Cj1Y5X4iZmPmHYttQpxxNMy7gy2AfCf92KtnDoy-Bq-TiGtAPNOpw9wbER5woGtdh/pubhtml?gid=1763842063&single=true" target="_blank" style="text-decoration: none;">
-            <button>Výsledky motivaček za měsíce</button>-->
-          </a>
+          <a class="hp-lib-btn hp-lib-btn-gold" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9QG0vxgo_-w_Cj1Y5X4iZmPmHYttQpxxNMy7gy2AfCf92KtnDoy-Bq-TiGtAPNOpw9wbER5woGtdh/pubhtml?gid=1763842063&single=true" target="_blank" rel="noopener">Výsledky motivaček za měsíce</a>
         </div>
       </div>
             <div class="hp-flag-card">
@@ -535,9 +525,7 @@
           <p class="hp-flag-card-note">Tuto aktivitu má na starosti Angel de Fox.</p>
 
         <div class="hp-flag-card-footer">
-        <!--  <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9QG0vxgo_-w_Cj1Y5X4iZmPmHYttQpxxNMy7gy2AfCf92KtnDoy-Bq-TiGtAPNOpw9wbER5woGtdh/pubhtml?gid=1891441335&single=true" target="_blank" style="text-decoration: none;">
-            <button>Výsledky motivaček za měsíce</button>-->
-          </a>
+         <a class="hp-lib-btn hp-lib-btn-gold" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9QG0vxgo_-w_Cj1Y5X4iZmPmHYttQpxxNMy7gy2AfCf92KtnDoy-Bq-TiGtAPNOpw9wbER5woGtdh/pubhtml?gid=1891441335&single=true" target="_blank" rel="noopener">Výsledky motivaček za měsíce</a>
         </div>
       </div>
       <div class="hp-flag-card">
@@ -547,9 +535,7 @@
           <p class="hp-flag-card-note">Tuto aktivitu má na starosti Shaunne von Castile.</p>
 
         <div class="hp-flag-card-footer">
-        <!--  <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9QG0vxgo_-w_Cj1Y5X4iZmPmHYttQpxxNMy7gy2AfCf92KtnDoy-Bq-TiGtAPNOpw9wbER5woGtdh/pubhtml?gid=503544844&single=true" target="_blank" style="text-decoration: none;">
-            <button>Výsledky motivaček za měsíce</button>-->
-          </a>
+        <a class="hp-lib-btn hp-lib-btn-gold" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9QG0vxgo_-w_Cj1Y5X4iZmPmHYttQpxxNMy7gy2AfCf92KtnDoy-Bq-TiGtAPNOpw9wbER5woGtdh/pubhtml?gid=503544844&single=true" target="_blank" rel="noopener">Výsledky motivaček za měsíce</a>
         </div>
       </div>
       <div class="hp-flag-card">
@@ -559,9 +545,7 @@
           <p class="hp-flag-card-note">Tuto aktivitu má na starosti celé vedení Havraspáru.</p>
 
         <div class="hp-flag-card-footer">
-         <!-- <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9QG0vxgo_-w_Cj1Y5X4iZmPmHYttQpxxNMy7gy2AfCf92KtnDoy-Bq-TiGtAPNOpw9wbER5woGtdh/pubhtml?gid=556916489&single=true" target="_blank" style="text-decoration: none;">
-            <button>Výsledky motivaček za měsíce</button>-->
-          </a>
+         <a class="hp-lib-btn hp-lib-btn-gold" href="https://docs.google.com/spreadsheets/d/e/2PACX-1vR9QG0vxgo_-w_Cj1Y5X4iZmPmHYttQpxxNMy7gy2AfCf92KtnDoy-Bq-TiGtAPNOpw9wbER5woGtdh/pubhtml?gid=556916489&single=true" target="_blank" rel="noopener">Výsledky motivaček za měsíce</a>
         </div>
       </div>
     </div>

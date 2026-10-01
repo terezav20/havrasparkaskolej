@@ -682,7 +682,7 @@ const hp_qList = [
           <img src="${fotoUrl}" class="hp-student-portrait" onerror="this.src='ikony/eagle.png'">
           <div>
             <h4 class="hp-student-name">${student.jmeno}</h4>
-            <span style="font-size:9px; color:#aebbc8;"><p class="hp-student-info">${infoText}</p></span>
+            <span style="font-size:9.9px; color:#aebbc8;"><p class="hp-student-info">${infoText}</p></span>
           </div>
         `;
         div.appendChild(i);
@@ -1017,7 +1017,7 @@ const hp_qList = [
         if (jeAktualni) {
           const znacka = document.createElement("div");
           znacka.textContent = "✓ Aktuální";
-          znacka.style.cssText = "margin-top:2.7px; font-size:9px; font-weight:bold; color:#4affa4;";
+          znacka.style.cssText = "margin-top:2.7px; font-size:9.9px; font-weight:bold; color:#4affa4;";
           tdObsah.appendChild(znacka);
         }
 
