@@ -1177,12 +1177,12 @@ function updateRoomImage() {
         if (!img) return;
 
         const hour = new Date().getHours();
-        let image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim.png";
+        let image = "kolejky_ruzne/kolejka_podzim/kolejka.png";
 
-        if (hour >= 6 && hour < 8) image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim_vychod.png";
-        else if (hour >= 18 && hour < 19) image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim_zapad.png";
-        else if (hour >= 19 || hour < 0) image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim_vecer.png";
-        else if (hour >= 0 && hour < 6) image = "kolejky_ruzne/kolejka_podzim/kolejka_podzim_noc.png";
+        if (hour >= 6 && hour < 8) image = "kolejky_ruzne/kolejka_podzim/kolejka_vychod.png";
+        else if (hour >= 18 && hour < 19) image = "kolejky_ruzne/kolejka_podzim/kolejka_zapad.png";
+        else if (hour >= 19 || hour < 0) image = "kolejky_ruzne/kolejka_podzim/kolejka_vecer.png";
+        else if (hour >= 0 && hour < 6) image = "kolejky_ruzne/kolejka_podzim/kolejka_noc.png";
 
         if (img.getAttribute('src') !== image) {
             img.src = image;
